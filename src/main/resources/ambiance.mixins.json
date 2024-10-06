@@ -1,0 +1,30 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.yeoxuhang.ambiance.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "BaseFireBlockMixin",
+    "BlazeMixin",
+    "CampfireBlockMixin",
+    "CandleBlockMixin",
+    "CauldronBlockMixin",
+    "DecoratedPotBlockMixin",
+    "EndermanMixin",
+    "EndermiteMixin",
+    "EndGatewayBlockMixin",
+    "EndPortalBlockMixinNew",
+    "LavaCauldronBlockMixin",
+    "RespawnAnchorBlockMixin",
+    "SoulSandBlockMixin",
+    "TorchBlockMixin",
+    "WallTorchBlockMixin",
+    "WaterCauldronBlockMixin"
+  ],
+  "client": [
+    "client.LevelRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

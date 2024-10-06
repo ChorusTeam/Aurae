@@ -1,0 +1,9 @@
+{
+  "ender_eye_placed": {
+    "sounds": [
+      "ambiance:ender_eye_placed",
+      "ambiance:ender_eye_placed0",
+      "ambiance:ender_eye_placed1"
+    ]
+  }
+}

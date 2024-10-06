@@ -1,0 +1,16 @@
+{
+  "ambiance.discord": "Discord",
+  "ambiance.patreon": "Patreon",
+  "ambiance.source": "Source",
+  "ambiance.midnightconfig.title": "Ambiance Options",
+  "ambiance.midnightconfig.category.sound": "Sounds",
+  "ambiance.midnightconfig.category.particle": "Particles",
+  "ambiance.midnightconfig.blaze": "Blaze",
+  "ambiance.midnightconfig.otherBlocks": "Other Blocks",
+  "ambiance.midnightconfig.endPortal": "End Portal",
+  "ambiance.midnightconfig.endGetaway": "End Getaway",
+  "ambiance.midnightconfig.endPortalFrame": "End Portal Frame",
+  "ambiance.midnightconfig.entities": "Entities",
+  "ambiance.midnightconfig.burning": "Burning",
+  "ambiance.midnightconfig.trialChamber": "Trial Chamber"
+}
