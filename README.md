@@ -1,4 +1,4 @@
-[![GeodePlus][product]](https://modrinth.com/mod/ambiance)
+[![Ambiance][product]](https://modrinth.com/mod/ambiance)
 
 <h2 align="center"> About The Project</h2>
 
