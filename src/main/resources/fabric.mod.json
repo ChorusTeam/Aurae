@@ -13,7 +13,7 @@
     "website": "https://patreon.com/chorus_team",
     "repo": "https://github.com/ChorusTeam/Ambiance"
   },
-  "license": "MIT",
+  "license": "Apache",
   "icon": "assets/ambiance/icon.png",
   "environment": "client",
   "entrypoints": {
