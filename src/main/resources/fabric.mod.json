@@ -9,9 +9,9 @@
   ],
   "contact": {
     "homepage": "https://modrinth.com/mod/ambiance",
-    "issues": "https://github.com/YeoXuHang/ambiance/issues",
+    "issues": "https://github.com/ChorusTeam/Ambiance/issues",
     "website": "https://patreon.com/chorus_team",
-    "repo": "https://github.com/YeoXuHang/ambiance"
+    "repo": "https://github.com/ChorusTeam/Ambiance"
   },
   "license": "MIT",
   "icon": "assets/ambiance/icon.png",
@@ -43,7 +43,7 @@
       "links": {
         "ambiance.discord": "https://discord.gg/PUJ42rkRBY",
         "ambiance.patreon": "https://patreon.com/chorus_team",
-        "ambiance.source": "https://github.com/YeoXuHang/ambiance"
+        "ambiance.source": "https://github.com/ChorusTeam/Ambiance"
       },
       "badges": [ "client" ]
     }
