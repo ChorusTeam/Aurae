@@ -11,6 +11,7 @@ import net.minecraft.world.level.block.BaseFireBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.feature.GeodeFeature;
 import net.yeoxuhang.ambiance.client.particle.option.AshOption;
 import net.yeoxuhang.ambiance.config.AmbianceConfig;
 import net.yeoxuhang.ambiance.util.MthHelper;
@@ -22,7 +23,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(BaseFireBlock.class)
 public abstract class BaseFireBlockMixin extends Block {
-
 
     @Shadow protected abstract boolean canBurn(BlockState blockState);
 

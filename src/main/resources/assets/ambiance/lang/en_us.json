@@ -12,5 +12,9 @@
   "ambiance.midnightconfig.endPortalFrame": "End Portal Frame",
   "ambiance.midnightconfig.entities": "Entities",
   "ambiance.midnightconfig.burning": "Burning",
-  "ambiance.midnightconfig.trialChamber": "Trial Chamber"
+  "ambiance.midnightconfig.trialChamber": "Trial Chamber",
+
+  "ambiance.midnightconfig.enum.SmokeType.FANCY":"§a§lFancy",
+  "ambiance.midnightconfig.enum.SmokeType.VANILLA":"§lVanilla",
+  "ambiance.midnightconfig.enum.SmokeType.NONE":"§c§lNone"
 }

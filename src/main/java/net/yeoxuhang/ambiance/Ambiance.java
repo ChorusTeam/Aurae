@@ -2,6 +2,7 @@ package net.yeoxuhang.ambiance;
 
 import eu.midnightdust.lib.config.MidnightConfig;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.loader.api.FabricLoader;
 import net.yeoxuhang.ambiance.config.AmbianceConfig;
 import net.yeoxuhang.ambiance.core.Registries;
 import org.apache.logging.log4j.LogManager;

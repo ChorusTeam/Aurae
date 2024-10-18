@@ -15,6 +15,8 @@ import java.util.function.Function;
 public class ParticleRegistry {
     public static final ParticleType<AshOption> ASH =
             register("ash", true, ashOptionParticleType -> AshOption.CODEC, ashOptionParticleType -> AshOption.STREAM_CODEC);
+    public static final ParticleType<AshOption> END_PORTAL_ASH =
+            register("end_portal_ash", true, ashOptionParticleType -> AshOption.CODEC, ashOptionParticleType -> AshOption.STREAM_CODEC);
 
     public static final ParticleType<AshOption> RESPAWN_ANCHOR =
             register("respawn_anchor", true, ashOptionParticleType -> AshOption.CODEC, ashOptionParticleType -> AshOption.STREAM_CODEC);
@@ -29,8 +31,6 @@ public class ParticleRegistry {
             register("soul_ash", true, ColorParticleOption::codec, ColorParticleOption::streamCodec);
     public static final ParticleType<ColorParticleOption> ENDER_EYE_PLACE = register("ender_eye_place", false, ColorParticleOption::codec, ColorParticleOption::streamCodec);
 
-    //public static final SimpleParticleType ENDER_EYE_PLACE = register("ender_eye_place", false);
-
     public static final ParticleType<TrialOption> END_GATEWAY =
             register("end_gateway", true, endOptionParticleType -> TrialOption.CODEC, endOptionParticleType -> TrialOption.STREAM_CODEC);
 
@@ -40,8 +40,8 @@ public class ParticleRegistry {
     public static final SimpleParticleType END_PORTAL =
             register("end_portal", false);
 
-    public static final SimpleParticleType END_PORTAL_EXIT =
-            register("end_portal_exit", false);
+    public static final SimpleParticleType AIR =
+            register("empty", false);
 
 
 

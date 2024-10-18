@@ -11,6 +11,7 @@ public class AshParticle extends BaseAshSmokeParticle {
     private final float rotSpeed;
     private final SpriteSet sprites;
     private final float size;
+    private final float speed;
 
     protected AshParticle(ClientLevel clientLevel, double d, double e, double f, double g, double h, double i, float j, SpriteSet spriteSet, int age, float gravity, float size, float movementXY) {
         super(clientLevel, d, e, f, movementXY, gravity, movementXY, g, h, i, j, spriteSet, 1.0F, 30, gravity, true);
@@ -19,6 +20,7 @@ public class AshParticle extends BaseAshSmokeParticle {
         this.sprites = spriteSet;
         this.lifetime = age;
         this.size = size;
+        this.speed = gravity;
     }
 
     @Override
@@ -44,7 +46,7 @@ public class AshParticle extends BaseAshSmokeParticle {
             }
 
             this.move(this.xd, this.yd, this.zd);
-            this.yd += 0.000000300026077032;
+            this.yd += 0.000000300026077032 / speed;
             this.yd = Math.max(this.yd, +0.055000000059604645);
         }
     }

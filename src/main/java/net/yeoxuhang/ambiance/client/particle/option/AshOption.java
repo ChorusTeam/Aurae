@@ -10,10 +10,8 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.util.FastColor;
-import net.yeoxuhang.ambiance.client.particle.AshParticle;
 import net.yeoxuhang.ambiance.client.particle.ParticleRegistry;
 
-import java.util.Objects;
 
 public class AshOption implements ParticleOptions {
     public static final MapCodec<AshOption> CODEC;
@@ -46,7 +44,11 @@ public class AshOption implements ParticleOptions {
     }
 
     public ParticleType<AshOption> getType() {
-        return Objects.requireNonNullElse(particleType, ParticleRegistry.ASH);
+        if (particleType != null) {
+            return particleType;
+        } else {
+            return ParticleRegistry.ASH;
+        }
     }
 
     public int getAge() {

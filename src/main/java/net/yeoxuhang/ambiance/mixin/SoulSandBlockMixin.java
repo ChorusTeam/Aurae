@@ -14,6 +14,7 @@ import net.minecraft.world.level.block.SoulSandBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.yeoxuhang.ambiance.config.AmbianceConfig;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 
 @Mixin(SoulSandBlock.class)
 public class SoulSandBlockMixin extends Block {
@@ -29,11 +30,12 @@ public class SoulSandBlockMixin extends Block {
             double z = blockPos.getZ() + randomSource.nextDouble();
             level.addParticle(ParticleTypes.SOUL, x, y, z, 0, 0, 0);
         }
-        if (randomSource.nextInt(16) == 0 && FallingBlock.isFree(level.getBlockState(blockPos.below())) && AmbianceConfig.enableSoulSand) {
+        if (randomSource.nextInt(16) == 0 && isFree(level.getBlockState(blockPos.below())) && AmbianceConfig.enableSoulSand) {
             ParticleUtils.spawnParticleBelow(level, blockPos, randomSource, new BlockParticleOption(ParticleTypes.FALLING_DUST, blockState));
         }
     }
 
+    @Unique
     private static boolean isFree(BlockState blockState) {
         return blockState.isAir() || blockState.is(BlockTags.FIRE) || blockState.liquid() || blockState.canBeReplaced();
     }

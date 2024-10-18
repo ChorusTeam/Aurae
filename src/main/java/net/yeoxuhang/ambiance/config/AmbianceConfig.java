@@ -17,8 +17,13 @@ public class AmbianceConfig extends MidnightConfig {
     public static Comment endPortal;
     @Entry(category = PARTICLE, name = "Enable Particle")
     public static boolean enableEndPortal = true;
-    @Entry(category = PARTICLE, name = "Particle Size", isSlider = true, min = 0.05f, max = 0.1f)
-    public static float enderEndPortalSize = 0.05f;
+    @Entry(category = PARTICLE, name = "Particle Size", isSlider = true, min = 0.5f, max = 1.5f)
+    public static float enderEndPortalSize = 1f;
+    @Entry(category = PARTICLE, name = "Smoke")
+    public static SmokeType smokeType = SmokeType.FANCY;
+    public enum SmokeType {
+        FANCY, VANILLA, NONE
+    }
 
 
     @Comment(category = PARTICLE, centered = true)
@@ -26,17 +31,18 @@ public class AmbianceConfig extends MidnightConfig {
     @Entry(category = PARTICLE, name = "Enable Particle")
     public static boolean enableEndGetaway = true;
     @Entry(category = PARTICLE, name = "Particle Size", isSlider = true, min = 0.5f, max = 1.5f)
-    public static float enderEndGetawaySize = 0.5f;
+    public static float enderEndGetawaySize = 1f;
 
 
     @Comment(category = PARTICLE, centered = true)
     public static Comment endPortalFrame;
     @Entry(category = PARTICLE, name = "Enable Particle")
     public static boolean enableEnderEyePlace = true;
-    @Entry(category = PARTICLE, name = "Particle Size", isSlider = true, min = 0.1f, max = 0.2f)
-    public static float enderEyePlaceSize = 0.1f;
+    @Entry(category = PARTICLE, name = "Particle Size", isSlider = true, min = 0.5f, max = 1.5f)
+    public static float enderEyePlaceSize = 1f;
     @Entry(category = PARTICLE, width = 7, min = 0, max = 7, name = "Color", isColor = true)
     public static String endPortalEyePlaced = "#C7FFBF";
+
 
     @Comment(category = PARTICLE, centered = true)
     public static Comment entities;
@@ -66,10 +72,6 @@ public class AmbianceConfig extends MidnightConfig {
     public static boolean enableSoulSand = true;
     @Entry(category = PARTICLE, name = "Enable Decorated Pot")
     public static boolean enableDecoratedPot = true;
-    @Entry(category = PARTICLE, name = "Enable Respawn Anchor")
-    public static boolean enableRespawnAnchor = true;
-    @Entry(category = PARTICLE, name = "Respawn Anchor Particle Size", isSlider = true, min = 0.01f, max = 0.1f)
-    public static float respawnAnchorSize = 0.06f;
     @Entry(category = PARTICLE, name = "Enable Sculk Charges")
     public static boolean enableSculkCharge = true;
     @Entry(category = PARTICLE, name = "Enable Water Cauldron")

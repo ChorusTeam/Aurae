@@ -1,11 +1,13 @@
 package net.yeoxuhang.ambiance.mixin.client;
 
+import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ColorParticleOption;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
 import net.minecraft.sounds.SoundEvents;
@@ -37,6 +39,11 @@ public abstract class LevelRendererMixin implements ResourceManagerReloadListene
     @Shadow @Nullable private ClientLevel level;
 
 
+    @WrapWithCondition(method = "levelEvent", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/multiplayer/ClientLevel;addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V", ordinal = 2))
+    public boolean ambiance$levelEvent(ClientLevel instance, ParticleOptions particleOptions, double d, double e, double f, double g, double h, double i) {
+        return AmbianceConfig.smokeType == AmbianceConfig.SmokeType.VANILLA;
+    }
+
     @Inject(method = "levelEvent", at = @At("HEAD"))
     public void ambiance$levelEvent(int i, BlockPos blockPos, int j, CallbackInfo ci) {
         assert this.level != null;
@@ -59,7 +66,7 @@ public abstract class LevelRendererMixin implements ResourceManagerReloadListene
                         double e = (double)blockPos.getZ() + vec3.z;
                         if (AmbianceConfig.enableEnderEyePlace){}
                         if (level.getBlockState(blockPos.above()).isAir()){
-                            this.level.addParticle(AshOption.create(20 + randomSource.nextInt(10), AmbianceConfig.enderEyePlaceSize, 0.5F, 0F, MthHelper.convertHexToDec(AmbianceConfig.endPortalEyePlaced), 0.7F), d + randomSource.nextDouble() / 5.0, p, e + randomSource.nextDouble() / 5.0, 0.0, 0.0, 0.0);
+                            this.level.addParticle(AshOption.create(20 + randomSource.nextInt(10), AmbianceConfig.   enderEyePlaceSize / 10, 0.5F, 0F, MthHelper.convertHexToDec(AmbianceConfig.endPortalEyePlaced), 0.7F), d + randomSource.nextDouble() / 5.0, p, e + randomSource.nextDouble() / 5.0, 0.0, 0.0, 0.0);
                         }
                     }
                 }

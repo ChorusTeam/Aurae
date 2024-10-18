@@ -44,8 +44,7 @@
         "ambiance.discord": "https://discord.gg/PUJ42rkRBY",
         "ambiance.patreon": "https://patreon.com/chorus_team",
         "ambiance.source": "https://github.com/ChorusTeam/Ambiance"
-      },
-      "badges": [ "client" ]
+      }
     }
   }
 }
