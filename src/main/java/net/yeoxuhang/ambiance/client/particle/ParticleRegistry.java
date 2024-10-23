@@ -18,28 +18,19 @@ public class ParticleRegistry {
     public static final ParticleType<AshOption> END_PORTAL_ASH =
             register("end_portal_ash", true, ashOptionParticleType -> AshOption.CODEC, ashOptionParticleType -> AshOption.STREAM_CODEC);
 
-    public static final ParticleType<AshOption> RESPAWN_ANCHOR =
-            register("respawn_anchor", true, ashOptionParticleType -> AshOption.CODEC, ashOptionParticleType -> AshOption.STREAM_CODEC);
-
-    public static final ParticleType<TrialOption> END =
+    public static final ParticleType<TrialOption> TRIAL =
             register("end", true, endOptionParticleType -> TrialOption.CODEC, endOptionParticleType -> TrialOption.STREAM_CODEC);
 
     public static final ParticleType<ColorParticleOption> FIRE_ASH =
             register("fire_ash", true, ColorParticleOption::codec, ColorParticleOption::streamCodec);
 
-    public static final ParticleType<ColorParticleOption> SOUL_FIRE_ASH =
-            register("soul_ash", true, ColorParticleOption::codec, ColorParticleOption::streamCodec);
     public static final ParticleType<ColorParticleOption> ENDER_EYE_PLACE = register("ender_eye_place", false, ColorParticleOption::codec, ColorParticleOption::streamCodec);
 
     public static final ParticleType<TrialOption> END_GATEWAY =
             register("end_gateway", true, endOptionParticleType -> TrialOption.CODEC, endOptionParticleType -> TrialOption.STREAM_CODEC);
 
-    public static final SimpleParticleType ENDER_EYE =
-            register("ender_eye", false);
-
-    public static final SimpleParticleType END_PORTAL =
-            register("end_portal", false);
-
+    public static final ParticleType<TrialOption> PORTAL =
+            register("portal", true, endOptionParticleType -> TrialOption.CODEC, endOptionParticleType -> TrialOption.STREAM_CODEC);
     public static final SimpleParticleType AIR =
             register("empty", false);
 
@@ -54,7 +45,6 @@ public class ParticleRegistry {
             public MapCodec<T> codec() {
                 return function.apply(this);
             }
-
             public StreamCodec<? super RegistryFriendlyByteBuf, T> streamCodec() {
                 return function2.apply(this);
             }
@@ -63,6 +53,6 @@ public class ParticleRegistry {
 
 
     public static void init() {
-        Ambiance.LOGGER.debug("Registered particles");
+        Ambiance.LOGGER_DEBUG.info("Registered particles");
     }
 }

@@ -2,17 +2,13 @@ package net.yeoxuhang.ambiance.mixin;
 
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EndGatewayBlock;
 import net.yeoxuhang.ambiance.client.particle.option.TrialOption;
 import net.yeoxuhang.ambiance.config.AmbianceConfig;
 import net.yeoxuhang.ambiance.util.MthHelper;
-import net.yeoxuhang.ambiance.util.ParticlesUtil;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
-
-import java.util.Random;
 
 @Mixin(EndGatewayBlock.class)
 public class EndGatewayBlockMixin {

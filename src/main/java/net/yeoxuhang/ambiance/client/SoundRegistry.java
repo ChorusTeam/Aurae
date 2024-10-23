@@ -1,4 +1,4 @@
-package net.yeoxuhang.ambiance.common.sound;
+package net.yeoxuhang.ambiance.client;
 
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -20,6 +20,6 @@ public class SoundRegistry {
     }
 
     public static void init() {
-        Ambiance.LOGGER.debug("Registered sounds");
+        Ambiance.LOGGER_DEBUG.info("Registered sounds");
     }
 }

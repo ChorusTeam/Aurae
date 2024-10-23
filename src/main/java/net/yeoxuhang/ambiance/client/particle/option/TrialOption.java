@@ -21,6 +21,7 @@ public class TrialOption implements ParticleOptions {
     private final float size;
     private final int color;
     private final float alpha;
+    private ParticleType<TrialOption> particleType;
 
     public TrialOption(int age, float gravity, float speed, float size, int color, float alpha) {
         this.age = age;
@@ -31,8 +32,22 @@ public class TrialOption implements ParticleOptions {
         this.alpha = alpha;
     }
 
+    public TrialOption(ParticleType<TrialOption> particleType, int age, float gravity, float speed, float size, int color, float alpha) {
+        this.particleType = particleType;
+        this.speed = speed;
+        this.age = age;
+        this.color = color;
+        this.alpha = alpha;
+        this.size = size;
+        this.gravity = gravity;
+    }
+
     public ParticleType<TrialOption> getType() {
-        return ParticleRegistry.END;
+        if (particleType != null) {
+            return particleType;
+        } else {
+            return ParticleRegistry.TRIAL;
+        }
     }
 
     public int getAge() {
@@ -65,6 +80,10 @@ public class TrialOption implements ParticleOptions {
 
     public float getAlpha() {
         return alpha;
+    }
+
+    public static TrialOption create(ParticleType<TrialOption> particleType, int age, float gravity, float speed, float size, int color, float alpha) {
+        return new TrialOption(particleType, age, gravity, speed, size, color, alpha);
     }
 
     public static TrialOption create(int age, float gravity, float speed, float size, int color, float alpha) {

@@ -9,6 +9,7 @@ import net.minecraft.world.entity.monster.Blaze;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.Level;
 import net.yeoxuhang.ambiance.client.particle.ParticleRegistry;
+import net.yeoxuhang.ambiance.client.particle.option.TrialOption;
 import net.yeoxuhang.ambiance.config.AmbianceConfig;
 import net.yeoxuhang.ambiance.util.MthHelper;
 import org.spongepowered.asm.mixin.Mixin;
@@ -36,5 +37,12 @@ public class BlazeMixin extends Monster {
                 this.level().addParticle(ColorParticleOption.create(ParticleRegistry.FIRE_ASH, random), this.getRandomX(0.5), this.getRandomY(), this.getRandomZ(0.5), 0.0, 0.0, 0.0);
             }
         }
+    }
+
+    @ModifyArg(method = "aiStep", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V"))
+    public ParticleOptions animateTick(ParticleOptions particleOptions) {
+        if (AmbianceConfig.blazeParticles == AmbianceConfig.smokesType.VANILLA){
+            return ParticleTypes.LARGE_SMOKE;
+        } else return ParticleRegistry.AIR;
     }
 }

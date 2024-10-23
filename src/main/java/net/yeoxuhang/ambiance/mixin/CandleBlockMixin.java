@@ -1,6 +1,8 @@
 package net.yeoxuhang.ambiance.mixin;
 
+import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.AbstractCandleBlock;
@@ -24,5 +26,15 @@ public class CandleBlockMixin {
             int randomColor = MthHelper.createRandomColor(13200387, 15715670);
             level.addParticle(AshOption.create((int) (Math.random() * 10.0 + 5), 0.025F, -0.1F, randomSource.nextFloat() * 0.1F, randomColor, 1.0F), vec3.x, vec3.y, vec3.z, 0.0, 0.0, 0.0);
         }
+    }
+
+    @WrapWithCondition(method = "addParticlesAndSound", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V", ordinal = 0))
+    private static boolean smokeType(Level instance, ParticleOptions particleOptions, double d, double e, double f, double g, double h, double i) {
+        return AmbianceConfig.candleSmoke == AmbianceConfig.smokesType.VANILLA;
+    }
+
+    @WrapWithCondition(method = "addParticlesAndSound", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V", ordinal = 0))
+    private static boolean flameType(Level instance, ParticleOptions particleOptions, double d, double e, double f, double g, double h, double i) {
+        return AmbianceConfig.candleFlame == AmbianceConfig.smokesType.VANILLA;
     }
 }

@@ -6,9 +6,6 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.LavaCauldronBlock;
 import net.minecraft.world.level.block.LayeredCauldronBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.yeoxuhang.ambiance.config.AmbianceConfig;
@@ -28,8 +25,8 @@ public class WaterCauldronBlockMixin {
         double z = blockPos.getZ() + randomSource.nextDouble();
 
         if (entity.getDeltaMovement().horizontalDistanceSqr() > 1.0E-6D && randomSource.nextInt(2) == 1){
-            if (AmbianceConfig.enableWaterCauldronSound){
-                level.playLocalSound(x, y, z, SoundEvents.PLAYER_SPLASH, SoundSource.BLOCKS, 0.2f + randomSource.nextFloat() * 0.2f, 0.9f + randomSource.nextFloat() * 0.15f, false);
+            if (AmbianceConfig.waterSplashSound){
+                level.playLocalSound(x, y, z, SoundEvents.PLAYER_SPLASH, SoundSource.BLOCKS, AmbianceConfig.waterSplashSoundVolume, 0.9f + randomSource.nextFloat() * 0.15f, false);
             }
             if (AmbianceConfig.enableWaterCauldron){
                 level.addParticle(ParticleTypes.SPLASH, (double)blockPos.getX() + level.random.nextDouble(), blockPos.getY() + 1, (double)blockPos.getZ() + level.random.nextDouble(), 0, 0.0, 0);
@@ -37,8 +34,8 @@ public class WaterCauldronBlockMixin {
             }
         }
         if (entity.getDeltaMovement().y > 0){
-            if (AmbianceConfig.enableWaterCauldronSound){
-                level.playLocalSound(x, y, z, SoundEvents.PLAYER_SPLASH, SoundSource.BLOCKS, 0.2f + randomSource.nextFloat() * 0.2f, 0.9f + randomSource.nextFloat() * 0.15f, false);
+            if (AmbianceConfig.waterSplashSound){
+                level.playLocalSound(x, y, z, SoundEvents.PLAYER_SPLASH, SoundSource.BLOCKS, AmbianceConfig.waterSplashSoundVolume, 0.9f + randomSource.nextFloat() * 0.15f, false);
             }
             if (AmbianceConfig.enableWaterCauldron){
                 level.addParticle(ParticleTypes.SPLASH, (double)blockPos.getX() + level.random.nextDouble(), blockPos.getY() + 1, (double)blockPos.getZ() + level.random.nextDouble(), 0, 0.0, 0);

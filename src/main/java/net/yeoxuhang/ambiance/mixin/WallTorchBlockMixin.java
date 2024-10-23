@@ -1,8 +1,10 @@
 package net.yeoxuhang.ambiance.mixin;
 
+import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ColorParticleOption;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.util.RandomSource;
@@ -47,5 +49,15 @@ public class WallTorchBlockMixin extends TorchBlock{
                 level.addParticle(AshOption.create((int) (Math.random() * 10.0 + 50), 0.05F, 1.5F, 0.1F, soulFire, 1.0F), d + 0.27 * (double)direction2.getStepX(), e + 0.22, f + 0.27 * (double)direction2.getStepZ(), 0.0, 0.0, 0.0);
             }
         }
+    }
+
+    @WrapWithCondition(method = "animateTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V", ordinal = 0))
+    public boolean smokeType(Level instance, ParticleOptions particleOptions, double d, double e, double f, double g, double h, double i) {
+        return AmbianceConfig.torchSmoke == AmbianceConfig.smokesType.VANILLA;
+    }
+
+    @WrapWithCondition(method = "animateTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V", ordinal = 1))
+    public boolean flameType(Level instance, ParticleOptions particleOptions, double d, double e, double f, double g, double h, double i) {
+        return AmbianceConfig.torchFlame == AmbianceConfig.smokesType.VANILLA;
     }
 }

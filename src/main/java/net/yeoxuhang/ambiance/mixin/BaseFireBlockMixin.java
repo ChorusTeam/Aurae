@@ -155,9 +155,28 @@ public abstract class BaseFireBlockMixin extends Block {
         }
     }
 
-    @WrapWithCondition(method = "animateTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V", ordinal = 5))
+    @WrapWithCondition(method = "animateTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V", ordinal = 0))
     public boolean canBurn(Level instance, ParticleOptions particleOptions, double d, double e, double f, double g, double h, double i) {
-        BlockPos blockPos = new BlockPos((int) d, (int) e, (int) f);
-        return instance.getBlockState(blockPos.below()).is(BlockTags.LOGS_THAT_BURN);
+        return AmbianceConfig.fireSmoke == AmbianceConfig.smokesType.VANILLA;
+    }
+    @WrapWithCondition(method = "animateTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V", ordinal = 1))
+    public boolean canBurn1(Level instance, ParticleOptions particleOptions, double d, double e, double f, double g, double h, double i) {
+        return AmbianceConfig.fireSmoke == AmbianceConfig.smokesType.VANILLA;
+    }
+    @WrapWithCondition(method = "animateTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V", ordinal = 2))
+    public boolean canBurn2(Level instance, ParticleOptions particleOptions, double d, double e, double f, double g, double h, double i) {
+        return AmbianceConfig.fireSmoke == AmbianceConfig.smokesType.VANILLA;
+    }
+    @WrapWithCondition(method = "animateTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V", ordinal = 3))
+    public boolean canBurn3(Level instance, ParticleOptions particleOptions, double d, double e, double f, double g, double h, double i) {
+        return AmbianceConfig.fireSmoke == AmbianceConfig.smokesType.VANILLA;
+    }
+    @WrapWithCondition(method = "animateTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V", ordinal = 4))
+    public boolean canBurn4(Level instance, ParticleOptions particleOptions, double d, double e, double f, double g, double h, double i) {
+        return AmbianceConfig.fireSmoke == AmbianceConfig.smokesType.VANILLA;
+    }
+    @WrapWithCondition(method = "animateTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V", ordinal = 5))
+    public boolean canBurn5(Level instance, ParticleOptions particleOptions, double d, double e, double f, double g, double h, double i) {
+        return AmbianceConfig.fireSmoke == AmbianceConfig.smokesType.VANILLA;
     }
 }

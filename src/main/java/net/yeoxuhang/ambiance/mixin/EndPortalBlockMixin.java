@@ -24,14 +24,6 @@ public class EndPortalBlockMixin {
     @Inject(method = "animateTick", at = @At("RETURN"))
     public void animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource, CallbackInfo ci) {
         if (AmbianceConfig.enableEndPortal) {
-            /*for (int i = 0; i < 5; i++) {
-                double d = (double)blockPos.getX() + randomSource.nextDouble();
-                double e = (double)blockPos.getY() + 0.8;
-                double f = (double)blockPos.getZ() + randomSource.nextDouble();
-                int randomColor = MthHelper.createRandomColor(2842463, 4759492);
-                level.addParticle(TrialOption.create((int)(Math.random() * 2.0) + 60, 1F, 2.5F, AmbianceConfig.enderEndPortalSize / 10, randomColor, 0.7F), d, e, f, 0.0, 0.0, 0.0);
-
-            }*/
             for(int i = 0; i < 3; ++i) {
                 double d = (double)blockPos.getX() + randomSource.nextDouble();
                 double e = (double)blockPos.getY() + randomSource.nextDouble();
@@ -53,7 +45,7 @@ public class EndPortalBlockMixin {
                 }
             }
         }
-        if (AmbianceConfig.smokeType == AmbianceConfig.SmokeType.FANCY){
+        if (AmbianceConfig.smokeType == AmbianceConfig.TYPE.FANCY){
             for (int i = 0; i < 5; i++) {
                 int randomColor = MthHelper.randomDarkerColor("85C6C1");
                 double d = (double)blockPos.getX() + randomSource.nextDouble();
@@ -67,9 +59,9 @@ public class EndPortalBlockMixin {
     }
     @ModifyArg(method = "animateTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V"))
     public ParticleOptions animateTick(ParticleOptions particleOptions) {
-        if (AmbianceConfig.smokeType == AmbianceConfig.SmokeType.VANILLA){
+        if (AmbianceConfig.smokeType == AmbianceConfig.TYPE.VANILLA){
             return ParticleTypes.SMOKE;
-        } else if (AmbianceConfig.smokeType == AmbianceConfig.SmokeType.FANCY){
+        } else if (AmbianceConfig.smokeType == AmbianceConfig.TYPE.FANCY){
             return ParticleRegistry.AIR;
         } else return ParticleRegistry.AIR;
     }

@@ -1,8 +1,10 @@
 package net.yeoxuhang.ambiance.mixin;
 
+import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ColorParticleOption;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -43,5 +45,20 @@ public class CampfireBlockMixin extends Block {
                 level.addParticle(AshOption.create((int) (Math.random() * 10.0 + 50), 0.1F, 1.5F, 0.5F, soulFire, 1.0F), (double)blockPos.getX() + 0.5, (double)blockPos.getY() + 1, (double)blockPos.getZ() + 0.5, randomSource.nextFloat() / 3.0F, 5.0E-5, randomSource.nextFloat() / 3.0F);
             }
         }
+    }
+
+    @WrapWithCondition(method = "makeParticles", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V"))
+    private static boolean smokeType(Level instance, ParticleOptions particleOptions, double d, double e, double f, double g, double h, double i) {
+        return AmbianceConfig.campfireSmoke == AmbianceConfig.smokesType.VANILLA;
+    }
+
+    @WrapWithCondition(method = "makeParticles", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addAlwaysVisibleParticle(Lnet/minecraft/core/particles/ParticleOptions;ZDDDDDD)V"))
+    private static boolean smokeType2(Level instance, ParticleOptions particleOptions, boolean bl, double d, double e, double f, double g, double h, double i) {
+        return AmbianceConfig.campfireSmoke == AmbianceConfig.smokesType.VANILLA;
+    }
+
+    @WrapWithCondition(method = "animateTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V"))
+    public boolean flameType(Level instance, ParticleOptions particleOptions, double d, double e, double f, double g, double h, double i) {
+        return AmbianceConfig.campfireFlame == AmbianceConfig.smokesType.VANILLA;
     }
 }

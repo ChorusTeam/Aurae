@@ -37,6 +37,9 @@ dependencies {
     modImplementation include ("maven.modrinth:midnightlib:${project.midnightlib_version}")
     //Mod Menu
     modImplementation("com.terraformersmc:modmenu:${project.mod_menu_version}")
+
+    //End Remastered
+    modImplementation "maven.modrinth:endrem:${project.end_remastered_version}"
 }
 
 processResources {

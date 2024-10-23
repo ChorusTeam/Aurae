@@ -28,8 +28,8 @@ public class LavaCauldronBlockMixin extends Block {
             if (AmbianceConfig.enableLavaCauldron && randomSource.nextInt(10) == 1){
                 level.addParticle(ParticleTypes.LAVA, x, y, z, 0, 0, 0);
             }
-            if (AmbianceConfig.enableLavaCauldronSound && randomSource.nextInt(100) == 1){
-                level.playLocalSound(x, y, z, SoundEvents.LAVA_POP, SoundSource.BLOCKS, 0.2f + randomSource.nextFloat() * 0.2f, 0.9f + randomSource.nextFloat() * 0.15f, false);
+            if (AmbianceConfig.lavaPopSound && randomSource.nextInt(10) == 1){
+                level.playLocalSound(x, y, z, SoundEvents.LAVA_POP, SoundSource.BLOCKS, AmbianceConfig.lavaPopSoundVolume, 0.9f + randomSource.nextFloat() * 0.15f, false);
             }
         }
     }

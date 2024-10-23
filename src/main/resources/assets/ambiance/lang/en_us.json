@@ -1,20 +1,40 @@
 {
+  "ambiance.midnightconfig.title": "Ambiance Options",
+
   "ambiance.discord": "Discord",
   "ambiance.patreon": "Patreon",
   "ambiance.source": "Source",
-  "ambiance.midnightconfig.title": "Ambiance Options",
-  "ambiance.midnightconfig.category.sound": "Sounds",
-  "ambiance.midnightconfig.category.particle": "Particles",
+
+  "ambiance.midnightconfig.category.otherMods": "Other Mods",
+  "ambiance.midnightconfig.category.blocks": "Blocks",
+  "ambiance.midnightconfig.category.items": "Items",
+  "ambiance.midnightconfig.category.entities": "Entities",
+
+  "ambiance.midnightconfig.waterCauldron": "Water Cauldron",
+  "ambiance.midnightconfig.lavaCauldron": "Lava Cauldron",
+
+  "ambiance.midnightconfig.decoratedPot": "Decorated Pot",
+  "ambiance.midnightconfig.soulSand": "Soul Sand",
+
+  "ambiance.midnightconfig.eyeEnder": "Eye of Ender",
   "ambiance.midnightconfig.blaze": "Blaze",
+  "ambiance.midnightconfig.enderman": "Enderman",
+  "ambiance.midnightconfig.endermite": "Endermite",
   "ambiance.midnightconfig.otherBlocks": "Other Blocks",
   "ambiance.midnightconfig.endPortal": "End Portal",
   "ambiance.midnightconfig.endGetaway": "End Getaway",
   "ambiance.midnightconfig.endPortalFrame": "End Portal Frame",
-  "ambiance.midnightconfig.entities": "Entities",
-  "ambiance.midnightconfig.burning": "Burning",
-  "ambiance.midnightconfig.trialChamber": "Trial Chamber",
+  "ambiance.midnightconfig.candle": "Candle",
+  "ambiance.midnightconfig.campfire": "Campfire",
+  "ambiance.midnightconfig.fire": "Fire",
+  "ambiance.midnightconfig.torch": "Torch",
+  "ambiance.midnightconfig.sculkBlock": "Sculk Block",
+  "ambiance.midnightconfig.trialChamberBlocks": "Trial Chamber",
 
-  "ambiance.midnightconfig.enum.SmokeType.FANCY":"§a§lFancy",
-  "ambiance.midnightconfig.enum.SmokeType.VANILLA":"§lVanilla",
-  "ambiance.midnightconfig.enum.SmokeType.NONE":"§c§lNone"
+  "ambiance.midnightconfig.enum.TYPE.FANCY":"§a§lFancy",
+  "ambiance.midnightconfig.enum.TYPE.VANILLA":"§lVanilla",
+  "ambiance.midnightconfig.enum.TYPE.NONE":"§c§lNone",
+
+  "ambiance.midnightconfig.enum.smokesType.VANILLA":"§lVanilla",
+  "ambiance.midnightconfig.enum.smokesType.NONE":"§c§lNone"
 }
