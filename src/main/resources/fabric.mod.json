@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "id": "ambiance",
   "version": "${version}",
-  "name": "Ambiance!",
-  "description": "A small Minecraft Mod that add new ambient effects to the Minecraft!",
+  "name": "Ambiance",
+  "description": "A small Minecraft Mod that add new ambient effects to the Minecraft! \n\nSupport Us on Patreon for future projects!",
   "authors": [
     "Team Chorus", "YeoXuHang"
   ],
