@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "id": "ambiance",
+  "name": "Ambiance",
+  "version": "${version}",
+  "description": "A small Minecraft Mod that add new ambient effects to the Minecraft! \n\nSupport Us on Patreon for future projects!",
+  "authors": [
+    "Team Chorus", "YeoXuHang"
+  ],
+  "contact": {
+    "homepage": "https://modrinth.com/mod/ambiance",
+    "issues": "https://github.com/ChorusTeam/Ambiance/issues",
+    "website": "https://patreon.com/chorus_team",
+    "repo": "https://github.com/ChorusTeam/Ambiance"
+  },
+  "license": "Apache",
+  "icon": "assets/ambiance/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "net.yeoxuhang.ambiance.client.AmbianceFabricClient"
+    ],
+    "main": [
+      "net.yeoxuhang.ambiance.AmbianceFabric"
+    ]
+  },
+  "mixins": [
+    "ambiance.mixins.json"
+  ],
+  "accessWidener": "ambiance.accesswidener",
+  "depends": {
+    "fabricloader": ">=${fabric_loader_version}",
+    "fabric": "*",
+    "minecraft": ">=${minecraft_version}",
+    "configuration": "*"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "ambiance.discord": "https://discord.gg/PUJ42rkRBY",
+        "ambiance.patreon": "https://patreon.com/chorus_team",
+        "ambiance.source": "https://github.com/ChorusTeam/Ambiance"
+      }
+    }
+  }
+}

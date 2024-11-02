@@ -1,0 +1,58 @@
+{
+  "config.screen.ambiance": "Ambiance Options",
+  "ambiance.discord": "Discord",
+  "ambiance.patreon": "Patreon",
+  "ambiance.source": "Source",
+
+  "config.ambiance.option.blocks": "Blocks",
+  "config.ambiance.option.items": "Items",
+  "config.ambiance.option.entities": "Entities",
+  "config.ambiance.option.otherMods": "Other Mods",
+
+  "config.ambiance.option.endPortalFrame": "End Portal Frame",
+  "config.ambiance.option.endPortal": "End Portal",
+  "config.ambiance.option.endGateway": "End Gateway",
+  "config.ambiance.option.fire": "Fire",
+  "config.ambiance.option.campfire": "Campfire",
+  "config.ambiance.option.torch": "Torch",
+  "config.ambiance.option.candle": "Candle",
+
+  "config.ambiance.option.enableParticle": "Enable Particle",
+  "config.ambiance.option.enableSound": "Enable Sound",
+  "config.ambiance.option.soundVolume": "Sound Volume",
+  "config.ambiance.option.particleColor": "Particle Color",
+  "config.ambiance.option.particleSize": "Particle Size",
+  "config.ambiance.option.soundType": "Sound Type",
+  "config.ambiance.option.flameType": "Flame Type",
+  "config.ambiance.option.smokeType": "Smoke Type",
+  "config.ambiance.option.ashType": "Ash Type",
+
+  "config.ambiance.option.blocks.endPortal.particleSize": "Particle Size",
+  "config.ambiance.option.blocks.endPortalFrame.particleSize": "Particle Size",
+  "config.ambiance.option.blocks.endGateway.particleSize": "Particle Size",
+
+  "config.ambiance.option.endremCompat": "End Remastered Compat",
+  
+
+  "config.ambiance.option.cauldron": "Cauldron",
+  "config.ambiance.option.lava": "Lava",
+  "config.ambiance.option.water": "Water",
+
+  "config.ambiance.option.decoratedPot": "Decorated Pot",
+  "config.ambiance.option.soulSand": "Soul Sand",
+  "config.ambiance.option.sculkSpread": "Sculk Spread",
+  "config.ambiance.option.trialChamber": "Trial Chamber",
+  "config.ambiance.option.vault": "Vault",
+  "config.ambiance.option.spawner": "Spawner",
+
+  "config.ambiance.option.eyeOfEnder": "Eye of Ender",
+  "config.ambiance.option.eyeOfEnderType": "Particle Type",
+  "config.ambiance.option.blaze": "Blaze",
+  "config.ambiance.option.enderman": "Enderman",
+  "config.ambiance.option.endermite": "Endermite",
+
+  "config.ambiance.option.blazeParticle": "Smoke Type",
+  "config.ambiance.option.enderManParticle": "Particle Type",
+  "config.ambiance.option.enderMiteParticle": "Particle Type",
+  "config.ambiance.option.otherBlocks": "Other Blocks"
+}

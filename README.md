@@ -10,7 +10,7 @@
 <a href="https://github.com/ChorusTeam/ambiance/issues">Report Bug</a> ·
 <a href="https://github.com/ChorusTeam/ambiance/issues">Request Feature</a> · 
 <a href="https://github.com/ChorusTeam/ambiance/blob/master/LICENSE">License</a>
-    
+
 
 </p>
 
