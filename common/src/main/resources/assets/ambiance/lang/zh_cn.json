@@ -1,0 +1,58 @@
+{
+  "config.screen.ambiance": "氛围选项",
+  "ambiance.discord": "Discord",
+  "ambiance.patreon": "Patreon",
+  "ambiance.source": "Source",
+
+  "config.ambiance.option.blocks": "方块",
+  "config.ambiance.option.items": "物品",
+  "config.ambiance.option.entities": "实体",
+  "config.ambiance.option.otherMods": "其他模组",
+
+  "config.ambiance.option.endPortalFrame": "末地传送门框架",
+  "config.ambiance.option.endPortal": "末地传送门",
+  "config.ambiance.option.endGateway": "末地折跃门",
+  "config.ambiance.option.fire": "火",
+  "config.ambiance.option.campfire": "篝火",
+  "config.ambiance.option.torch": "火把",
+  "config.ambiance.option.candle": "蜡烛",
+
+  "config.ambiance.option.enableParticle": "启用粒子效果",
+  "config.ambiance.option.enableSound": "启用声音",
+  "config.ambiance.option.soundVolume": "声音音量",
+  "config.ambiance.option.particleColor": "粒子颜色",
+  "config.ambiance.option.particleSize": "粒子大小",
+  "config.ambiance.option.soundType": "声音类型",
+  "config.ambiance.option.flameType": "火焰类型",
+  "config.ambiance.option.smokeType": "烟雾类型",
+  "config.ambiance.option.ashType": "灰分类型",
+
+  "config.ambiance.option.blocks.endPortal.particleSize": "粒子大小",
+  "config.ambiance.option.blocks.endPortalFrame.particleSize": "粒子大小",
+  "config.ambiance.option.blocks.endGateway.particleSize": "粒子大小",
+
+  "config.ambiance.option.endremCompat": "兼容 末地：创世",
+  
+
+  "config.ambiance.option.cauldron": "炼药锅",
+  "config.ambiance.option.lava": "岩浆",
+  "config.ambiance.option.water": "水",
+
+  "config.ambiance.option.decoratedPot": "饰纹陶罐",
+  "config.ambiance.option.soulSand": "灵魂沙",
+  "config.ambiance.option.sculkSpread": "幽匿蔓延",
+  "config.ambiance.option.trialChamber": "试炼密室",
+  "config.ambiance.option.vault": "宝库",
+  "config.ambiance.option.spawner": "刷怪笼",
+
+  "config.ambiance.option.eyeOfEnder": "末影之眼",
+  "config.ambiance.option.eyeOfEnderType": "粒子类型",
+  "config.ambiance.option.blaze": "烈焰人",
+  "config.ambiance.option.enderman": "末影人",
+  "config.ambiance.option.endermite": "末影螨",
+
+  "config.ambiance.option.blazeParticle": "烟雾类型",
+  "config.ambiance.option.enderManParticle": "粒子类型",
+  "config.ambiance.option.enderMiteParticle": "粒子类型",
+  "config.ambiance.option.otherBlocks": "其他方块"
+}
