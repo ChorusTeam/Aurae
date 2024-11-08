@@ -1,6 +1,114 @@
+buildscript {
+    repositories {
+        maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
+        maven { url = 'https://maven.parchmentmc.org' }
+        maven { url = 'https://jitpack.io' } // JitPack repository for MixinExtras
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:4.1.0'
+    }
+}
+
 plugins {
-    // see https://fabricmc.net/develop/ for new versions
-    id 'fabric-loom' version '1.7-SNAPSHOT' apply false
-    // see https://projects.neoforged.net/neoforged/moddevgradle for new versions
-    id 'net.neoforged.moddev' version '0.1.110' apply false
+    id 'eclipse'
+    id 'idea'
+}
+
+apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'org.spongepowered.mixin'
+
+group = mod_group_id
+version = mod_version
+
+archivesBaseName = mod_id
+
+java {
+    toolchain.languageVersion.set(JavaLanguageVersion.of(8))
+}
+
+minecraft {
+    mappings channel: 'official', version: '1.16.5'
+
+    runs {
+        configureEach {
+            workingDirectory = project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            mods {
+                "${mod_id}" {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        client {}
+        server { args '--nogui' }
+        data {
+            workingDirectory = project.file('run-data')
+            args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+        }
+    }
+}
+
+mixin {
+    add sourceSets.main, "${mod_id}.refmap.json"
+    config "${mod_id}.mixins.json"
+}
+
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+
+repositories {
+    maven { url = "https://api.modrinth.com/maven" }
+    maven { url = 'https://repsy.io/mvn/toma/public/' }
+    maven { url = 'https://jitpack.io' } // Ensure JitPack is available here
+    mavenCentral()
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:1.16.5-36.2.42:userdev"
+    compileOnly "io.github.llamalad7:MixinExtras:0.1.1"
+    implementation "io.github.llamalad7:MixinExtras:0.1.1"
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+
+    implementation fg.deobf("maven.modrinth:configuration:${project.configuration_version}")
+}
+
+tasks.named('processResources', ProcessResources).configure {
+    def replaceProperties = [
+            minecraft_version: '1.16.5',
+            mod_id: mod_id,
+            mod_name: mod_name,
+            mod_license: mod_license,
+            mod_version: mod_version,
+            mod_authors: mod_authors,
+            mod_description: mod_description,
+            minecraft_version_range: minecraft_version_range,
+            loader_version_range: loader_version_range
+    ]
+    inputs.properties(replaceProperties)
+
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+        expand(replaceProperties + [project: project])
+    }
+}
+
+tasks.named('jar', Jar).configure {
+    manifest {
+        attributes(
+                "Specification-Title"     : mod_id,
+                "Specification-Vendor"    : mod_authors,
+                "Specification-Version"   : "1",
+                "Implementation-Title"    : project.name,
+                "Implementation-Version"  : archiveVersion.get(),
+                "Implementation-Vendor"   : mod_authors,
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        )
+    }
+    finalizedBy 'reobfJar'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
 }
