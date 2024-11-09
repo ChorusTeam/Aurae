@@ -1,8 +1,7 @@
 package net.yeoxuhang.ambiance.client.particle.type;
 
 import com.mojang.serialization.Codec;
-import net.minecraft.particles.ParticleType;
-import net.yeoxuhang.ambiance.client.particle.option.AshOption;
+import net.minecraft.core.particles.ParticleType;
 import net.yeoxuhang.ambiance.client.particle.option.ColorParticleOption;
 
 public class ColorAshParticleType extends ParticleType<ColorParticleOption> {

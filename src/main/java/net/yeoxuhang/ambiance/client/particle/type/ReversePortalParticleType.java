@@ -4,10 +4,10 @@ import com.mojang.serialization.Codec;
 import net.minecraft.core.particles.ParticleType;
 import net.yeoxuhang.ambiance.client.particle.option.TrialOption;
 
-public class PortalParticleType extends ParticleType<TrialOption> {
+public class ReversePortalParticleType extends ParticleType<TrialOption> {
     public static final Codec<TrialOption> CODEC = TrialOption.CODEC;
 
-    public PortalParticleType(boolean alwaysShow) {
+    public ReversePortalParticleType(boolean alwaysShow) {
         super(alwaysShow, TrialOption.DESERIALIZER);
     }
 

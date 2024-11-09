@@ -1,8 +1,8 @@
 package net.yeoxuhang.ambiance.util;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.resources.IResource;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.resources.Resource;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -16,7 +16,7 @@ public class TextureColorGetter {
 
         try {
             // Access the resource
-            IResource resource = Minecraft.getInstance().getResourceManager().getResource(resourceLocation);
+            Resource resource = Minecraft.getInstance().getResourceManager().getResource(resourceLocation);
             InputStream inputStream = resource.getInputStream();
 
             // Read the image and retrieve the pixel color

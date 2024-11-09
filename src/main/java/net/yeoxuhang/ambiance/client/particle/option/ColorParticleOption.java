@@ -4,18 +4,18 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.particles.IParticleData;
-import net.minecraft.particles.ParticleType;
+import net.minecraft.core.particles.ParticleType;
 
-public class ColorParticleOption implements IParticleData {
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.core.particles.ParticleOptions;
+
+public class ColorParticleOption implements ParticleOptions {
 
     public static final Codec<ColorParticleOption> CODEC = RecordCodecBuilder.create((instance) -> instance.group(
             Codec.INT.fieldOf("color").forGetter(ColorParticleOption::getColor)
     ).apply(instance, color -> new ColorParticleOption(null, color)));
 
-
-    public static final IParticleData.IDeserializer<ColorParticleOption> DESERIALIZER = new IParticleData.IDeserializer<ColorParticleOption>() {
+    public static final ParticleOptions.Deserializer<ColorParticleOption> DESERIALIZER = new ParticleOptions.Deserializer<>() {
         @Override
         public ColorParticleOption fromCommand(ParticleType<ColorParticleOption> type, StringReader reader) throws CommandSyntaxException {
             reader.expect(' ');
@@ -23,7 +23,7 @@ public class ColorParticleOption implements IParticleData {
         }
 
         @Override
-        public ColorParticleOption fromNetwork(ParticleType<ColorParticleOption> type, PacketBuffer buffer) {
+        public ColorParticleOption fromNetwork(ParticleType<ColorParticleOption> type, FriendlyByteBuf buffer) {
             return new ColorParticleOption(type, buffer.readInt());
         }
     };
@@ -42,7 +42,7 @@ public class ColorParticleOption implements IParticleData {
     }
 
     @Override
-    public void writeToNetwork(PacketBuffer buffer) {
+    public void writeToNetwork(FriendlyByteBuf buffer) {
         buffer.writeInt(this.color);
     }
 
@@ -56,8 +56,9 @@ public class ColorParticleOption implements IParticleData {
     public float getGreen() { return (this.color >> 8 & 255) / 255.0F; }
     public float getBlue() { return (this.color & 255) / 255.0F; }
 
-    public static ColorParticleOption create(ParticleType<ColorParticleOption> particleType, int id){
+    public static ColorParticleOption create(ParticleType<ColorParticleOption> particleType, int id) {
         return new ColorParticleOption(particleType, id);
     }
 }
+
 

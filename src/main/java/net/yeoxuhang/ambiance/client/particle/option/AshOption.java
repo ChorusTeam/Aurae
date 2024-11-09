@@ -2,16 +2,16 @@ package net.yeoxuhang.ambiance.client.particle.option;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.particles.IParticleData;
-import net.minecraft.particles.ParticleType;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleType;
+import net.minecraft.network.FriendlyByteBuf;
 import net.yeoxuhang.ambiance.client.particle.ParticleRegistry;
 
 
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 
-public class AshOption implements IParticleData {
+public class AshOption implements ParticleOptions {
 
     public static final Codec<AshOption> CODEC = RecordCodecBuilder.create((instance) -> instance.group(
             Codec.INT.fieldOf("age").forGetter(AshOption::getAge),
@@ -23,7 +23,7 @@ public class AshOption implements IParticleData {
     ).apply(instance, (age, size, gravity, color, alpha, movementXY) -> new AshOption(null, age, size, gravity, color, alpha, movementXY)));
 
 
-    public static final IParticleData.IDeserializer<AshOption> DESERIALIZER = new IParticleData.IDeserializer<AshOption>() {
+    public static final ParticleOptions.Deserializer<AshOption> DESERIALIZER = new ParticleOptions.Deserializer<>() {
         @Override
         public AshOption fromCommand(ParticleType<AshOption> type, StringReader reader) throws CommandSyntaxException {
             reader.expect(' ');
@@ -37,7 +37,7 @@ public class AshOption implements IParticleData {
         }
 
         @Override
-        public AshOption fromNetwork(ParticleType<AshOption> type, PacketBuffer buffer) {
+        public AshOption fromNetwork(ParticleType<AshOption> type, FriendlyByteBuf buffer) {
             return new AshOption(type, buffer.readInt(), buffer.readFloat(), buffer.readFloat(),
                     buffer.readInt(), buffer.readFloat(), buffer.readFloat());
         }
@@ -67,7 +67,7 @@ public class AshOption implements IParticleData {
     }
 
     @Override
-    public void writeToNetwork(PacketBuffer buffer) {
+    public void writeToNetwork(FriendlyByteBuf buffer) {
         buffer.writeInt(this.age);
         buffer.writeFloat(this.size);
         buffer.writeFloat(this.gravity);
@@ -94,7 +94,7 @@ public class AshOption implements IParticleData {
     public float getBlue() { return (this.color & 255) / 255.0F; }
 
     public static AshOption create(int age, float size, float gravity, float movementXY, int color, float alpha) {
-        return new AshOption(ParticleRegistry.ASH.get() , age, size, gravity, color, alpha, movementXY);
+        return new AshOption(ParticleRegistry.ASH , age, size, gravity, color, alpha, movementXY);
     }
 
     public static AshOption create(ParticleType<AshOption> particleType, int age, float size, float gravity, float movementXY, int color, float alpha) {

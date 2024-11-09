@@ -1,15 +1,15 @@
 package net.yeoxuhang.ambiance.mixin;
 
 import com.llamalad7.mixinextras.injector.WrapWithCondition;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.TorchBlock;
-import net.minecraft.block.WallTorchBlock;
-import net.minecraft.particles.IParticleData;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.state.DirectionProperty;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.TorchBlock;
+import net.minecraft.world.level.block.WallTorchBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.yeoxuhang.ambiance.Ambiance;
 import net.yeoxuhang.ambiance.client.particle.option.AshOption;
 import net.yeoxuhang.ambiance.config.AmbianceConfig;
@@ -27,12 +27,13 @@ import java.util.Random;
 public class WallTorchBlockMixin extends TorchBlock {
     @Shadow @Final public static DirectionProperty FACING;
 
-    public WallTorchBlockMixin(Properties p_i241189_1_, IParticleData p_i241189_2_) {
-        super(p_i241189_1_, p_i241189_2_);
+    protected WallTorchBlockMixin(Properties properties, ParticleOptions particleOptions) {
+        super(properties, particleOptions);
     }
 
+
     @Inject(method = "animateTick", at = @At("HEAD"))
-    public void animateTick(BlockState blockState, World level, BlockPos blockPos, Random randomSource, CallbackInfo ci) {
+    public void animateTick(BlockState blockState, Level level, BlockPos blockPos, Random randomSource, CallbackInfo ci) {
         Direction direction = blockState.getValue(FACING);
         double d = (double)blockPos.getX() + 0.5;
         double e = (double)blockPos.getY() + 0.7;
@@ -50,13 +51,13 @@ public class WallTorchBlockMixin extends TorchBlock {
         }
     }
 
-    @WrapWithCondition(method = "animateTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;addParticle(Lnet/minecraft/particles/IParticleData;DDDDDD)V", ordinal = 0))
-    public boolean smokeType(World instance, IParticleData p_195594_1_, double p_195594_2_, double p_195594_4_, double p_195594_6_, double p_195594_8_, double p_195594_10_, double p_195594_12_) {
+    @WrapWithCondition(method = "animateTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V", ordinal = 0))
+    public boolean smokeType(Level instance, ParticleOptions p_195594_1_, double p_195594_2_, double p_195594_4_, double p_195594_6_, double p_195594_8_, double p_195594_10_, double p_195594_12_) {
         return Ambiance.config.blocks.torch.smokeType == AmbianceConfig.ambiance$type2.VANILLA;
     }
 
-    @WrapWithCondition(method = "animateTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;addParticle(Lnet/minecraft/particles/IParticleData;DDDDDD)V", ordinal = 1))
-    public boolean flameType(World instance, IParticleData p_195594_1_, double p_195594_2_, double p_195594_4_, double p_195594_6_, double p_195594_8_, double p_195594_10_, double p_195594_12_) {
+    @WrapWithCondition(method = "animateTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V", ordinal = 1))
+    public boolean flameType(Level instance, ParticleOptions p_195594_1_, double p_195594_2_, double p_195594_4_, double p_195594_6_, double p_195594_8_, double p_195594_10_, double p_195594_12_) {
         return Ambiance.config.blocks.torch.flameType == AmbianceConfig.ambiance$type2.VANILLA;
     }
 }

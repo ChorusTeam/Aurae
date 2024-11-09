@@ -108,21 +108,6 @@ public class AmbianceConfig {
         }
 
         @Configurable
-        public candleCategory candle = new candleCategory();
-        public static class candleCategory {
-            @Configurable
-            @Configurable.Comment(value = "Enable Candle Particle")
-            public boolean enableParticle = true;
-
-            @Configurable
-            @Configurable.Comment("Smoke Type")
-            public ambiance$type2 smokeType = ambiance$type2.VANILLA;
-            @Configurable
-            @Configurable.Comment("Smoke Type")
-            public ambiance$type2 flameType = ambiance$type2.VANILLA;
-        }
-
-        @Configurable
         public torchCategory torch = new torchCategory();
         public static class torchCategory {
             @Configurable
@@ -183,49 +168,29 @@ public class AmbianceConfig {
         }
 
         @Configurable
-        public sculkSpreadCategory sculkSpread = new sculkSpreadCategory();
-        public static class sculkSpreadCategory {
+        public netherPortalCategory netherPortal = new netherPortalCategory();
+        public static class netherPortalCategory {
             @Configurable
-            @Configurable.Comment(value = "Enable Sculk Spreading")
-            public boolean enableParticle = true;
+            @Configurable.DecimalRange(min = 0.5, max = 1.5)
+            @Configurable.Comment("Particle Size")
+            public float particleSize = 1;
+
+            @Configurable
+            @Configurable.Comment("Portal Type")
+            public ambiance$type portal_type = ambiance$type.FANCY;
         }
 
         @Configurable
-        public decoratedPotCategory decoratedPot = new decoratedPotCategory();
-        public static class decoratedPotCategory {
+        public respawnAnchorCategory respawnAnchor = new respawnAnchorCategory();
+        public static class respawnAnchorCategory {
             @Configurable
-            @Configurable.Comment(value = "Enable Underwater Bubbles")
-            public boolean enableParticle = true;
-            @Configurable
-            @Configurable.Comment(value = "Enable Underwater Bubbles Sound")
-            public boolean enableSound = true;
+            @Configurable.DecimalRange(min = 0.5, max = 1.5)
+            @Configurable.Comment("Particle Size")
+            public float particleSize = 1;
 
             @Configurable
-            @Configurable.Comment("Sound Volume")
-
-            @Configurable.DecimalRange(min = 0.0, max = 1)
-            public float soundVolume = 0.2f;
-        }
-        @Configurable
-        public trialChamberCategory trialChamber = new trialChamberCategory();
-        public static class trialChamberCategory {
-            @Configurable
-            public vaultCategory vault = new vaultCategory();
-            public static class vaultCategory {
-                @Configurable
-                @Configurable.Comment(value = "Enable Vault Ambient")
-                public boolean enableParticle = true;
-            }
-            @Configurable
-            public spawnerCategory spawner = new spawnerCategory();
-            public static class spawnerCategory {
-                @Configurable
-                @Configurable.Comment(value = "Enable Spawner Ambient")
-                public boolean enableParticle = true;
-            }
-            @Configurable
-            @Configurable.Comment(value = "Enable Item reward pop")
-            public boolean enableParticle = true;
+            @Configurable.Comment("Portal Type")
+            public ambiance$type portal_type = ambiance$type.FANCY;
         }
     }
 

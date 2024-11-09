@@ -1,13 +1,13 @@
 package net.yeoxuhang.ambiance.util;
 
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.Mth;
 
 public class ColorUtil {
     public ColorUtil() {
     }
 
     public static int as8BitChannel(float pValue) {
-        return MathHelper.floor(pValue * 255.0F);
+        return Mth.floor(pValue * 255.0F);
     }
 
     public static class ARGB32 {

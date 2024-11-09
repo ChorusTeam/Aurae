@@ -4,14 +4,15 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.particle.ParticleManager;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.particles.IParticleData;
-import net.minecraft.particles.ParticleType;
 import net.yeoxuhang.ambiance.client.particle.ParticleRegistry;
 import net.yeoxuhang.ambiance.util.ColorUtil;
 
-public class TrialOption implements IParticleData {
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleType;
+
+public class TrialOption implements ParticleOptions {
+
     public static final Codec<TrialOption> CODEC = RecordCodecBuilder.create((instance) -> instance.group(
             Codec.INT.fieldOf("age").forGetter(TrialOption::getAge),
             Codec.FLOAT.fieldOf("gravity").forGetter(TrialOption::getGravity),
@@ -21,7 +22,7 @@ public class TrialOption implements IParticleData {
             Codec.FLOAT.fieldOf("alpha").forGetter(TrialOption::getAlpha)
     ).apply(instance, (age, gravity, speed, size, color, alpha) -> new TrialOption(null, age, gravity, speed, size, color, alpha)));
 
-    public static final IParticleData.IDeserializer<TrialOption> DESERIALIZER = new IParticleData.IDeserializer<TrialOption>() {
+    public static final ParticleOptions.Deserializer<TrialOption> DESERIALIZER = new ParticleOptions.Deserializer<>() {
         @Override
         public TrialOption fromCommand(ParticleType<TrialOption> type, StringReader reader) throws CommandSyntaxException {
             reader.expect(' ');
@@ -35,7 +36,7 @@ public class TrialOption implements IParticleData {
         }
 
         @Override
-        public TrialOption fromNetwork(ParticleType<TrialOption> type, PacketBuffer buffer) {
+        public TrialOption fromNetwork(ParticleType<TrialOption> type, FriendlyByteBuf buffer) {
             int age = buffer.readInt();
             float gravity = buffer.readFloat();
             float speed = buffer.readFloat();
@@ -54,7 +55,6 @@ public class TrialOption implements IParticleData {
     private final float alpha;
     private final ParticleType<TrialOption> particleType;
 
-    // Constructors
     public TrialOption(int age, float gravity, float speed, float size, int color, float alpha) {
         this(null, age, gravity, speed, size, color, alpha);
     }
@@ -69,7 +69,6 @@ public class TrialOption implements IParticleData {
         this.alpha = alpha;
     }
 
-    // Getters for each property
     public int getAge() {
         return age;
     }
@@ -94,7 +93,6 @@ public class TrialOption implements IParticleData {
         return alpha;
     }
 
-    // Color Helper Methods
     public float getRed() {
         return (float) (this.color >> 16 & 255) / 255.0F;
     }
@@ -109,11 +107,11 @@ public class TrialOption implements IParticleData {
 
     @Override
     public ParticleType<TrialOption> getType() {
-        return particleType != null ? particleType : ParticleRegistry.TRIAL.get();
+        return particleType != null ? particleType : ParticleRegistry.TRIAL;
     }
 
     @Override
-    public void writeToNetwork(PacketBuffer buffer) {
+    public void writeToNetwork(FriendlyByteBuf buffer) {
         buffer.writeInt(this.age);
         buffer.writeFloat(this.gravity);
         buffer.writeFloat(this.speed);
@@ -128,7 +126,6 @@ public class TrialOption implements IParticleData {
                 this.age, this.gravity, this.speed, this.size, this.color, this.alpha);
     }
 
-    // Factory methods to create instances with different parameters
     public static TrialOption create(int age, float gravity, float speed, float size, int color, float alpha) {
         return new TrialOption(age, gravity, speed, size, color, alpha);
     }
@@ -138,6 +135,7 @@ public class TrialOption implements IParticleData {
     }
 
     public static TrialOption create(int age, float gravity, float speed, float size, float red, float green, float blue) {
-        return create(age, gravity, speed, size, ColorUtil.ARGB32.colorFromFloat(1.0F, red, green, blue), 1.0F);
+        int color = ColorUtil.ARGB32.colorFromFloat(1.0F, red, green, blue);
+        return create(age, gravity, speed, size, color, 1.0F);
     }
 }

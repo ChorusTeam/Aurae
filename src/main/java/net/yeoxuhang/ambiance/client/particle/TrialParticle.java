@@ -1,19 +1,19 @@
 package net.yeoxuhang.ambiance.client.particle;
 
 
+import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
-import net.minecraft.client.world.ClientWorld;
 import net.yeoxuhang.ambiance.client.particle.option.TrialOption;
 
-public class TrialParticle extends SpriteTexturedParticle {
+public class TrialParticle extends TextureSheetParticle {
     private final float rotSpeed;
-    private final IAnimatedSprite sprites;
+    private final SpriteSet sprites;
     private final double xStart;
     private final double yStart;
     private final double zStart;
     private final float speed;
 
-    protected TrialParticle(ClientWorld clientLevel, double d, double e, double f, double g, double h, double i, IAnimatedSprite spriteSet, int age, float gravity, float speed, float size) {
+    protected TrialParticle(ClientLevel clientLevel, double d, double e, double f, double g, double h, double i, SpriteSet spriteSet, int age, float gravity, float speed, float size) {
         super(clientLevel, d, e, f);
         this.pickSprite(spriteSet);
         this.xd = g;
@@ -85,18 +85,18 @@ public class TrialParticle extends SpriteTexturedParticle {
     }
 
     @Override
-    public IParticleRenderType getRenderType() {
-        return IParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
+    public ParticleRenderType getRenderType() {
+        return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
     }
 
-    public static class Provider implements IParticleFactory<TrialOption> {
-        private final IAnimatedSprite sprites;
+    public static class Provider implements ParticleProvider<TrialOption> {
+        private final SpriteSet sprites;
 
-        public Provider(IAnimatedSprite spriteSet) {
+        public Provider(SpriteSet spriteSet) {
             this.sprites = spriteSet;
         }
 
-        public Particle createParticle(TrialOption endOption, ClientWorld clientLevel, double d, double e, double f, double g, double h, double i) {
+        public Particle createParticle(TrialOption endOption, ClientLevel clientLevel, double d, double e, double f, double g, double h, double i) {
             TrialParticle trialParticle = new TrialParticle(clientLevel, d, e, f, g, h, i, this.sprites, endOption.getAge(), endOption.getGravity(), endOption.getSpeed(), endOption.getSize());
             trialParticle.setColor(endOption.getRed(), endOption.getGreen(), endOption.getBlue());
             trialParticle.setAlpha(endOption.getAlpha());

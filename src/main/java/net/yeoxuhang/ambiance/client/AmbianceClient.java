@@ -1,20 +1,34 @@
 package net.yeoxuhang.ambiance.client;
 
-import net.minecraft.world.World;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
+import net.minecraft.world.level.Level;
+import net.yeoxuhang.ambiance.client.particle.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Consumer;
 
-@OnlyIn(Dist.CLIENT)
-public class AmbianceClient {
+public class AmbianceClient implements ClientModInitializer {
+
+    @Override
+    public void onInitializeClient() {
+        ParticleFactoryRegistry.getInstance().register(ParticleRegistry.ASH, AshParticle.Provider::new);
+        ParticleFactoryRegistry.getInstance().register(ParticleRegistry.END_PORTAL_ASH, AshParticle.Provider::new);
+        ParticleFactoryRegistry.getInstance().register(ParticleRegistry.TRIAL, TrialParticle.Provider::new);
+        ParticleFactoryRegistry.getInstance().register(ParticleRegistry.END_GATEWAY, TrialParticle.Provider::new);
+        ParticleFactoryRegistry.getInstance().register(ParticleRegistry.FIRE_ASH, FireAshParticle.Provider::new);
+        ParticleFactoryRegistry.getInstance().register(ParticleRegistry.PORTAL, PortalAshParticle.Provider::new);
+        ParticleFactoryRegistry.getInstance().register(ParticleRegistry.REVERSE_PORTAL, ReversePortalAshParticle.Provider::new);
+        ParticleFactoryRegistry.getInstance().register(ParticleRegistry.ENDER_EYE_PLACE, EnderEyePlaceParticle.Provider::new);
+        ParticleFactoryRegistry.getInstance().register(ParticleRegistry.COLOR_ASH, VanillaSmoke.Provider::new);
+    }
+
     private static final List<ScheduledTask> tasks = new ArrayList<>();
     private static final ReentrantLock lock = new ReentrantLock();
 
-    public static void schedule(World world, int delayTicks, Consumer<World> action) {
+    public static void schedule(Level world, int delayTicks, Consumer<Level> action) {
         lock.lock();
         try {
             tasks.add(new ScheduledTask(world, delayTicks, action));
@@ -39,11 +53,11 @@ public class AmbianceClient {
         }
     }
     private static class ScheduledTask {
-        private final World world;
+        private final Level world;
         private int delay;
-        private final Consumer<World> action;
+        private final Consumer<Level> action;
 
-        public ScheduledTask(World world, int delayTicks, Consumer<World> action) {
+        public ScheduledTask(Level world, int delayTicks, Consumer<Level> action) {
             this.world = world;
             this.delay = delayTicks;
             this.action = action;

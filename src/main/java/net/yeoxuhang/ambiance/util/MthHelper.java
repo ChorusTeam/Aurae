@@ -42,11 +42,18 @@ public class MthHelper {
     }
 
     public static int convertHexToDec(String hex) {
-        // Parse the hexadecimal string to an integer
-        hex = hex.replaceAll("[^0-9A-Fa-f]", "");
-        if (hex.isEmpty()){
+        // Check if the input string is null or empty
+        if (hex == null || hex.isEmpty()) {
             return 0;
         }
+
+        // Remove any characters that are not valid in hexadecimal notation
+        hex = hex.replaceAll("[^0-9A-Fa-f]", "");
+        if (hex.isEmpty()) {
+            return 0;
+        }
+
+        // Parse the cleaned-up hexadecimal string
         return Integer.parseInt(hex.replace("#", ""), 16);
     }
 

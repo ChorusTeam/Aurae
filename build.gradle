@@ -1,114 +1,98 @@
-buildscript {
-    repositories {
-        maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
-        maven { url = 'https://maven.parchmentmc.org' }
-        maven { url = 'https://jitpack.io' } // JitPack repository for MixinExtras
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
-        classpath 'net.minecraftforge.gradle:ForgeGradle:4.1.0'
-    }
-}
-
 plugins {
-    id 'eclipse'
-    id 'idea'
+    id 'fabric-loom' version '1.8-SNAPSHOT'
+    id 'maven-publish'
 }
 
-apply plugin: 'net.minecraftforge.gradle'
-apply plugin: 'org.spongepowered.mixin'
+version = project.version
+group = project.maven_group
 
-group = mod_group_id
-version = mod_version
-
-archivesBaseName = mod_id
-
-java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(8))
+base {
+    archivesName = project.archives_base_name
 }
 
-minecraft {
-    mappings channel: 'official', version: '1.16.5'
-
-    runs {
-        configureEach {
-            workingDirectory = project.file('run')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            mods {
-                "${mod_id}" {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        client {}
-        server { args '--nogui' }
-        data {
-            workingDirectory = project.file('run-data')
-            args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
-        }
-    }
+loom {
+    accessWidenerPath = file("src/main/resources/ambiance.accesswidener")
 }
 
-mixin {
-    add sourceSets.main, "${mod_id}.refmap.json"
-    config "${mod_id}.mixins.json"
-}
-
-sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
     maven { url = "https://api.modrinth.com/maven" }
     maven { url = 'https://repsy.io/mvn/toma/public/' }
     maven { url = 'https://jitpack.io' } // Ensure JitPack is available here
+    maven { url "https://maven.terraformersmc.com/" }
     mavenCentral()
 }
-
 dependencies {
-    minecraft "net.minecraftforge:forge:1.16.5-36.2.42:userdev"
-    compileOnly "io.github.llamalad7:MixinExtras:0.1.1"
-    implementation "io.github.llamalad7:MixinExtras:0.1.1"
-    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+    // To change the versions see the gradle.properties file
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings loom.officialMojangMappings()
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:0.4.1")))
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-    implementation fg.deobf("maven.modrinth:configuration:${project.configuration_version}")
+    //modImplementation ("maven.modrinth:endrem:${project.endrem_version}")
+    //Mod Menu
+    modImplementation("com.terraformersmc:modmenu:${project.modmenu_version}")
+    modImplementation("com.terraformersmc:modmenu:1.16.23")
+    modImplementation("maven.modrinth:configuration:${project.configuration_version}")
 }
 
-tasks.named('processResources', ProcessResources).configure {
-    def replaceProperties = [
-            minecraft_version: '1.16.5',
-            mod_id: mod_id,
-            mod_name: mod_name,
-            mod_license: mod_license,
-            mod_version: mod_version,
-            mod_authors: mod_authors,
-            mod_description: mod_description,
-            minecraft_version_range: minecraft_version_range,
-            loader_version_range: loader_version_range
-    ]
-    inputs.properties(replaceProperties)
+processResources {
+    inputs.property "version", project.version
+    inputs.property "minecraft_version", project.minecraft_version
+    inputs.property "loader_version", project.loader_version
+    filteringCharset "UTF-8"
 
-    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
-        expand(replaceProperties + [project: project])
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version,
+                "minecraft_version": project.minecraft_version,
+                "loader_version": project.loader_version
     }
 }
 
-tasks.named('jar', Jar).configure {
-    manifest {
-        attributes(
-                "Specification-Title"     : mod_id,
-                "Specification-Vendor"    : mod_authors,
-                "Specification-Version"   : "1",
-                "Implementation-Title"    : project.name,
-                "Implementation-Version"  : archiveVersion.get(),
-                "Implementation-Vendor"   : mod_authors,
-                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
-        )
-    }
-    finalizedBy 'reobfJar'
-}
-
+def targetJavaVersion = 17
 tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8'
+    // ensure that the encoding is set to UTF-8, no matter what the system default is
+    // this fixes some edge cases with special characters not displaying correctly
+    // see http://yodaconditions.net/blog/fix-for-java-file-encoding-problems-with-gradle.html
+    // If Javadoc is generated, this must be specified in that task too.
+    it.options.encoding = "UTF-8"
+    if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) {
+        it.options.release.set(targetJavaVersion)
+    }
+}
+
+java {
+    def javaVersion = JavaVersion.toVersion(targetJavaVersion)
+    if (JavaVersion.current() < javaVersion) {
+        toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
+    }
+    // Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
+    // if it is present.
+    // If you remove this line, sources will not be generated.
+    withSourcesJar()
+}
+
+jar {
+    from("LICENSE") {
+        rename { "${it}_${project.archivesBaseName}" }
+    }
+}
+
+// configure the maven publication
+publishing {
+    publications {
+        create("mavenJava", MavenPublication) {
+            artifactId = project.archives_base_name
+            from components.java
+        }
+    }
+
+    // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
+    repositories {
+        // Add repositories to publish to here.
+        // Notice: This block does NOT have the same function as the block in the top level.
+        // The repositories here will be used for publishing your artifact, not for
+        // retrieving dependencies.
+    }
 }

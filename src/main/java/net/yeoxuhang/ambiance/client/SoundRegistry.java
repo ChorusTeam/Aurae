@@ -1,19 +1,17 @@
 package net.yeoxuhang.ambiance.client;
 
-import net.minecraft.util.SoundEvent;
-import net.minecraftforge.fml.RegistryObject;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
 import net.yeoxuhang.ambiance.Ambiance;
 
 public class SoundRegistry {
-    public static final DeferredRegister<SoundEvent> SOUND = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, Ambiance.MOD_ID); // Replace with your actual mod ID
 
+    public static final SoundEvent ENDER_EYE_PLACED = register("ender_eye_placed");
 
-    public static final RegistryObject<SoundEvent> ENDER_EYE_PLACED = register("ender_eye_placed");
-
-    private static RegistryObject register(String name){
-       return SOUND.register(name, ()-> new SoundEvent(Ambiance.rL(name)));
+    public static SoundEvent register(String name) {
+        ResourceLocation location = Ambiance.name(name);
+        return Registry.register(Registry.SOUND_EVENT, location, new SoundEvent(location));
     }
 
     public static void init() {

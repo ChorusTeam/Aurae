@@ -1,17 +1,17 @@
 package net.yeoxuhang.ambiance.client.particle;
 
+import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
-import net.minecraft.client.world.ClientWorld;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.Mth;
 import net.yeoxuhang.ambiance.client.particle.option.AshOption;
 
-public class AshParticle extends RisingParticle {
+public class AshParticle extends BaseAshSmokeParticle {
     private final float rotSpeed;
-    private final IAnimatedSprite sprites;
+    private final SpriteSet sprites;
     private final float size;
     private final float speed;
 
-    protected AshParticle(ClientWorld clientLevel, double d, double e, double f, double g, double h, double i, float j, IAnimatedSprite spriteSet, int age, float gravity, float size, float movementXY) {
+    protected AshParticle(ClientLevel clientLevel, double d, double e, double f, double g, double h, double i, float j, SpriteSet spriteSet, int age, float gravity, float size, float movementXY) {
         super(clientLevel, d, e, f, movementXY, gravity, movementXY, g, h, i, j, spriteSet, 1.0F, 30, gravity, true);
         this.rotSpeed = ((float)Math.random() - 0.5F) * 0.1F;
         this.roll = (float)Math.random() * 6.2831855F;
@@ -23,7 +23,7 @@ public class AshParticle extends RisingParticle {
 
     @Override
     public float getQuadSize(float f) {
-        return this.size * MathHelper.clamp(((float)this.age + f) / (float)this.lifetime * 64.0F, 0.0F, 1.0F);
+        return this.size * Mth.clamp(((float)this.age + f) / (float)this.lifetime * 64.0F, 0.0F, 1.0F);
     }
 
     public void tick() {
@@ -55,17 +55,17 @@ public class AshParticle extends RisingParticle {
     }
 
     @Override
-    public IParticleRenderType getRenderType() {
-        return IParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
+    public ParticleRenderType getRenderType() {
+        return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
     }
 
-    public static class Provider implements IParticleFactory<AshOption> {
-        private final IAnimatedSprite sprites;
+    public static class Provider implements ParticleProvider<AshOption> {
+        private final SpriteSet sprites;
 
-        public Provider(IAnimatedSprite spriteSet) {
+        public Provider(SpriteSet spriteSet) {
             this.sprites = spriteSet;
         }
-        public Particle createParticle(AshOption ashOption, ClientWorld clientLevel, double d, double e, double f, double g, double h, double i) {
+        public Particle createParticle(AshOption ashOption, ClientLevel clientLevel, double d, double e, double f, double g, double h, double i) {
             AshParticle ashParticle = new AshParticle(clientLevel, d, e, f, 0.0, 0.0, 0.0, 1.0F, this.sprites, ashOption.getAge(), ashOption.getGravity(), ashOption.getSize(), ashOption.getMovementXY());
             ashParticle.setColor(ashOption.getRed(), ashOption.getGreen(), ashOption.getBlue());
             ashParticle.setAlpha(ashOption.getAlpha());

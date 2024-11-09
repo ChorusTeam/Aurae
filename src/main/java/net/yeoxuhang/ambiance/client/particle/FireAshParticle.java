@@ -1,18 +1,18 @@
 package net.yeoxuhang.ambiance.client.particle;
 
 
+import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
-import net.minecraft.client.world.ClientWorld;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.Mth;
 import net.yeoxuhang.ambiance.client.particle.option.ColorParticleOption;
 
 import java.util.Random;
 
-public class FireAshParticle extends SpriteTexturedParticle {
+public class FireAshParticle extends TextureSheetParticle {
     private final float rotSpeed;
-    private final IAnimatedSprite sprites;
+    private final SpriteSet sprites;
 
-    protected FireAshParticle(ClientWorld clientLevel, IAnimatedSprite spriteSet, double d, double e, double f, double g, double h, double i) {
+    protected FireAshParticle(ClientLevel clientLevel, SpriteSet spriteSet, double d, double e, double f, double g, double h, double i) {
         super(clientLevel, d, e, f, g, h, i);
         this.pickSprite(spriteSet);
         this.rotSpeed = ((float)Math.random() - 0.5F) * 0.1F;
@@ -22,7 +22,7 @@ public class FireAshParticle extends SpriteTexturedParticle {
 
     @Override
     public float getQuadSize(float f) {
-        return 0.07F * MathHelper.clamp(((float)this.age + f) / (float)this.lifetime * 64.0F, 0.0F, 1.0F);
+        return 0.07F * Mth.clamp(((float)this.age + f) / (float)this.lifetime * 64.0F, 0.0F, 1.0F);
     }
 
     public void tick() {
@@ -66,18 +66,18 @@ public class FireAshParticle extends SpriteTexturedParticle {
 
 
     @Override
-    public IParticleRenderType getRenderType() {
-        return IParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
+    public ParticleRenderType getRenderType() {
+        return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
     }
 
-    public static class Provider implements IParticleFactory<ColorParticleOption> {
-        private final IAnimatedSprite sprites;
+    public static class Provider implements ParticleProvider<ColorParticleOption> {
+        private final SpriteSet sprites;
 
-        public Provider(IAnimatedSprite spriteSet) {
+        public Provider(SpriteSet spriteSet) {
             this.sprites = spriteSet;
         }
 
-        public FireAshParticle createParticle(ColorParticleOption colorParticleOption, ClientWorld clientLevel, double d, double e, double f, double g, double h, double i) {
+        public FireAshParticle createParticle(ColorParticleOption colorParticleOption, ClientLevel clientLevel, double d, double e, double f, double g, double h, double i) {
             Random randomSource = clientLevel.random;
             double j = randomSource.nextGaussian() * 0.999999974752427E-10;
             double k = randomSource.nextGaussian() * 0.999999747378752E-3;

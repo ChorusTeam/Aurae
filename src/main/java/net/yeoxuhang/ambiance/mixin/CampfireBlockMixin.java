@@ -1,14 +1,14 @@
 package net.yeoxuhang.ambiance.mixin;
 
 import com.llamalad7.mixinextras.injector.WrapWithCondition;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.CampfireBlock;
-import net.minecraft.particles.IParticleData;
-import net.minecraft.state.BooleanProperty;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.CampfireBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.yeoxuhang.ambiance.Ambiance;
 import net.yeoxuhang.ambiance.client.particle.option.AshOption;
 import net.yeoxuhang.ambiance.config.AmbianceConfig;
@@ -31,7 +31,7 @@ public class CampfireBlockMixin extends Block {
     }
 
     @Inject(method = "animateTick", at = @At("RETURN"))
-    public void ambiance$animateTick(BlockState blockState, World level, BlockPos blockPos, Random randomSource, CallbackInfo ci) {
+    public void ambiance$animateTick(BlockState blockState, Level level, BlockPos blockPos, Random randomSource, CallbackInfo ci) {
         if (blockState.getValue(LIT) && Ambiance.config.blocks.campfire.enableParticle){
             if (blockState.is(Blocks.CAMPFIRE)){
                 int randomColor = MthHelper.createRandomColor(13200387, 15715670);
@@ -44,18 +44,18 @@ public class CampfireBlockMixin extends Block {
         }
     }
 
-    @WrapWithCondition(method = "makeParticles", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;addParticle(Lnet/minecraft/particles/IParticleData;DDDDDD)V"))
-    private static boolean smokeType(World instance, IParticleData p_195594_1_, double p_195594_2_, double p_195594_4_, double p_195594_6_, double p_195594_8_, double p_195594_10_, double p_195594_12_) {
+    @WrapWithCondition(method = "makeParticles", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V"))
+    private static boolean smokeType(Level instance, ParticleOptions p_195594_1_, double p_195594_2_, double p_195594_4_, double p_195594_6_, double p_195594_8_, double p_195594_10_, double p_195594_12_) {
         return Ambiance.config.blocks.campfire.smokeType == AmbianceConfig.ambiance$type2.VANILLA;
     }
 
-    @WrapWithCondition(method = "makeParticles", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;addAlwaysVisibleParticle(Lnet/minecraft/particles/IParticleData;ZDDDDDD)V"))
-    private static boolean smokeType2(World instance, IParticleData p_217404_1_, boolean p_217404_2_, double p_217404_3_, double p_217404_5_, double p_217404_7_, double p_217404_9_, double p_217404_11_, double p_217404_13_) {
+    @WrapWithCondition(method = "makeParticles", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addAlwaysVisibleParticle(Lnet/minecraft/core/particles/ParticleOptions;ZDDDDDD)V"))
+    private static boolean smokeType2(Level instance, ParticleOptions p_217404_1_, boolean p_217404_2_, double p_217404_3_, double p_217404_5_, double p_217404_7_, double p_217404_9_, double p_217404_11_, double p_217404_13_) {
         return Ambiance.config.blocks.campfire.smokeType == AmbianceConfig.ambiance$type2.VANILLA;
     }
 
-    @WrapWithCondition(method = "animateTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;addParticle(Lnet/minecraft/particles/IParticleData;DDDDDD)V"))
-    public boolean flameType(World instance, IParticleData p_195594_1_, double p_195594_2_, double p_195594_4_, double p_195594_6_, double p_195594_8_, double p_195594_10_, double p_195594_12_) {
+    @WrapWithCondition(method = "animateTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V"))
+    public boolean flameType(Level instance, ParticleOptions p_195594_1_, double p_195594_2_, double p_195594_4_, double p_195594_6_, double p_195594_8_, double p_195594_10_, double p_195594_12_) {
         return Ambiance.config.blocks.campfire.flameType == AmbianceConfig.ambiance$type2.VANILLA;
     }
 }
