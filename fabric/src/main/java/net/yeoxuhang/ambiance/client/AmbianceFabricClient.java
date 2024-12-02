@@ -13,6 +13,7 @@ public final class AmbianceFabricClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(ParticleRegistry.END_GATEWAY.get(), TrialParticle.Provider::new);
         ParticleFactoryRegistry.getInstance().register(ParticleRegistry.FIRE_ASH.get(), FireAshParticle.Provider::new);
         ParticleFactoryRegistry.getInstance().register(ParticleRegistry.PORTAL.get(), PortalAshParticle.Provider::new);
+        ParticleFactoryRegistry.getInstance().register(ParticleRegistry.REVERSE_PORTAL.get(), ReversePortalAshParticle.Provider::new);
         ParticleFactoryRegistry.getInstance().register(ParticleRegistry.ENDER_EYE_PLACE.get(), EnderEyePlaceParticle.Provider::new);
         ParticleFactoryRegistry.getInstance().register(ParticleRegistry.COLOR_ASH.get(), VanillaSmoke.Provider::new);
     }

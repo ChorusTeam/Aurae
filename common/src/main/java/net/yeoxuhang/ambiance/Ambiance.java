@@ -24,10 +24,6 @@ public class Ambiance {
         Registries.init();
         ConfigHolder<AmbianceConfig> configHolder = Configuration.registerConfig(AmbianceConfig.class, ConfigFormats.JSON);
         config = configHolder.getConfigInstance();
-
-        if (isModLoaded("endrem").get()){
-            System.out.println("LOaded");
-        }
     }
     public static Supplier<Boolean> isModLoaded(String mod){
         return Suppliers.memoize(() -> Services.PLATFORM.isModLoaded(mod));

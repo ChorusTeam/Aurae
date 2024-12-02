@@ -26,6 +26,7 @@ public class AmbianceNeoForge {
         event.registerSpriteSet(ParticleRegistry.END_GATEWAY.get(), TrialParticle.Provider::new);
         event.registerSpriteSet(ParticleRegistry.FIRE_ASH.get(), FireAshParticle.Provider::new);
         event.registerSpriteSet(ParticleRegistry.PORTAL.get(), PortalAshParticle.Provider::new);
+        event.registerSpriteSet(ParticleRegistry.REVERSE_PORTAL.get(), ReversePortalAshParticle.Provider::new);
         event.registerSpriteSet(ParticleRegistry.ENDER_EYE_PLACE.get(), EnderEyePlaceParticle.Provider::new);
         event.registerSpriteSet(ParticleRegistry.COLOR_ASH.get(), VanillaSmoke.Provider::new);
     }

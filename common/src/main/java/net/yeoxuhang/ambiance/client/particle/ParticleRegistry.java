@@ -40,6 +40,8 @@ public class ParticleRegistry {
 
     public static final Supplier<ParticleType<TrialOption>> PORTAL =
             register("portal", true, endOptionParticleType -> TrialOption.CODEC, endOptionParticleType -> TrialOption.STREAM_CODEC);
+    public static final Supplier<ParticleType<TrialOption>> REVERSE_PORTAL = register("reverse_portal", false,endOptionParticleType -> TrialOption.CODEC, endOptionParticleType -> TrialOption.STREAM_CODEC);
+
     public static final Supplier<SimpleParticleType> AIR =
             register("empty", false);
 

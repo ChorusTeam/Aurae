@@ -185,6 +185,34 @@ public class AmbianceConfig {
         }
 
         @Configurable
+        public netherPortalCategory netherPortal = new netherPortalCategory();
+        public static class netherPortalCategory {
+            @Configurable
+            @Configurable.Gui.Slider
+            @Configurable.DecimalRange(min = 0.5, max = 1.5)
+            @Configurable.Comment("Particle Size")
+            public float particleSize = 1;
+
+            @Configurable
+            @Configurable.Comment("Portal Type")
+            public ambiance$type portalType = ambiance$type.FANCY;
+        }
+
+        @Configurable
+        public respawnAnchorCategory respawnAnchor = new respawnAnchorCategory();
+        public static class respawnAnchorCategory {
+            @Configurable
+            @Configurable.Gui.Slider
+            @Configurable.DecimalRange(min = 0.5, max = 1.5)
+            @Configurable.Comment("Particle Size")
+            public float particleSize = 1;
+
+            @Configurable
+            @Configurable.Comment("Portal Type")
+            public ambiance$type portalType = ambiance$type.FANCY;
+        }
+
+        @Configurable
         public sculkSpreadCategory sculkSpread = new sculkSpreadCategory();
         public static class sculkSpreadCategory {
             @Configurable
