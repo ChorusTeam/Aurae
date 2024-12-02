@@ -26,17 +26,21 @@
   "config.ambiance.option.flameType": "Flame Type",
   "config.ambiance.option.smokeType": "Smoke Type",
   "config.ambiance.option.ashType": "Ash Type",
+  "config.ambiance.option.portalType": "Portal Type",
 
   "config.ambiance.option.blocks.endPortal.particleSize": "Particle Size",
   "config.ambiance.option.blocks.endPortalFrame.particleSize": "Particle Size",
   "config.ambiance.option.blocks.endGateway.particleSize": "Particle Size",
 
   "config.ambiance.option.endremCompat": "End Remastered Compat",
-  
+
 
   "config.ambiance.option.cauldron": "Cauldron",
   "config.ambiance.option.lava": "Lava",
   "config.ambiance.option.water": "Water",
+
+  "config.ambiance.option.netherPortal": "Nether Portal",
+  "config.ambiance.option.respawnAnchor": "Respawn Anchor",
 
   "config.ambiance.option.decoratedPot": "Decorated Pot",
   "config.ambiance.option.soulSand": "Soul Sand",
