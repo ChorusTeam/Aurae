@@ -14,13 +14,15 @@
     "EndGatewayBlockMixin",
     "EndPortalBlockMixin",
     "EyeOfEnderMixin",
+    "NetherPortalBlockMixin",
+    "RespawnAnchorBlockMixin",
     "SoulSandBlockMixin",
     "TorchBlockMixin",
     "WallTorchBlockMixin"
   ],
   "client": [
-    "client.LevelRendererMixin",
-    "MinecraftMixin"
+    "MinecraftMixin",
+    "client.LevelRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

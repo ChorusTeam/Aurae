@@ -73,6 +73,8 @@ dependencies {
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
     implementation fg.deobf("maven.modrinth:configuration:${project.configuration_version}")
+
+    implementation fg.deobf("maven.modrinth:endrem:${project.endrem_version}")
 }
 
 tasks.named('processResources', ProcessResources).configure {

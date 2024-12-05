@@ -29,6 +29,7 @@ public class ParticleRegistry {
     public static final RegistryObject<ParticleType<ColorParticleOption>> ENDER_EYE_PLACE = register("ender_eye_place", new EnderEyePlaceParticleType(true));
     public static final RegistryObject<ParticleType<TrialOption>> END_GATEWAY = register("end_gateway", new EndGatewayParticleType(true));
     public static final RegistryObject<ParticleType<TrialOption>> PORTAL = register("portal", new PortalParticleType(true));
+    public static final RegistryObject<ParticleType<TrialOption>> REVERSE_PORTAL = register("reverse_portal", new ReversePortalParticleType(true));
     public static final RegistryObject<BasicParticleType> AIR = registerBasic("empty", false);
 
     /**

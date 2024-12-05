@@ -43,7 +43,7 @@ public class EndPortalBlockMixin {
                 }
                 int randomColor = MthHelper.randomDarkerColor("489F98");
                 if (randomSource.nextInt(5) == 1){
-                    level.addAlwaysVisibleParticle(TrialOption.create((int)(Math.random() * 2.0) + 60, 1F, 2.5F, Ambiance.config.blocks.endPortal.particleSize / 10, randomColor, 0.7F), d, e, f, g + randomSource.nextDouble(), h + 3, j + randomSource.nextDouble());
+                    level.addAlwaysVisibleParticle(TrialOption.create((int)(Math.random() * 2.0) + 60, 1F, 2.5F, Ambiance.config.blocks.endPortal.particleSize / 10, randomColor, 240), d, e, f, g + randomSource.nextDouble(), h + 3, j + randomSource.nextDouble());
                 }
             }
         }

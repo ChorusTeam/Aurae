@@ -17,7 +17,7 @@ public class EndGatewayBlockMixin {
     public IParticleData animateTick(IParticleData p_195594_1_) {
         if (Ambiance.config.blocks.endGateway.enableParticle){
             int randomColor = MthHelper.createRandomColor(2842463, 4759492);
-            return TrialOption.create((int)(Math.random() * 2.0) + 60, 1F, 2.5F, Ambiance.config.blocks.endGateway.particleSize / 10, randomColor, 0.7F);
+            return TrialOption.create((int)(Math.random() * 2.0) + 60, 1F, 2.5F, Ambiance.config.blocks.endGateway.particleSize / 10, randomColor, 240);
         } else return ParticleTypes.PORTAL;
     }
 }

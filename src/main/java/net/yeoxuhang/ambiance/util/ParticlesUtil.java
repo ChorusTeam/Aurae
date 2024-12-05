@@ -36,7 +36,9 @@ public class ParticlesUtil {
     public static void endremEyePlace(World level, BlockPos pos){
         AmbianceClient.schedule(level, 1, (clientWorld) -> {
             if (pos != null) {
-                String endRemasteredEye = Objects.requireNonNull(NbtGetter.endrem$getEyeType(level, pos));
+                String endRemasteredEye = Objects.requireNonNull(NbtGetter.getBlockStateProperty(level, pos, "eye")).replace("_eye", "");
+                System.out.println(endRemasteredEye);
+                //String endRemasteredEye = Objects.requireNonNull(NbtGetter.endrem$getEyeType(level, pos));
                 int o;
                 Ambiance.LOGGER_DEBUG.debug("End Remastered Eye Type: " + endRemasteredEye);
                 for (o = 0; o < 4; ++o) {
@@ -46,7 +48,7 @@ public class ParticlesUtil {
                     double d = (double) pos.getX() + vec3.x;
                     double e = (double) pos.getZ() + vec3.z;
                     if (Ambiance.config.blocks.endPortalFrame.ashType == AmbianceConfig.ambiance$type.FANCY){
-                        level.addAlwaysVisibleParticle(AshOption.create(20 + level.random.nextInt(10), Ambiance.config.blocks.endPortalFrame.particleSize / 10, 0.5F, 0F, MthHelper.convertHexToDec(TextureColorGetter.getHexColorFromTexture("endrem", "textures/block/eyes/" + endRemasteredEye + ".png", 12, 1)), 0.7F), d + level.random.nextDouble() / 5.0, p, e + level.random.nextDouble() / 5.0, 0.0, 0.0, 0.0);
+                        level.addAlwaysVisibleParticle(AshOption.create(20 + level.random.nextInt(10), Ambiance.config.blocks.endPortalFrame.particleSize / 10, 0.5F, 0F, MthHelper.convertHexToDec(TextureColorGetter.getHexColorFromTexture("endrem", "textures/blocks/eyes/" + endRemasteredEye + ".png", 7, 5)), 0.7F), d + level.random.nextDouble() / 5.0, p, e + level.random.nextDouble() / 5.0, 0.0, 0.0, 0.0);
                     } else if (Ambiance.config.blocks.endPortalFrame.ashType == AmbianceConfig.ambiance$type.VANILLA){
                         double d11;
                         double d16;
@@ -54,11 +56,11 @@ public class ParticlesUtil {
                         d11 = (double)pos.getX() + (5.0 + level.random.nextDouble() * 6.0) / 16.0;
                         d16 = (double)pos.getY() + 0.8125;
                         d21 = (double)pos.getZ() + (5.0 + level.random.nextDouble() * 6.0) / 16.0;
-                        level.addParticle(ColorParticleOption.create(ParticleRegistry.COLOR_ASH.get(), MthHelper.convertHexToDec(TextureColorGetter.getHexColorFromTexture("endrem", "textures/block/eyes/" + endRemasteredEye + ".png", 12, 1))), d11, d16, d21, 0,0,0);
+                        level.addParticle(ColorParticleOption.create(ParticleRegistry.COLOR_ASH.get(), MthHelper.convertHexToDec(TextureColorGetter.getHexColorFromTexture("endrem", "textures/blocks/eyes/" + endRemasteredEye + ".png", 7, 5))), d11, d16, d21, 0,0,0);
                     }
                 }
                 if (Ambiance.config.blocks.endPortalFrame.enableParticle){
-                    level.addAlwaysVisibleParticle(ColorParticleOption.create(ParticleRegistry.ENDER_EYE_PLACE.get(), MthHelper.convertHexToDec(TextureColorGetter.getHexColorFromTexture("endrem", "textures/block/eyes/" + endRemasteredEye + ".png", 12, 1))), pos.getX() + 0.5, pos.getY() + 1.075, pos.getZ() + 0.5, 0.0, 0.0, 0.0);
+                    level.addAlwaysVisibleParticle(ColorParticleOption.create(ParticleRegistry.ENDER_EYE_PLACE.get(), MthHelper.convertHexToDec(TextureColorGetter.getHexColorFromTexture("endrem", "textures/blocks/eyes/" + endRemasteredEye + ".png", 7, 5))), pos.getX() + 0.5, pos.getY() + 1.075, pos.getZ() + 0.5, 0.0, 0.0, 0.0);
                 }
             }
         });
