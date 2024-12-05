@@ -104,7 +104,7 @@ public class AmbianceConfig {
             @Configurable.Comment("Smoke Type")
             public ambiance$type2 smokeType = ambiance$type2.VANILLA;
             @Configurable
-            @Configurable.Comment("Smoke Type")
+            @Configurable.Comment("Flame Type")
             public ambiance$type2 flameType = ambiance$type2.VANILLA;
         }
 
@@ -119,7 +119,7 @@ public class AmbianceConfig {
             @Configurable.Comment("Smoke Type")
             public ambiance$type2 smokeType = ambiance$type2.VANILLA;
             @Configurable
-            @Configurable.Comment("Smoke Type")
+            @Configurable.Comment("Flame Type")
             public ambiance$type2 flameType = ambiance$type2.VANILLA;
         }
 
@@ -134,7 +134,7 @@ public class AmbianceConfig {
             @Configurable.Comment("Smoke Type")
             public ambiance$type2 smokeType = ambiance$type2.VANILLA;
             @Configurable
-            @Configurable.Comment("Smoke Type")
+            @Configurable.Comment("Flame Type")
             public ambiance$type2 flameType = ambiance$type2.VANILLA;
         }
 
