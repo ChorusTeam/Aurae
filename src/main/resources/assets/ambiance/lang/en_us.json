@@ -39,6 +39,9 @@
   "config.ambiance.option.lava": "Lava",
   "config.ambiance.option.water": "Water",
 
+  "config.ambiance.option.netherPortal": "Nether Portal",
+  "config.ambiance.option.respawnAnchor": "Respawn Anchor",
+
   "config.ambiance.option.decoratedPot": "Decorated Pot",
   "config.ambiance.option.soulSand": "Soul Sand",
   "config.ambiance.option.sculkSpread": "Sculk Spread",

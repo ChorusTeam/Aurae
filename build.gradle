@@ -23,19 +23,25 @@ repositories {
     mavenCentral()
 }
 dependencies {
-    // To change the versions see the gradle.properties file
+    // Minecraft and mappings dependencies
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     mappings loom.officialMojangMappings()
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-    include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:0.4.1")))
+
+    // Fabric API
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-    //modImplementation ("maven.modrinth:endrem:${project.endrem_version}")
-    //Mod Menu
-    modImplementation("com.terraformersmc:modmenu:${project.modmenu_version}")
-    modImplementation("com.terraformersmc:modmenu:1.16.23")
-    modImplementation("maven.modrinth:configuration:${project.configuration_version}")
+    // MixinExtras
+    implementation "io.github.llamalad7:mixinextras-fabric:0.4.1"
+    include "io.github.llamalad7:mixinextras-fabric:0.4.1" // Optional: Include in final build if needed
+
+    // Mod Menu
+    modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
+
+    // Configuration library (Modrinth)
+    modImplementation "maven.modrinth:configuration:${project.configuration_version}"
 }
+
 
 processResources {
     inputs.property "version", project.version
@@ -50,7 +56,14 @@ processResources {
     }
 }
 
-def targetJavaVersion = 17
+tasks.withType(ProcessResources) {
+    inputs.property "refMap", "ambiance.refmap.json"
+    filesMatching("ambiance.mixins.json") {
+        expand "refMap": "ambiance.refmap.json"
+    }
+}
+
+def targetJavaVersion = 8
 tasks.withType(JavaCompile).configureEach {
     // ensure that the encoding is set to UTF-8, no matter what the system default is
     // this fixes some edge cases with special characters not displaying correctly

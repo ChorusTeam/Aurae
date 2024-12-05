@@ -3,7 +3,7 @@
   "minVersion": "0.8",
   "package": "net.yeoxuhang.ambiance.mixin",
   "compatibilityLevel": "JAVA_8",
-  "refmap": "${mod_id}.refmap.json",
+  "refmap": "ambiance-refmap.json",
   "mixins": [
     "BaseFireBlockMixin",
     "BlazeMixin",

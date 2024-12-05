@@ -23,9 +23,9 @@ public class AshOption implements ParticleOptions {
     ).apply(instance, (age, size, gravity, color, alpha, movementXY) -> new AshOption(null, age, size, gravity, color, alpha, movementXY)));
 
 
-    public static final ParticleOptions.Deserializer<AshOption> DESERIALIZER = new ParticleOptions.Deserializer<>() {
+    public static final ParticleOptions.Deserializer<AshOption> DESERIALIZER = new ParticleOptions.Deserializer<AshOption>() {
         @Override
-        public AshOption fromCommand(ParticleType<AshOption> type, StringReader reader) throws CommandSyntaxException {
+        public AshOption fromCommand(ParticleType type, StringReader reader) throws CommandSyntaxException {
             reader.expect(' ');
             int age = reader.readInt();
             float size = reader.readFloat();
@@ -37,7 +37,7 @@ public class AshOption implements ParticleOptions {
         }
 
         @Override
-        public AshOption fromNetwork(ParticleType<AshOption> type, FriendlyByteBuf buffer) {
+        public AshOption fromNetwork(ParticleType type, FriendlyByteBuf buffer) {
             return new AshOption(type, buffer.readInt(), buffer.readFloat(), buffer.readFloat(),
                     buffer.readInt(), buffer.readFloat(), buffer.readFloat());
         }

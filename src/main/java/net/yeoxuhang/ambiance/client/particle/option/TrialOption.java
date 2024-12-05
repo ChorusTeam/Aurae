@@ -22,7 +22,7 @@ public class TrialOption implements ParticleOptions {
             Codec.FLOAT.fieldOf("alpha").forGetter(TrialOption::getAlpha)
     ).apply(instance, (age, gravity, speed, size, color, alpha) -> new TrialOption(null, age, gravity, speed, size, color, alpha)));
 
-    public static final ParticleOptions.Deserializer<TrialOption> DESERIALIZER = new ParticleOptions.Deserializer<>() {
+    public static final ParticleOptions.Deserializer<TrialOption> DESERIALIZER = new ParticleOptions.Deserializer<TrialOption>() {
         @Override
         public TrialOption fromCommand(ParticleType<TrialOption> type, StringReader reader) throws CommandSyntaxException {
             reader.expect(' ');

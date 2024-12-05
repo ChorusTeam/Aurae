@@ -15,15 +15,15 @@ public class ColorParticleOption implements ParticleOptions {
             Codec.INT.fieldOf("color").forGetter(ColorParticleOption::getColor)
     ).apply(instance, color -> new ColorParticleOption(null, color)));
 
-    public static final ParticleOptions.Deserializer<ColorParticleOption> DESERIALIZER = new ParticleOptions.Deserializer<>() {
+    public static final ParticleOptions.Deserializer<ColorParticleOption> DESERIALIZER = new ParticleOptions.Deserializer<ColorParticleOption>() {
         @Override
-        public ColorParticleOption fromCommand(ParticleType<ColorParticleOption> type, StringReader reader) throws CommandSyntaxException {
+        public ColorParticleOption fromCommand(ParticleType type, StringReader reader) throws CommandSyntaxException {
             reader.expect(' ');
             return new ColorParticleOption(type, reader.readInt());
         }
 
         @Override
-        public ColorParticleOption fromNetwork(ParticleType<ColorParticleOption> type, FriendlyByteBuf buffer) {
+        public ColorParticleOption fromNetwork(ParticleType type, FriendlyByteBuf buffer) {
             return new ColorParticleOption(type, buffer.readInt());
         }
     };

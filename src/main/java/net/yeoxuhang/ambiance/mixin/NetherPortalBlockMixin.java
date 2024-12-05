@@ -29,7 +29,7 @@ public class NetherPortalBlockMixin extends Block {
 
     @Inject(method = "animateTick", at = @At("RETURN"))
     public void animateTick(BlockState blockState, Level level, BlockPos blockPos, Random randomSource, CallbackInfo ci) {
-        if (Ambiance.config.blocks.netherPortal.portal_type == AmbianceConfig.ambiance$type.FANCY){
+        if (Ambiance.config.blocks.netherPortal.portalType == AmbianceConfig.ambiance$type.FANCY){
             for(int i = 0; i < 4; ++i) {
                 double d0 = (double)blockPos.getX() + randomSource.nextDouble();
                 double d1 = (double)blockPos.getY() + randomSource.nextDouble();
@@ -53,9 +53,9 @@ public class NetherPortalBlockMixin extends Block {
     }
     @ModifyArg(method = "animateTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V"))
     public ParticleOptions animateTick(ParticleOptions p_195594_1_) {
-        if (Ambiance.config.blocks.netherPortal.portal_type == AmbianceConfig.ambiance$type.VANILLA){
+        if (Ambiance.config.blocks.netherPortal.portalType == AmbianceConfig.ambiance$type.VANILLA){
             return ParticleTypes.PORTAL;
-        } else if (Ambiance.config.blocks.netherPortal.portal_type == AmbianceConfig.ambiance$type.FANCY){
+        } else if (Ambiance.config.blocks.netherPortal.portalType == AmbianceConfig.ambiance$type.FANCY){
             return ParticleRegistry.AIR;
         } else return ParticleRegistry.AIR;
     }

@@ -26,7 +26,7 @@ public class RespawnAnchorBlockMixin {
 
     @Inject(method = "animateTick", at = @At("RETURN"))
     public void animateTick(BlockState blockState, Level level, BlockPos blockPos, Random randomSource, CallbackInfo ci) {
-        if (Ambiance.config.blocks.respawnAnchor.portal_type == AmbianceConfig.ambiance$type.FANCY){
+        if (Ambiance.config.blocks.respawnAnchor.portalType == AmbianceConfig.ambiance$type.FANCY){
             double d0 = (double)blockPos.getX() + 0.5D + (0.5D - randomSource.nextDouble());
             double d1 = (double)blockPos.getY() + 1.0D;
             double d2 = (double)blockPos.getZ() + 0.5D + (0.5D - randomSource.nextDouble());
@@ -39,9 +39,9 @@ public class RespawnAnchorBlockMixin {
 
     @ModifyArg(method = "animateTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V"))
     public ParticleOptions animateTick(ParticleOptions p_195594_1_) {
-        if (Ambiance.config.blocks.respawnAnchor.portal_type == AmbianceConfig.ambiance$type.VANILLA){
+        if (Ambiance.config.blocks.respawnAnchor.portalType == AmbianceConfig.ambiance$type.VANILLA){
             return ParticleTypes.REVERSE_PORTAL;
-        } else if (Ambiance.config.blocks.respawnAnchor.portal_type == AmbianceConfig.ambiance$type.FANCY){
+        } else if (Ambiance.config.blocks.respawnAnchor.portalType == AmbianceConfig.ambiance$type.FANCY){
             return ParticleRegistry.AIR;
         } else return ParticleRegistry.AIR;
     }
