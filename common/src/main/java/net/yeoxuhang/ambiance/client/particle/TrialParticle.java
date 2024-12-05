@@ -16,7 +16,6 @@ public class TrialParticle extends TextureSheetParticle {
     protected TrialParticle(ClientLevel clientLevel, double d, double e, double f, double g, double h, double i, SpriteSet spriteSet, int age, float gravity, float speed, float size) {
         super(clientLevel, d, e, f);
         this.pickSprite(spriteSet);
-        //this.quadSize = 0.15F * (this.random.nextFloat() * 0.2F + 0.5F);
         this.xd = g;
         this.yd = h;
         this.zd = i;

@@ -6,16 +6,14 @@ import net.yeoxuhang.ambiance.Ambiance;
 
 @Config(id = Ambiance.MOD_ID)
 public class AmbianceConfig {
+    public AmbianceConfig(){
 
-    public AmbianceConfig(){}
+    }
 
     @Configurable
     public blocksCategory blocks = new blocksCategory();
 
     public static class blocksCategory {
-        
-
-        
         @Configurable
         public endPortalFrameCategory endPortalFrame = new endPortalFrameCategory();
         public static class endPortalFrameCategory {
@@ -24,7 +22,6 @@ public class AmbianceConfig {
             public boolean enableParticle = true;
 
             @Configurable
-            @Configurable.Gui.Slider
             @Configurable.DecimalRange(min = 0.5, max = 1.5)
             @Configurable.Comment("Particle Size")
             public float particleSize = 1;
@@ -41,7 +38,6 @@ public class AmbianceConfig {
 
             @Configurable
             @Configurable.Comment("Sound Volume")
-            @Configurable.Gui.Slider
             @Configurable.DecimalRange(min = 0.0, max = 1)
             public float soundVolume = 0.8f;
 
@@ -57,7 +53,6 @@ public class AmbianceConfig {
             public boolean enableParticle = true;
 
             @Configurable
-            @Configurable.Gui.Slider
             @Configurable.DecimalRange(min = 0.5, max = 1.5)
             @Configurable.Comment("Particle Size")
             public float particleSize = 1;
@@ -75,7 +70,6 @@ public class AmbianceConfig {
             public boolean enableParticle = true;
 
             @Configurable
-            @Configurable.Gui.Slider
             @Configurable.DecimalRange(min = 0.5, max = 1.5)
             @Configurable.Comment("Particle Size")
             public float particleSize = 1;
@@ -104,7 +98,7 @@ public class AmbianceConfig {
             @Configurable.Comment("Smoke Type")
             public ambiance$type2 smokeType = ambiance$type2.VANILLA;
             @Configurable
-            @Configurable.Comment("Smoke Type")
+            @Configurable.Comment("Flame Type")
             public ambiance$type2 flameType = ambiance$type2.VANILLA;
         }
 
@@ -119,7 +113,7 @@ public class AmbianceConfig {
             @Configurable.Comment("Smoke Type")
             public ambiance$type2 smokeType = ambiance$type2.VANILLA;
             @Configurable
-            @Configurable.Comment("Smoke Type")
+            @Configurable.Comment("Flame Type")
             public ambiance$type2 flameType = ambiance$type2.VANILLA;
         }
 
@@ -134,7 +128,7 @@ public class AmbianceConfig {
             @Configurable.Comment("Smoke Type")
             public ambiance$type2 smokeType = ambiance$type2.VANILLA;
             @Configurable
-            @Configurable.Comment("Smoke Type")
+            @Configurable.Comment("Flame Type")
             public ambiance$type2 flameType = ambiance$type2.VANILLA;
         }
 
@@ -153,7 +147,6 @@ public class AmbianceConfig {
 
                 @Configurable
                 @Configurable.Comment("Sound Volume")
-                @Configurable.Gui.Slider
                 @Configurable.DecimalRange(min = 0.0, max = 1)
                 public float soundVolume = 0.2f;
             }
@@ -170,7 +163,6 @@ public class AmbianceConfig {
 
                 @Configurable
                 @Configurable.Comment("Sound Volume")
-                @Configurable.Gui.Slider
                 @Configurable.DecimalRange(min = 0.0, max = 1)
                 public float soundVolume = 0.2f;
             }
@@ -188,7 +180,6 @@ public class AmbianceConfig {
         public netherPortalCategory netherPortal = new netherPortalCategory();
         public static class netherPortalCategory {
             @Configurable
-            @Configurable.Gui.Slider
             @Configurable.DecimalRange(min = 0.5, max = 1.5)
             @Configurable.Comment("Particle Size")
             public float particleSize = 1;
@@ -202,7 +193,6 @@ public class AmbianceConfig {
         public respawnAnchorCategory respawnAnchor = new respawnAnchorCategory();
         public static class respawnAnchorCategory {
             @Configurable
-            @Configurable.Gui.Slider
             @Configurable.DecimalRange(min = 0.5, max = 1.5)
             @Configurable.Comment("Particle Size")
             public float particleSize = 1;
@@ -210,52 +200,6 @@ public class AmbianceConfig {
             @Configurable
             @Configurable.Comment("Portal Type")
             public ambiance$type portalType = ambiance$type.FANCY;
-        }
-
-        @Configurable
-        public sculkSpreadCategory sculkSpread = new sculkSpreadCategory();
-        public static class sculkSpreadCategory {
-            @Configurable
-            @Configurable.Comment(value = "Enable Sculk Spreading")
-            public boolean enableParticle = true;
-        }
-
-        @Configurable
-        public decoratedPotCategory decoratedPot = new decoratedPotCategory();
-        public static class decoratedPotCategory {
-            @Configurable
-            @Configurable.Comment(value = "Enable Underwater Bubbles")
-            public boolean enableParticle = true;
-            @Configurable
-            @Configurable.Comment(value = "Enable Underwater Bubbles Sound")
-            public boolean enableSound = true;
-
-            @Configurable
-            @Configurable.Comment("Sound Volume")
-            @Configurable.Gui.Slider
-            @Configurable.DecimalRange(min = 0.0, max = 1)
-            public float soundVolume = 0.2f;
-        }
-        @Configurable
-        public trialChamberCategory trialChamber = new trialChamberCategory();
-        public static class trialChamberCategory {
-            @Configurable
-            public vaultCategory vault = new vaultCategory();
-            public static class vaultCategory {
-                @Configurable
-                @Configurable.Comment(value = "Enable Vault Ambient")
-                public boolean enableParticle = true;
-            }
-            @Configurable
-            public spawnerCategory spawner = new spawnerCategory();
-            public static class spawnerCategory {
-                @Configurable
-                @Configurable.Comment(value = "Enable Spawner Ambient")
-                public boolean enableParticle = true;
-            }
-            @Configurable
-            @Configurable.Comment(value = "Enable Item reward pop")
-            public boolean enableParticle = true;
         }
     }
 

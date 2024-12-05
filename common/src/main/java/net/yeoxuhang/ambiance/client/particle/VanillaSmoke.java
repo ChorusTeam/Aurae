@@ -1,12 +1,15 @@
 package net.yeoxuhang.ambiance.client.particle;
 
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.particle.*;
-import net.minecraft.core.particles.ColorParticleOption;
+import net.minecraft.client.particle.BaseAshSmokeParticle;
+import net.minecraft.client.particle.Particle;
+import net.minecraft.client.particle.ParticleProvider;
+import net.minecraft.client.particle.SpriteSet;
+import net.yeoxuhang.ambiance.client.particle.option.ColorParticleOption;
 
 public class VanillaSmoke extends BaseAshSmokeParticle {
     private final SpriteSet sprites;
-    protected VanillaSmoke(ClientLevel pLevel, double pX, double pY, double pZ, double pXSpeed, double pYSpeed, double pZSpeed, float pQuadSizeMultiplier, SpriteSet pSprites) {
+    public VanillaSmoke(ClientLevel pLevel, double pX, double pY, double pZ, double pXSpeed, double pYSpeed, double pZSpeed, float pQuadSizeMultiplier, SpriteSet pSprites) {
         super(pLevel, pX, pY, pZ, 0.1F, 0.1F, 0.1F, pXSpeed, pYSpeed, pZSpeed, pQuadSizeMultiplier, pSprites, 0.3F, 20, -0.05F, true);
         this.sprites = pSprites;
     }
@@ -20,23 +23,16 @@ public class VanillaSmoke extends BaseAshSmokeParticle {
         this.setSpriteFromAge(this.sprites);
     }
 
-
-    @Override
-    protected int getLightColor(float f) {
-        return 240;
-    }
-
     public static class Provider implements ParticleProvider<ColorParticleOption> {
         private final SpriteSet sprites;
 
-        public Provider(SpriteSet pSprites) {
-            this.sprites = pSprites;
+        public Provider(SpriteSet p_i51045_1_) {
+            this.sprites = p_i51045_1_;
         }
 
         public Particle createParticle(ColorParticleOption pType, ClientLevel pLevel, double pX, double pY, double pZ, double pXSpeed, double pYSpeed, double pZSpeed) {
             VanillaSmoke particle = new VanillaSmoke(pLevel, pX, pY, pZ, pXSpeed, pYSpeed, pZSpeed, 1.0F, this.sprites);
             particle.setColor(pType.getRed(), pType.getGreen(), pType.getBlue());
-            particle.setAlpha(pType.getAlpha());
             return particle;
         }
     }

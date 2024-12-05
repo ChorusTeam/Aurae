@@ -19,6 +19,6 @@ public class SoundRegistry {
     }
 
     public static void init() {
-        Ambiance.LOGGER_DEBUG.info("Registered sounds");
+        Ambiance.LOGGER_DEBUG.debug("Registered sounds");
     }
 }

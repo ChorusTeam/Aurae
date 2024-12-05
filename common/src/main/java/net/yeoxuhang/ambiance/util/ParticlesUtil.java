@@ -1,7 +1,7 @@
 package net.yeoxuhang.ambiance.util;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ColorParticleOption;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -9,16 +9,25 @@ import net.yeoxuhang.ambiance.Ambiance;
 import net.yeoxuhang.ambiance.client.AmbianceClient;
 import net.yeoxuhang.ambiance.client.particle.ParticleRegistry;
 import net.yeoxuhang.ambiance.client.particle.option.AshOption;
+import net.yeoxuhang.ambiance.client.particle.option.ColorParticleOption;
 import net.yeoxuhang.ambiance.config.AmbianceConfig;
 
 import java.util.Objects;
+import java.util.Random;
 
 public class ParticlesUtil {
+
+    public static void spawnParticleBelow(Level pLevel, BlockPos pPos, Random pRandom, ParticleOptions pParticle) {
+        double d0 = (double)pPos.getX() + pRandom.nextDouble();
+        double d1 = (double)pPos.getY() - 0.05;
+        double d2 = (double)pPos.getZ() + pRandom.nextDouble();
+        pLevel.addParticle(pParticle, d0, d1, d2, 0.0, 0.0, 0.0);
+    }
 
     public static void endremEyePlace(Level level, BlockPos pos){
         AmbianceClient.schedule(level, 1, (clientWorld) -> {
             if (pos != null) {
-                String endRemasteredEye = Objects.requireNonNull(NbtGetter.endrem$getEyeType(level, pos));
+                String endRemasteredEye = Objects.requireNonNull(NbtGetter.getBlockStateProperty(level, pos, "eye"));
                 int o;
                 Ambiance.LOGGER_DEBUG.debug("End Remastered Eye Type: " + endRemasteredEye);
                 for (o = 0; o < 4; ++o) {

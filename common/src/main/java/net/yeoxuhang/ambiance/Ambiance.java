@@ -2,7 +2,6 @@ package net.yeoxuhang.ambiance;
 
 import com.google.common.base.Suppliers;
 import dev.toma.configuration.Configuration;
-import dev.toma.configuration.config.ConfigHolder;
 import dev.toma.configuration.config.format.ConfigFormats;
 import net.minecraft.resources.ResourceLocation;
 import net.yeoxuhang.ambiance.config.AmbianceConfig;
@@ -21,15 +20,14 @@ public class Ambiance {
     public static final Logger LOGGER_DEBUG = LogManager.getLogger("Ambiance/Debug");
 
     public static void init() {
+        config = Configuration.registerConfig(AmbianceConfig.class, ConfigFormats.json()).getConfigInstance();
         Registries.init();
-        ConfigHolder<AmbianceConfig> configHolder = Configuration.registerConfig(AmbianceConfig.class, ConfigFormats.JSON);
-        config = configHolder.getConfigInstance();
     }
     public static Supplier<Boolean> isModLoaded(String mod){
         return Suppliers.memoize(() -> Services.PLATFORM.isModLoaded(mod));
     }
 
-    public static ResourceLocation name(String name){
-        return ResourceLocation.fromNamespaceAndPath(MOD_ID, name);
+    public static ResourceLocation rL(String string){
+        return new ResourceLocation(Ambiance.MOD_ID, string);
     }
 }

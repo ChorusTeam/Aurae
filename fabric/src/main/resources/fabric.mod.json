@@ -3,6 +3,7 @@
   "id": "ambiance",
   "name": "Ambiance",
   "version": "${version}",
+  "credits": "${credits}",
   "description": "A small Minecraft Mod that add new ambient effects to the Minecraft! \n\nSupport Us on Patreon for future projects!",
   "authors": [
     "Team Chorus", "YeoXuHang"
@@ -14,7 +15,7 @@
     "repo": "https://github.com/ChorusTeam/Ambiance"
   },
   "license": "All rights reserved.",
-  "icon": "assets/ambiance/icon.png",
+  "icon": "icon.png",
   "environment": "client",
   "entrypoints": {
     "client": [
