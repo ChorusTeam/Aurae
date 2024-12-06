@@ -3,6 +3,7 @@ package net.yeoxuhang.ambiance.mixin;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.EndPortalBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -24,7 +25,7 @@ import java.util.Random;
 public class EndPortalBlockMixin {
 
     @Inject(method = "animateTick", at = @At("RETURN"))
-    public void animateTick(BlockState blockState, Level level, BlockPos blockPos, Random randomSource, CallbackInfo ci) {
+    public void animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource, CallbackInfo ci) {
         if (Ambiance.config.blocks.endPortal.enableParticle) {
             for(int i = 0; i < 3; ++i) {
                 double d = (double)blockPos.getX() + randomSource.nextDouble();

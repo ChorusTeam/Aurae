@@ -4,11 +4,20 @@ import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.util.Mth;
+import net.minecraft.util.ParticleUtils;
+import net.minecraft.util.RandomSource;
+import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.MultifaceBlock;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.yeoxuhang.ambiance.Ambiance;
@@ -27,7 +36,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.Random;
+import java.util.function.Supplier;
 
 @Mixin(LevelRenderer.class)
 public abstract class LevelRendererMixin implements ResourceManagerReloadListener, AutoCloseable{
@@ -54,9 +63,9 @@ public abstract class LevelRendererMixin implements ResourceManagerReloadListene
     }
 
     @Inject(method = "levelEvent", at = @At("HEAD"))
-    public void ambiance$levelEvent(Player player, int i, BlockPos blockPos, int j, CallbackInfo ci) {
+    public void ambiance$levelEvent(int i, BlockPos blockPos, int j, CallbackInfo ci) {
         assert this.level != null;
-        Random randomSource = this.level.random;
+        RandomSource randomSource = this.level.random;
         int o;
         switch (i) {
             case 1503:
@@ -100,6 +109,34 @@ public abstract class LevelRendererMixin implements ResourceManagerReloadListene
                     for (double g = 0.0; g < Math.PI * 2; g += 0.15707963267948966) {
                         level.addAlwaysVisibleParticle(TrialOption.create(ParticleRegistry.PORTAL.get() ,(int)(Math.random() * 10.0) + 40, 1F, 0.01F,0.1F, MthHelper.randomDarkerColor("CC00FA") , 1F), d + Math.cos(g) * 5.0, e - 0.4, f + Math.sin(g) * 5.0, Math.cos(g) * -5.0, 0.0, Math.sin(g) * -5.0);
                         level.addAlwaysVisibleParticle(TrialOption.create(ParticleRegistry.PORTAL.get() ,(int)(Math.random() * 10.0) + 40, 1F, 0.01F,0.1F, MthHelper.randomDarkerColor("CC00FA") , 1F), d + Math.cos(g) * 5.0, e - 0.4, f + Math.sin(g) * 5.0, Math.cos(g) * -7.0, 0.0, Math.sin(g) * -7.0);
+                    }
+                }
+                break;
+
+            case 3006:
+                int u = j >> 6;
+                if (Ambiance.config.blocks.sculkSpread.enableParticle){
+                    if (u > 0) {
+                        if (randomSource.nextFloat() < 0.3f + (float)u * 0.1f) {
+                            float n = 0.15f + 0.02f * (float)u * (float)u * randomSource.nextFloat();
+                            float y = 0.4f + 0.3f * (float)u * randomSource.nextFloat();
+                            this.level.playLocalSound(blockPos, SoundEvents.SCULK_BLOCK_CHARGE, SoundSource.BLOCKS, n, y, false);
+                        }
+                        byte b = (byte)(j & 0x3F);
+                        UniformInt intProvider = UniformInt.of(0, u);
+                        Supplier<Vec3> supplier = () -> new Vec3(Mth.nextDouble(randomSource, -0.005f, 0.005f), Mth.nextDouble(randomSource, -0.005f, 0.005f), Mth.nextDouble(randomSource, -0.005f, 0.005f));
+                        if (b == 0) {
+                            for (Direction direction : Direction.values()) {
+                                double r = direction.getAxis() == Direction.Axis.Y ? 0.65 : 0.57;
+                                ParticleUtils.spawnParticlesOnBlockFace(this.level, blockPos.above(), new BlockParticleOption(ParticleTypes.BLOCK, Blocks.SCULK.defaultBlockState()), intProvider, direction, supplier, r);
+                            }
+                        } else {
+                            for (Direction direction2 : MultifaceBlock.unpack(b)) {
+                                double q = 0.35;
+                                ParticleUtils.spawnParticlesOnBlockFace(this.level, blockPos.above(), new BlockParticleOption(ParticleTypes.BLOCK, Blocks.SCULK.defaultBlockState()), intProvider, direction2, supplier, q);
+
+                            }
+                        }
                     }
                 }
                 break;

@@ -6,6 +6,7 @@ import net.minecraft.client.particle.ParticleRenderType;
 import net.minecraft.client.particle.SpriteSet;
 import net.minecraft.client.particle.TextureSheetParticle;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.yeoxuhang.ambiance.client.particle.option.ColorParticleOption;
 
 import java.util.Random;
@@ -80,7 +81,7 @@ public class FireAshParticle extends TextureSheetParticle {
         }
 
         public FireAshParticle createParticle(ColorParticleOption colorParticleOption, ClientLevel clientLevel, double d, double e, double f, double g, double h, double i) {
-            Random randomSource = clientLevel.random;
+            RandomSource randomSource = clientLevel.random;
             double j = randomSource.nextGaussian() * 0.999999974752427E-10;
             double k = randomSource.nextGaussian() * 0.999999747378752E-3;
             double l = randomSource.nextGaussian() * 0.999999974752427E-10;

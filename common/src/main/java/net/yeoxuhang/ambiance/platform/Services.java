@@ -7,7 +7,6 @@ import net.yeoxuhang.ambiance.platform.services.RegistryHelper;
 import java.util.ServiceLoader;
 
 public class Services {
-    // mod is loaded.
     public static final IPlatformHelper PLATFORM = load(IPlatformHelper.class);
     public static final RegistryHelper REGISTRY = load(RegistryHelper.class);
 

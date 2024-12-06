@@ -71,8 +71,8 @@ dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     annotationProcessor("org.spongepowered:mixin:0.8.5-SNAPSHOT:processor")
     //implementation("maven.modrinth:configuration:${project.configuration_forge}")
-    implementation fg.deobf("curse.maven:configuration-444699:4710263")
-    // Forge's hack fix
+    //implementation("maven.modrinth:endrem:${project.endrem_forge}")
+    implementation fg.deobf("curse.maven:configuration-444699:5030099")
     implementation('net.sf.jopt-simple:jopt-simple:5.0.4') { version { strictly '5.0.4' } }
 
     compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.4.1"))

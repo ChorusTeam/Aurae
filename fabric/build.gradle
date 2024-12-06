@@ -14,6 +14,7 @@ dependencies {
 
     modImplementation("com.terraformersmc:modmenu:${project.mod_menu_version}")
     modImplementation ("maven.modrinth:configuration:${project.configuration_fabric}")
+    modImplementation ("maven.modrinth:endrem:${project.endrem_fabric}")
 }
 
 loom {

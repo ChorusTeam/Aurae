@@ -3,6 +3,7 @@ package net.yeoxuhang.ambiance.mixin;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.NetherPortalBlock;
@@ -28,7 +29,7 @@ public class NetherPortalBlockMixin extends Block {
     }
 
     @Inject(method = "animateTick", at = @At("RETURN"))
-    public void animateTick(BlockState blockState, Level level, BlockPos blockPos, Random randomSource, CallbackInfo ci) {
+    public void animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource, CallbackInfo ci) {
         if (Ambiance.config.blocks.netherPortal.portalType == AmbianceConfig.ambiance$type.FANCY){
             for(int i = 0; i < 4; ++i) {
                 double d0 = (double)blockPos.getX() + randomSource.nextDouble();

@@ -2,6 +2,7 @@ package net.yeoxuhang.ambiance.mixin;
 
 import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.AbstractCandleBlock;
 import net.minecraft.world.phys.Vec3;
@@ -20,7 +21,7 @@ import java.util.Random;
 public class CandleBlockMixin {
 
     @Inject(method = "addParticlesAndSound", at = @At(value = "TAIL"))
-    private static void ambiance$addAlwaysVisibleParticlesAndSound(Level level, Vec3 vec3, Random randomSource, CallbackInfo ci) {
+    private static void ambiance$addAlwaysVisibleParticlesAndSound(Level level, Vec3 vec3, RandomSource randomSource, CallbackInfo ci) {
         if (randomSource.nextBoolean() && Ambiance.config.blocks.candle.enableParticle) {
             int randomColor = MthHelper.createRandomColor(13200387, 15715670);
             level.addAlwaysVisibleParticle(AshOption.create((int) (Math.random() * 10.0 + 5), 0.025F, -0.1F, randomSource.nextFloat() * 0.1F, randomColor, 1.0F), vec3.x, vec3.y, vec3.z, 0.0, 0.0, 0.0);

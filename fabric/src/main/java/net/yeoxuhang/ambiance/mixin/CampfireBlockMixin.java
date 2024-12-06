@@ -3,6 +3,7 @@ package net.yeoxuhang.ambiance.mixin;
 import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -31,7 +32,7 @@ public class CampfireBlockMixin extends Block {
     }
 
     @Inject(method = "animateTick", at = @At("RETURN"))
-    public void ambiance$animateTick(BlockState blockState, Level level, BlockPos blockPos, Random randomSource, CallbackInfo ci) {
+    public void ambiance$animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource, CallbackInfo ci) {
         if (blockState.getValue(LIT) && Ambiance.config.blocks.campfire.enableParticle){
             if (blockState.is(Blocks.CAMPFIRE)){
                 int randomColor = MthHelper.createRandomColor(13200387, 15715670);

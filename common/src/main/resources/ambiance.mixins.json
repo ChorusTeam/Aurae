@@ -18,6 +18,7 @@
     "EyeOfEnderMixin",
     "LavaCauldronBlockMixin",
     "NetherPortalBlockMixin",
+    "RespawnAnchorBlockMixin",
     "SoulSandBlockMixin",
     "TorchBlockMixin",
     "WallTorchBlockMixin",

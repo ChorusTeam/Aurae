@@ -1,6 +1,6 @@
 plugins {
     id 'multiloader-common'
-    id 'net.minecraftforge.gradle' version '[6.0.24,6.2)'
+    id 'net.minecraftforge.gradle' version '[6.0.16,6.2)'
 }
 
 repositories {
@@ -20,8 +20,7 @@ repositories {
 }
 
 minecraft {
-    mappings channel: 'official', version: minecraft_version
-
+    mappings channel: 'official', version: "${minecraft_version}"
     runs {
         client {
             workingDirectory project.file('run/client')
@@ -50,7 +49,6 @@ minecraft {
 }
 
 dependencies {
-    // Forge dependency for 1.18.2
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
     annotationProcessor("org.spongepowered:mixin:0.8.5-SNAPSHOT:processor")
@@ -59,6 +57,7 @@ dependencies {
     implementation('net.sf.jopt-simple:jopt-simple:5.0.4') { version { strictly '5.0.4' } }
 
     compileOnly("maven.modrinth:configuration:${project.configuration_forge}")
+    compileOnly("maven.modrinth:endrem:${project.endrem_forge}")
     // MixinExtras dependencies
     compileOnly fg.deobf("io.github.llamalad7:mixinextras-common:0.3.5")
     annotationProcessor "io.github.llamalad7:mixinextras-common:0.3.5"

@@ -3,6 +3,7 @@ package net.yeoxuhang.ambiance.mixin;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.RespawnAnchorBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -24,8 +25,8 @@ import static net.minecraft.world.level.block.RespawnAnchorBlock.CHARGE;
 @Mixin(RespawnAnchorBlock.class)
 public class RespawnAnchorBlockMixin {
 
-    @Inject(method = "animateTick", at = @At("RETURN"))
-    public void animateTick(BlockState blockState, Level level, BlockPos blockPos, Random randomSource, CallbackInfo ci) {
+    @Inject(method = "animateTick", at = @At("HEAD"))
+    public void animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource, CallbackInfo ci) {
         if (Ambiance.config.blocks.respawnAnchor.portalType == AmbianceConfig.ambiance$type.FANCY){
             double d0 = (double)blockPos.getX() + 0.5D + (0.5D - randomSource.nextDouble());
             double d1 = (double)blockPos.getY() + 1.0D;

@@ -4,6 +4,7 @@ import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseFireBlock;
 import net.minecraft.world.level.block.Block;
@@ -23,7 +24,6 @@ import java.util.Random;
 
 @Mixin(BaseFireBlock.class)
 public abstract class BaseFireBlockMixin extends Block {
-
     @Shadow protected abstract boolean canBurn(BlockState blockState);
 
     public BaseFireBlockMixin(Properties properties) {
@@ -31,7 +31,7 @@ public abstract class BaseFireBlockMixin extends Block {
     }
 
     @Inject(method = "animateTick", at = @At(value = "RETURN"))
-    public void ambiance$animateTick(BlockState blockState, Level level, BlockPos blockPos, Random randomSource, CallbackInfo ci) {
+    public void ambiance$animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource, CallbackInfo ci) {
         BlockPos blockPos2 = blockPos.below();
         BlockState blockState2 = level.getBlockState(blockPos2);
         int i;

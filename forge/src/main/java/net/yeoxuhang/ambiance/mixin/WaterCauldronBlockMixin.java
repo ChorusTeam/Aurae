@@ -3,6 +3,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.LayeredCauldronBlock;
@@ -20,7 +21,7 @@ public class WaterCauldronBlockMixin {
 
     @Inject(method = "entityInside", at = @At("RETURN"))
     protected void entityInside(BlockState blockState, Level level, BlockPos blockPos, Entity entity, CallbackInfo ci) {
-        Random randomSource = level.random;
+        RandomSource randomSource = level.random;
         double x = blockPos.getX() + randomSource.nextDouble();
         double y = blockPos.getY() + 1.2;
         double z = blockPos.getZ() + randomSource.nextDouble();

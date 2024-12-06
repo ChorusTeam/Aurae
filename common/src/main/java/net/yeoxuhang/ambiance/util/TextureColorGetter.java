@@ -13,7 +13,7 @@ public class TextureColorGetter {
     public static String getHexColorFromTexture(String modid, String texturePath, int x, int y) {
         try {
             ResourceLocation resourceLocation = new ResourceLocation(modid, texturePath);
-            InputStream inputStream = Minecraft.getInstance().getResourceManager().getResource(resourceLocation).getInputStream();
+            InputStream inputStream = Minecraft.getInstance().getResourceManager().getResource(resourceLocation).get().open();
             BufferedImage image = ImageIO.read(inputStream);
             int pixelColor = image.getRGB(x, y);
             Color color = new Color(pixelColor, true); // Create a Color object

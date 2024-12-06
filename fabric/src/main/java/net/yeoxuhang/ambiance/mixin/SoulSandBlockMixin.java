@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.tags.BiomeTags;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoulSandBlock;
@@ -22,7 +23,7 @@ public class SoulSandBlockMixin extends Block {
         super(properties);
     }
 
-    public void animateTick(BlockState blockState, Level level, BlockPos blockPos, Random randomSource) {
+    public void animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource) {
         super.animateTick(blockState, level, blockPos, randomSource);
         if(blockState.getBlock() instanceof SoulSandBlock && randomSource.nextInt(1000) == 1 && Ambiance.config.blocks.soulSand.enableParticle && level.getBiome(blockPos).is(BiomeTags.IS_NETHER)) {
             double x = blockPos.getX() + randomSource.nextDouble();

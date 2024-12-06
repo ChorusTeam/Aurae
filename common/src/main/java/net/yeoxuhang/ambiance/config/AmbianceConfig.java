@@ -201,6 +201,14 @@ public class AmbianceConfig {
             @Configurable.Comment("Portal Type")
             public ambiance$type portalType = ambiance$type.FANCY;
         }
+
+        @Configurable
+        public sculkSpreadCategory sculkSpread = new sculkSpreadCategory();
+        public static class sculkSpreadCategory {
+            @Configurable
+            @Configurable.Comment(value = "Enable Sculk Spreading")
+            public boolean enableParticle = true;
+        }
     }
 
     @Configurable

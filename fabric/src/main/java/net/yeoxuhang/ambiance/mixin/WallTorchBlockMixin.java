@@ -6,6 +6,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.TorchBlock;
 import net.minecraft.world.level.block.WallTorchBlock;
@@ -33,7 +34,7 @@ public class WallTorchBlockMixin extends TorchBlock{
     }
 
     @Inject(method = "animateTick", at = @At("HEAD"))
-    public void animateTick(BlockState blockState, Level level, BlockPos blockPos, Random randomSource, CallbackInfo ci) {
+    public void animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource, CallbackInfo ci) {
         Direction direction = blockState.getValue(FACING);
         double d = (double)blockPos.getX() + 0.5;
         double e = (double)blockPos.getY() + 0.7;

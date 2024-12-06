@@ -5,6 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.TorchBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -26,7 +27,7 @@ public class TorchBlockMixin {
     @Shadow @Final protected ParticleOptions flameParticle;
 
     @Inject(method = "animateTick", at = @At("HEAD"))
-    public void animateTick(BlockState blockState, Level level, BlockPos blockPos, Random randomSource, CallbackInfo ci) {
+    public void animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource, CallbackInfo ci) {
         double d = (double)blockPos.getX() + 0.5;
         double e = (double)blockPos.getY() + 0.7;
         double f = (double)blockPos.getZ() + 0.5;

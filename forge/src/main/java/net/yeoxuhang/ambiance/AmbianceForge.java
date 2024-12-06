@@ -1,7 +1,7 @@
 package net.yeoxuhang.ambiance;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
+import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -25,17 +25,18 @@ public class AmbianceForge {
     public static class ClientEventSubscriber {
 
         @SubscribeEvent
-        public static void onParticleFactoryRegister(ParticleFactoryRegisterEvent event) {
-            Minecraft.getInstance().particleEngine.register(ParticleRegistry.AIR.get(), EmptyParticle.Provider::new);
-            Minecraft.getInstance().particleEngine.register(ParticleRegistry.ASH.get(), AshParticle.Provider::new);
-            Minecraft.getInstance().particleEngine.register(ParticleRegistry.END_PORTAL_ASH.get(), AshParticle.Provider::new);
-            Minecraft.getInstance().particleEngine.register(ParticleRegistry.TRIAL.get(), TrialParticle.Provider::new);
-            Minecraft.getInstance().particleEngine.register(ParticleRegistry.END_GATEWAY.get(), TrialParticle.Provider::new);
-            Minecraft.getInstance().particleEngine.register(ParticleRegistry.FIRE_ASH.get(), FireAshParticle.Provider::new);
-            Minecraft.getInstance().particleEngine.register(ParticleRegistry.PORTAL.get(), PortalAshParticle.Provider::new);
-            Minecraft.getInstance().particleEngine.register(ParticleRegistry.REVERSE_PORTAL.get(), ReversePortalAshParticle.Provider::new);
-            Minecraft.getInstance().particleEngine.register(ParticleRegistry.ENDER_EYE_PLACE.get(), EnderEyePlaceParticle.Provider::new);
-            Minecraft.getInstance().particleEngine.register(ParticleRegistry.COLOR_ASH.get(), VanillaSmoke.Provider::new);
+        public static void onParticleFactoryRegister(RegisterParticleProvidersEvent event) {
+            event.register(ParticleRegistry.AIR.get(), EmptyParticle.Provider::new);
+            event.register(ParticleRegistry.AIR.get(), EmptyParticle.Provider::new);
+            event.register(ParticleRegistry.ASH.get(), AshParticle.Provider::new);
+            event.register(ParticleRegistry.END_PORTAL_ASH.get(), AshParticle.Provider::new);
+            event.register(ParticleRegistry.TRIAL.get(), TrialParticle.Provider::new);
+            event.register(ParticleRegistry.END_GATEWAY.get(), TrialParticle.Provider::new);
+            event.register(ParticleRegistry.FIRE_ASH.get(), FireAshParticle.Provider::new);
+            event.register(ParticleRegistry.PORTAL.get(), PortalAshParticle.Provider::new);
+            event.register(ParticleRegistry.REVERSE_PORTAL.get(), ReversePortalAshParticle.Provider::new);
+            event.register(ParticleRegistry.ENDER_EYE_PLACE.get(), EnderEyePlaceParticle.Provider::new);
+            event.register(ParticleRegistry.COLOR_ASH.get(), VanillaSmoke.Provider::new);
         }
     }
 
