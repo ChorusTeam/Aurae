@@ -70,8 +70,8 @@ sourceSets.main.resources.srcDir 'src/generated/resources'
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     annotationProcessor("org.spongepowered:mixin:0.8.5-SNAPSHOT:processor")
-    //implementation("maven.modrinth:configuration:${project.configuration_forge}")
-    implementation fg.deobf("curse.maven:configuration-444699:4710263")
+    implementation("maven.modrinth:configuration:${project.configuration_forge}")
+    //implementation("maven.modrinth:endrem:${project.endrem_forge}")
     // Forge's hack fix
     implementation('net.sf.jopt-simple:jopt-simple:5.0.4') { version { strictly '5.0.4' } }
 

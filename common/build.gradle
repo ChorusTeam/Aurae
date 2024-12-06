@@ -59,6 +59,7 @@ dependencies {
     implementation('net.sf.jopt-simple:jopt-simple:5.0.4') { version { strictly '5.0.4' } }
 
     compileOnly("maven.modrinth:configuration:${project.configuration_forge}")
+    //compileOnly("maven.modrinth:endrem:${project.endrem_forge}")
     // MixinExtras dependencies
     compileOnly fg.deobf("io.github.llamalad7:mixinextras-common:0.3.5")
     annotationProcessor "io.github.llamalad7:mixinextras-common:0.3.5"
