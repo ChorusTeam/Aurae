@@ -17,13 +17,6 @@ import java.util.Objects;
 
 public class ParticlesUtil {
 
-    public static void spawnParticleBelow(Level pLevel, BlockPos pPos, RandomSource pRandom, ParticleOptions pParticle) {
-        double d0 = (double)pPos.getX() + pRandom.nextDouble();
-        double d1 = (double)pPos.getY() - 0.05;
-        double d2 = (double)pPos.getZ() + pRandom.nextDouble();
-        pLevel.addParticle(pParticle, d0, d1, d2, 0.0, 0.0, 0.0);
-    }
-
     public static void endremEyePlace(Level level, BlockPos pos){
         AmbianceClient.schedule(level, 1, (clientWorld) -> {
             if (pos != null) {

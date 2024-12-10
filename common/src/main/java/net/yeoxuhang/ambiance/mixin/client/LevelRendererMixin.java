@@ -17,6 +17,7 @@ import net.minecraft.util.ParticleUtils;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.DecoratedPotBlock;
 import net.minecraft.world.level.block.MultifaceBlock;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -37,6 +38,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.function.Supplier;
+
+import static net.minecraft.world.level.block.state.properties.BlockStateProperties.WATERLOGGED;
 
 @Mixin(LevelRenderer.class)
 public abstract class LevelRendererMixin implements ResourceManagerReloadListener, AutoCloseable{
@@ -137,6 +140,20 @@ public abstract class LevelRendererMixin implements ResourceManagerReloadListene
 
                             }
                         }
+                    }
+                }
+                break;
+
+            case 2001:
+                if (level.getBlockState(blockPos).getBlock() instanceof DecoratedPotBlock && level.getBlockState(blockPos).getValue(WATERLOGGED) && Ambiance.config.blocks.decoratedPot.enableParticle) {
+                    for(int z = 0; z < 20; ++z) {
+                        level.addAlwaysVisibleParticle(ParticleTypes.BUBBLE_COLUMN_UP, blockPos.getX() + level.random.nextDouble(), blockPos.getY() + level.random.nextDouble(),  blockPos.getZ() + level.random.nextDouble(), 0.0, 0.0, 0.0);
+                    }
+                    double d = blockPos.getX();
+                    double e = blockPos.getY();
+                    double f = blockPos.getZ();
+                    if (Ambiance.config.blocks.decoratedPot.enableSound){
+                        level.playLocalSound(d, e, f, SoundEvents.BUBBLE_COLUMN_UPWARDS_AMBIENT, SoundSource.BLOCKS, Ambiance.config.blocks.decoratedPot.soundVolume, 0.9f + level.random.nextFloat() * 0.15f, false);
                     }
                 }
                 break;

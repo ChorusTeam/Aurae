@@ -4,13 +4,13 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.tags.BiomeTags;
+import net.minecraft.util.ParticleUtils;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoulSandBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.yeoxuhang.ambiance.Ambiance;
-import net.yeoxuhang.ambiance.util.ParticlesUtil;
 import org.spongepowered.asm.mixin.Mixin;
 
 import static net.minecraft.world.level.block.FallingBlock.isFree;
@@ -30,7 +30,7 @@ public class SoulSandBlockMixin extends Block {
             level.addAlwaysVisibleParticle(ParticleTypes.SOUL, x, y, z, 0, 0, 0);
         }
         if (randomSource.nextInt(16) == 0 && isFree(level.getBlockState(blockPos.below())) && Ambiance.config.blocks.soulSand.enableParticle) {
-            ParticlesUtil.spawnParticleBelow(level, blockPos, randomSource, new BlockParticleOption(ParticleTypes.FALLING_DUST, blockState));
+            ParticleUtils.spawnParticleBelow(level, blockPos, randomSource, new BlockParticleOption(ParticleTypes.FALLING_DUST, blockState));
         }
     }
 }
