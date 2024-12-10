@@ -2,32 +2,11 @@
   "required": true,
   "minVersion": "0.8",
   "package": "net.yeoxuhang.ambiance.mixin",
-  "compatibilityLevel": "JAVA_8",
-  "refmap": "ambiance.refmap.json",
-  "mixins": [
-    "BaseFireBlockMixin",
-    "BlazeMixin",
-    "BlockEntityAccessor",
-    "CampfireBlockMixin",
-    "CandleBlockMixin",
-    "CauldronBlockMixin",
-    "EndermanMixin",
-    "EndermiteMixin",
-    "EndGatewayBlockMixin",
-    "EndPortalBlockMixin",
-    "EyeOfEnderMixin",
-    "LavaCauldronBlockMixin",
-    "NetherPortalBlockMixin",
-    "RespawnAnchorBlockMixin",
-    "SoulSandBlockMixin",
-    "TorchBlockMixin",
-    "WallTorchBlockMixin",
-    "WaterCauldronBlockMixin"
-  ],
+  "compatibilityLevel": "JAVA_18",
+  "mixins": [],
   "client": [
-    "MinecraftMixin",
-    "client.LevelRendererMixin"
   ],
+  "server": [],
   "injectors": {
     "defaultRequire": 1
   }

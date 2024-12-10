@@ -9,8 +9,6 @@ import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.yeoxuhang.ambiance.client.particle.option.ColorParticleOption;
 
-import java.util.Random;
-
 public class FireAshParticle extends TextureSheetParticle {
     private final float rotSpeed;
     private final SpriteSet sprites;

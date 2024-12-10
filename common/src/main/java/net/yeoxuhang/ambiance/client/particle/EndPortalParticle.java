@@ -1,14 +1,14 @@
 package net.yeoxuhang.ambiance.client.particle;
 
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Quaternion;
-import com.mojang.math.Vector3f;
 import net.minecraft.client.Camera;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
 public class EndPortalParticle extends TextureSheetParticle {
 
@@ -24,70 +24,67 @@ public class EndPortalParticle extends TextureSheetParticle {
         this.zd = 0.0;
     }
 
-    @Override
-    public void render(VertexConsumer vertexBuilder, Camera camera, float partialTicks) {
-        this.alpha = 1.0F - Mth.clamp(((float) this.age + partialTicks) / (float) this.lifetime, 0.0F, 1.0F);
-        Quaternion y = new Quaternion(new Vector3f(0, 1, 0), 0, true);
-        this.renderParticle(vertexBuilder, camera, y, partialTicks, 0, 0.26F);
-        this.renderParticle(vertexBuilder, camera, y, partialTicks, 0, -0.26F);
-        Quaternion y1 = new Quaternion(new Vector3f(0, 1, 0), 180, true);
-        this.renderParticle(vertexBuilder, camera, y1, partialTicks, 0, 0.26F);
-        this.renderParticle(vertexBuilder, camera, y1, partialTicks, 0, -0.26F);
-        Quaternion y2 = new Quaternion(new Vector3f(0, 1, 0), 90, true);
-        this.renderParticle(vertexBuilder, camera, y2, partialTicks, 0.26F, 0);
-        this.renderParticle(vertexBuilder, camera, y2, partialTicks, -0.26F, 0);
-        Quaternion y3 = new Quaternion(new Vector3f(0, 1, 0), -90, true);
-        this.renderParticle(vertexBuilder, camera, y3, partialTicks, 0.26F, 0);
-        this.renderParticle(vertexBuilder, camera, y3, partialTicks, -0.26F, 0);
+    public void render(VertexConsumer vertexConsumer, Camera camera, float f) {
+        //this.alpha = 1.0F - Mth.clamp(((float)this.age + f) / (float)this.lifetime, 0.0F, 1.0F);
+        Quaternionf quaternionf = new Quaternionf();
+        this.renderParticle(vertexConsumer, camera, quaternionf.rotationY(-1.57F), f, 1.5F, 0);
+        this.renderParticle(vertexConsumer, camera, quaternionf.rotationY(1.57F), f, 1.5F, 0);
+        this.renderParticle(vertexConsumer, camera, quaternionf.rotationY(-1.57F), f, 1.5F, 1F);
+        this.renderParticle(vertexConsumer, camera, quaternionf.rotationY(1.57F), f, 1.5F, 1F);
+        this.renderParticle(vertexConsumer, camera, quaternionf.rotationY(-1.57F), f, 1.5F, -1F);
+        this.renderParticle(vertexConsumer, camera, quaternionf.rotationY(1.57F), f, 1.5F, -1F);
+
+        this.renderParticle(vertexConsumer, camera, quaternionf.rotationY(-1.57F), f, -1.5F, 0);
+        this.renderParticle(vertexConsumer, camera, quaternionf.rotationY(1.57F), f, -1.5F, 0);
+        this.renderParticle(vertexConsumer, camera, quaternionf.rotationY(-1.57F), f, -1.5F, 1F);
+        this.renderParticle(vertexConsumer, camera, quaternionf.rotationY(1.57F), f, -1.5F, 1F);
+        this.renderParticle(vertexConsumer, camera, quaternionf.rotationY(-1.57F), f, -1.5F, -1F);
+        this.renderParticle(vertexConsumer, camera, quaternionf.rotationY(1.57F), f, -1.5F, -1F);
+
+        this.renderParticle(vertexConsumer, camera, quaternionf.rotationY(3.14F), f, 0, 1.5F);
+        this.renderParticle(vertexConsumer, camera, quaternionf.rotationY(0), f, 0, 1.5F);
+        this.renderParticle(vertexConsumer, camera, quaternionf.rotationY(3.14F), f, 1F, 1.5F);
+        this.renderParticle(vertexConsumer, camera, quaternionf.rotationY(0), f, 1F, 1.5F);
+        this.renderParticle(vertexConsumer, camera, quaternionf.rotationY(3.14F), f, -1F, 1.5F);
+        this.renderParticle(vertexConsumer, camera, quaternionf.rotationY(0), f, -1F, 1.5F);
+
+        this.renderParticle(vertexConsumer, camera, quaternionf.rotationY(3.14F), f, 0, -1.5F);
+        this.renderParticle(vertexConsumer, camera, quaternionf.rotationY(0), f, 0, -1.5F);
+        this.renderParticle(vertexConsumer, camera, quaternionf.rotationY(3.14F), f, 1F, -1.5F);
+        this.renderParticle(vertexConsumer, camera, quaternionf.rotationY(0), f, 1F, -1.5F);
+        this.renderParticle(vertexConsumer, camera, quaternionf.rotationY(3.14F), f, -1F, -1.5F);
+        this.renderParticle(vertexConsumer, camera, quaternionf.rotationY(0), f, -1F, -1.5F);
     }
 
-    protected void renderParticle(VertexConsumer vertexBuilder, Camera camera, Quaternion quaternion, float partialTicks, float offsetX, float offsetZ) {
-        renderRotatedQuad(vertexBuilder, camera, quaternion, partialTicks, offsetX, offsetZ);
+    protected void renderParticle(VertexConsumer vertexConsumer, Camera camera, Quaternionf quaternionf, float f, float x, float z) {
+        this.renderRotatedQuad(vertexConsumer, camera, quaternionf, f, x, z);
     }
 
-    protected void renderRotatedQuad(VertexConsumer vertexBuilder, Camera camera, Quaternion quaternion, float partialTicks, float offsetX, float offsetZ) {
-        Vec3 cameraPos = camera.getPosition();
-        float x = (float) (Mth.lerp(partialTicks, this.xo, this.x) - cameraPos.x + offsetX);
-        float y = (float) (Mth.lerp(partialTicks, this.yo, this.y) - cameraPos.y);
-        float z = (float) (Mth.lerp(partialTicks, this.zo, this.z) - cameraPos.z + offsetZ);
-        this.renderQuad(vertexBuilder, quaternion, x, y, z, partialTicks);
+    protected void renderRotatedQuad(VertexConsumer vertexConsumer, Camera camera, Quaternionf quaternionf, float f, float x, float z) {
+        Vec3 vec3 = camera.getPosition();
+        float g = (float)(Mth.lerp(f, this.xo, this.x) - vec3.x() + x);
+        float h = (float)(Mth.lerp(f, this.yo, this.y) - vec3.y());
+        float i = (float)(Mth.lerp(f, this.zo, this.z) - vec3.z() + z);
+        this.renderRotatedQuad(vertexConsumer, quaternionf, g, h, i, f);
     }
 
-    protected void renderQuad(VertexConsumer buffer, Quaternion quaternion, float x, float y, float z, float partialTicks) {
-        float quadSize = this.getQuadSize(partialTicks);
-        float u0 = this.getU0();
-        float u1 = this.getU1();
-        float v0 = this.getV0();
-        float v1 = this.getV1();
-        int light = this.getLightColor(partialTicks);
-
-        Vector3f[] vertices = new Vector3f[]{
-                new Vector3f(-1.0F, -1.0F, 0.0F),
-                new Vector3f(-1.0F, 1.0F, 0.0F),
-                new Vector3f(1.0F, 1.0F, 0.0F),
-                new Vector3f(1.0F, -1.0F, 0.0F)
-        };
-
-        for (Vector3f vertex : vertices) {
-            vertex.mul(quadSize);
-            vertex.transform(quaternion);
-            vertex.add(x, y, z);
-        }
-
-        buffer.vertex(vertices[0].x(), vertices[0].y(), vertices[0].z())
-                .uv(u1, v1).color(rCol, gCol, bCol, alpha)
-                .uv2(light).endVertex();
-        buffer.vertex(vertices[1].x(), vertices[1].y(), vertices[1].z())
-                .uv(u1, v0).color(rCol, gCol, bCol, alpha)
-                .uv2(light).endVertex();
-        buffer.vertex(vertices[2].x(), vertices[2].y(), vertices[2].z())
-                .uv(u0, v0).color(rCol, gCol, bCol, alpha)
-                .uv2(light).endVertex();
-        buffer.vertex(vertices[3].x(), vertices[3].y(), vertices[3].z())
-                .uv(u0, v1).color(rCol, gCol, bCol, alpha)
-                .uv2(light).endVertex();
+    protected void renderRotatedQuad(VertexConsumer pBuffer, Quaternionf pQuaternion, float pX, float pY, float pZ, float pPartialTicks) {
+        float f = this.getQuadSize(pPartialTicks);
+        float f1 = this.getU0();
+        float f2 = this.getU1();
+        float f3 = this.getV0();
+        float f4 = this.getV1();
+        int i = this.getLightColor(pPartialTicks);
+        this.renderVertex(pBuffer, pQuaternion, pX, pY, pZ, 1.0F, -1.0F, f, f2, f4, i);
+        this.renderVertex(pBuffer, pQuaternion, pX, pY, pZ, 1.0F, 1.0F, f, f2, f3, i);
+        this.renderVertex(pBuffer, pQuaternion, pX, pY, pZ, -1.0F, 1.0F, f, f1, f3, i);
+        this.renderVertex(pBuffer, pQuaternion, pX, pY, pZ, -1.0F, -1.0F, f, f1, f4, i);
     }
 
+    private void renderVertex(VertexConsumer pBuffer, Quaternionf pQuaternion, float pX, float pY, float pZ, float pXOffset, float pYOffset, float pQuadSize, float pU, float pV, int pPackedLight) {
+        Vector3f vector3f = (new Vector3f(pXOffset, pYOffset, 0.0F)).rotate(pQuaternion).mul(pQuadSize).add(pX, pY, pZ);
+        pBuffer.vertex(vector3f.x(), vector3f.y(), vector3f.z()).uv(pU, pV).color(this.rCol, this.gCol, this.bCol, this.alpha).uv2(pPackedLight).endVertex();
+    }
 
     public int getLightColor(float f) {
         float g = ((float)this.age + f) / (float)this.lifetime;

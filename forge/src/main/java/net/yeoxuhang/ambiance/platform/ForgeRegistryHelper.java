@@ -26,7 +26,6 @@ public class ForgeRegistryHelper implements RegistryHelper {
             }
         });
     }
-
     @Override
     public Supplier<SimpleParticleType> registerParticle(String name, Boolean bl) {
         return PARTICLE_TYPES.register(name, ()-> new SimpleParticleType(bl));
@@ -34,6 +33,6 @@ public class ForgeRegistryHelper implements RegistryHelper {
 
     @Override
     public Supplier<SoundEvent> registerSound(String name, float distance) {
-        return SOUND.register(name, ()-> new SoundEvent(Ambiance.rL(name)));
+        return SOUND.register(name, ()-> SoundEvent.createFixedRangeEvent(Ambiance.rL(name), distance));
     }
 }

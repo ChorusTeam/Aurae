@@ -1,8 +1,8 @@
 package net.yeoxuhang.ambiance.platform;
 
-import net.yeoxuhang.ambiance.platform.services.IPlatformHelper;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.loading.FMLLoader;
+import net.yeoxuhang.ambiance.platform.services.IPlatformHelper;
 
 public class ForgePlatformHelper implements IPlatformHelper {
 

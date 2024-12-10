@@ -27,7 +27,7 @@ public class EndermanMixin extends Monster {
     public void aiStep(CallbackInfo ci) {
         if (random.nextInt(8) == 0){
             if (Ambiance.config.entities.enderman.enderManParticle == AmbianceConfig.ambiance$type.FANCY) {
-                this.level.addAlwaysVisibleParticle(TrialOption.create(ParticleRegistry.PORTAL.get() ,(int)(Math.random() * 10.0) + 40, 1F, 0.01F,0.1F, MthHelper.randomDarkerColor("CC00FA") , 1F),this.getRandomX(0.5), this.getRandomY() - 0.25, this.getRandomZ(0.5), (this.random.nextDouble() - 0.5) * 2.5, -this.random.nextDouble(), (this.random.nextDouble() - 0.5) * 2.5);
+                this.level().addAlwaysVisibleParticle(TrialOption.create(ParticleRegistry.PORTAL.get() ,(int)(Math.random() * 10.0) + 40, 1F, 0.01F,0.1F, MthHelper.randomDarkerColor("CC00FA") , 1F),this.getRandomX(0.5), this.getRandomY() - 0.25, this.getRandomZ(0.5), (this.random.nextDouble() - 0.5) * 2.5, -this.random.nextDouble(), (this.random.nextDouble() - 0.5) * 2.5);
             }
         }
     }

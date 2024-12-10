@@ -20,7 +20,7 @@ public class Ambiance {
     public static final Logger LOGGER_DEBUG = LogManager.getLogger("Ambiance/Debug");
 
     public static void init() {
-        config = Configuration.registerConfig(AmbianceConfig.class, ConfigFormats.json()).getConfigInstance();
+        config = Configuration.registerConfig(AmbianceConfig.class, ConfigFormats.JSON).getConfigInstance();
         Registries.init();
     }
     public static Supplier<Boolean> isModLoaded(String mod){

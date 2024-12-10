@@ -21,8 +21,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.Random;
-
 @Mixin(CampfireBlock.class)
 public class CampfireBlockMixin extends Block {
     @Shadow @Final public static BooleanProperty LIT;

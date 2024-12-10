@@ -31,40 +31,14 @@ repositories {
             url = 'https://maven.parchmentmc.org/'
         },
                 maven {
-                    name = "NeoForge"
-                    url = 'https://maven.neoforged.net/releases'
+                    name = "Forge"
+                    url = 'https://maven.minecraftforge.net'
                 })
         filter { includeGroup('org.parchmentmc.data') }
     }
     maven {
         name = 'BlameJared'
         url = 'https://maven.blamejared.com'
-    }
-
-    repositories {
-        // Add repositories to retrieve artifacts from in here.
-        // You should only use this when depending on other mods because
-        // Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
-        // See https://docs.gradle.org/current/userguide/declaring_repositories.html
-        // for more information about repositories.
-        maven {
-            name = "Modrinth"
-            url = "https://api.modrinth.com/maven"
-        }
-        maven {
-            name = "Terraformers"
-            url = "https://maven.terraformersmc.com/"
-        }
-
-        maven {
-            url "https://cursemaven.com"
-            name = "CurseMaven"
-        }
-
-        maven {
-            name 'Configuration'
-            url 'https://repsy.io/mvn/toma/public/'
-        }
     }
 }
 
@@ -120,7 +94,7 @@ processResources {
                        'credits'                      : credits,
                        'java_version'                 : java_version]
 
-    filesMatching(['pack.mcmeta', 'fabric.mod.json', 'META-INF/mods.toml', 'META-INF/neoforge.mods.toml', '*.mixins.json']) {
+    filesMatching(['pack.mcmeta', 'fabric.mod.json', 'META-INF/mods.toml', '*.mixins.json']) {
         expand expandProps
     }
     inputs.properties(expandProps)

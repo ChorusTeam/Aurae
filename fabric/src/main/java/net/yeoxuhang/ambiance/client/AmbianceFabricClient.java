@@ -2,8 +2,6 @@ package net.yeoxuhang.ambiance.client;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.particle.SimpleAnimatedParticle;
 import net.yeoxuhang.ambiance.client.particle.*;
 
 public final class AmbianceFabricClient implements ClientModInitializer {

@@ -2,8 +2,8 @@
   "required": true,
   "minVersion": "0.8",
   "package": "net.yeoxuhang.ambiance.mixin",
-  "compatibilityLevel": "JAVA_8",
-  "refmap": "ambiance.refmap.json",
+  "refmap": "${mod_id}.refmap.json",
+  "compatibilityLevel": "JAVA_18",
   "mixins": [
     "BaseFireBlockMixin",
     "BlazeMixin",
@@ -28,6 +28,7 @@
     "MinecraftMixin",
     "client.LevelRendererMixin"
   ],
+  "server": [],
   "injectors": {
     "defaultRequire": 1
   }

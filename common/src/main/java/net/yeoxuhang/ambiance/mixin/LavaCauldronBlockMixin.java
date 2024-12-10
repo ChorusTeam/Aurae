@@ -11,8 +11,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.yeoxuhang.ambiance.Ambiance;
 import org.spongepowered.asm.mixin.Mixin;
 
-import java.util.Random;
-
 @Mixin(LavaCauldronBlock.class)
 public class LavaCauldronBlockMixin extends Block {
 

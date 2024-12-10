@@ -10,7 +10,7 @@ public class SoundRegistry {
 
     public static final Supplier<SoundEvent> ENDER_EYE_PLACED = register("ender_eye_placed");
 
-    private static Supplier<SoundEvent> register(String name) {
+    private static Supplier register(String name) {
         return register(name, 16.0F);
     }
 

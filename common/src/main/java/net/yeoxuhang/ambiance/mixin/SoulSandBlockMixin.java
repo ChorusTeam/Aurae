@@ -13,8 +13,6 @@ import net.yeoxuhang.ambiance.Ambiance;
 import net.yeoxuhang.ambiance.util.ParticlesUtil;
 import org.spongepowered.asm.mixin.Mixin;
 
-import java.util.Random;
-
 import static net.minecraft.world.level.block.FallingBlock.isFree;
 
 @Mixin(SoulSandBlock.class)

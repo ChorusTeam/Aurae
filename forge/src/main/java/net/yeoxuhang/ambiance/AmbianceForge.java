@@ -1,5 +1,4 @@
 package net.yeoxuhang.ambiance;
-import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -26,17 +25,17 @@ public class AmbianceForge {
 
         @SubscribeEvent
         public static void onParticleFactoryRegister(RegisterParticleProvidersEvent event) {
-            event.register(ParticleRegistry.AIR.get(), EmptyParticle.Provider::new);
-            event.register(ParticleRegistry.AIR.get(), EmptyParticle.Provider::new);
-            event.register(ParticleRegistry.ASH.get(), AshParticle.Provider::new);
-            event.register(ParticleRegistry.END_PORTAL_ASH.get(), AshParticle.Provider::new);
-            event.register(ParticleRegistry.TRIAL.get(), TrialParticle.Provider::new);
-            event.register(ParticleRegistry.END_GATEWAY.get(), TrialParticle.Provider::new);
-            event.register(ParticleRegistry.FIRE_ASH.get(), FireAshParticle.Provider::new);
-            event.register(ParticleRegistry.PORTAL.get(), PortalAshParticle.Provider::new);
-            event.register(ParticleRegistry.REVERSE_PORTAL.get(), ReversePortalAshParticle.Provider::new);
-            event.register(ParticleRegistry.ENDER_EYE_PLACE.get(), EnderEyePlaceParticle.Provider::new);
-            event.register(ParticleRegistry.COLOR_ASH.get(), VanillaSmoke.Provider::new);
+            event.registerSpriteSet(ParticleRegistry.AIR.get(), EmptyParticle.Provider::new);
+            event.registerSpriteSet(ParticleRegistry.AIR.get(), EmptyParticle.Provider::new);
+            event.registerSpriteSet(ParticleRegistry.ASH.get(), AshParticle.Provider::new);
+            event.registerSpriteSet(ParticleRegistry.END_PORTAL_ASH.get(), AshParticle.Provider::new);
+            event.registerSpriteSet(ParticleRegistry.TRIAL.get(), TrialParticle.Provider::new);
+            event.registerSpriteSet(ParticleRegistry.END_GATEWAY.get(), TrialParticle.Provider::new);
+            event.registerSpriteSet(ParticleRegistry.FIRE_ASH.get(), FireAshParticle.Provider::new);
+            event.registerSpriteSet(ParticleRegistry.PORTAL.get(), PortalAshParticle.Provider::new);
+            event.registerSpriteSet(ParticleRegistry.REVERSE_PORTAL.get(), ReversePortalAshParticle.Provider::new);
+            event.registerSpriteSet(ParticleRegistry.ENDER_EYE_PLACE.get(), EnderEyePlaceParticle.Provider::new);
+            event.registerSpriteSet(ParticleRegistry.COLOR_ASH.get(), VanillaSmoke.Provider::new);
         }
     }
 

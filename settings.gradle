@@ -25,9 +25,16 @@ pluginManagement {
                 includeGroupAndSubgroups("org.spongepowered")
             }
         }
-        maven {
-            name = 'Forge'
-            url = 'https://maven.minecraftforge.net'
+        exclusiveContent {
+            forRepository {
+                maven {
+                    name = 'Forge'
+                    url = uri('https://maven.minecraftforge.net')
+                }
+            }
+            filter {
+                includeGroupAndSubgroups('net.minecraftforge')
+            }
         }
     }
 }
@@ -37,7 +44,7 @@ plugins {
 }
 
 // This should match the folder name of the project, or else IDEA may complain (see https://youtrack.jetbrains.com/issue/IDEA-317606)
-rootProject.name = 'Ambiance 1.19x - Multiloader'
+rootProject.name = 'Ambiance 1.20x - Multiloader'
 include('common')
 include('fabric')
 include('forge')
