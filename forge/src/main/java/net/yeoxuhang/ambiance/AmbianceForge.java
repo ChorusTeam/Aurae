@@ -26,7 +26,6 @@ public class AmbianceForge {
         @SubscribeEvent
         public static void onParticleFactoryRegister(RegisterParticleProvidersEvent event) {
             event.registerSpriteSet(ParticleRegistry.AIR.get(), EmptyParticle.Provider::new);
-            event.registerSpriteSet(ParticleRegistry.AIR.get(), EmptyParticle.Provider::new);
             event.registerSpriteSet(ParticleRegistry.ASH.get(), AshParticle.Provider::new);
             event.registerSpriteSet(ParticleRegistry.END_PORTAL_ASH.get(), AshParticle.Provider::new);
             event.registerSpriteSet(ParticleRegistry.TRIAL.get(), TrialParticle.Provider::new);

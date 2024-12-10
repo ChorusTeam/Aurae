@@ -33,6 +33,6 @@ public class ForgeRegistryHelper implements RegistryHelper {
 
     @Override
     public Supplier<SoundEvent> registerSound(String name, float distance) {
-        return SOUND.register(name, ()-> SoundEvent.createFixedRangeEvent(Ambiance.rL(name), distance));
+        return SOUND.register(name, ()-> new SoundEvent(Ambiance.rL(name), distance, true));
     }
 }
