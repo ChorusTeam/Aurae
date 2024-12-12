@@ -29,7 +29,7 @@ public abstract class BaseFireBlockMixin extends Block {
         super(properties);
     }
 
-    @Inject(method = "animateTick", at = @At(value = "RETURN"))
+    @Inject(method = "animateTick", at = @At(value = "HEAD"))
     public void ambiance$animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource, CallbackInfo ci) {
         BlockPos blockPos2 = blockPos.below();
         BlockState blockState2 = level.getBlockState(blockPos2);

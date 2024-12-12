@@ -74,4 +74,20 @@ public class AshParticle extends BaseAshSmokeParticle {
             return ashParticle;
         }
     }
+
+    public static class PortalAshProvider implements ParticleProvider<AshOption> {
+        private final SpriteSet sprites;
+
+        public PortalAshProvider(SpriteSet spriteSet) {
+            this.sprites = spriteSet;
+        }
+        public Particle createParticle(AshOption ashOption, ClientLevel clientLevel, double d, double e, double f, double g, double h, double i) {
+            AshParticle ashParticle = new AshParticle(clientLevel, d, e, f, 0.0, 0.0, 0.0, 1.0F, this.sprites, ashOption.getAge(), ashOption.getGravity(), ashOption.getSize(), ashOption.getMovementXY());
+            ashParticle.setColor(ashOption.getRed(), ashOption.getGreen(), ashOption.getBlue());
+            ashParticle.setAlpha(ashOption.getAlpha());
+            ashParticle.setSize(ashOption.getSize(), ashOption.getSize());
+            ashParticle.gravity = ashOption.getGravity();
+            return ashParticle;
+        }
+    }
 }

@@ -2,6 +2,7 @@ package net.yeoxuhang.ambiance.platform;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleOptions.Deserializer;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.sounds.SoundEvent;
@@ -18,7 +19,7 @@ public class ForgeRegistryHelper implements RegistryHelper {
     public static final DeferredRegister<SoundEvent> SOUND = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, Ambiance.MOD_ID);
 
     @Override
-    public <T extends ParticleOptions> Supplier<ParticleType<T>> registerParticle(String name, boolean bl, ParticleOptions.Deserializer<T> function, Function<ParticleType<T>, Codec<T>> function2) {
+    public <T extends ParticleOptions> Supplier<ParticleType<T>> registerParticle(String name, boolean bl, Deserializer<T> function, Function<ParticleType<T>, Codec<T>> function2) {
         return PARTICLE_TYPES.register(name, ()-> new ParticleType<>(bl, function) {
             @Override
             public Codec<T> codec() {

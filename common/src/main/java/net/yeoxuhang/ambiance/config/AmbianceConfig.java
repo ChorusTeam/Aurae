@@ -15,9 +15,9 @@ public class AmbianceConfig {
     public static class blocksCategory {
 
 
-
         @Configurable
         public endPortalFrameCategory endPortalFrame = new endPortalFrameCategory();
+
         public static class endPortalFrameCategory {
             @Configurable
             @Configurable.Comment(value = "Enable Eye of Ender Placement")
@@ -49,8 +49,10 @@ public class AmbianceConfig {
             @Configurable.Comment("Sound Type")
             public ambiance$type soundType = ambiance$type.FANCY;
         }
+
         @Configurable
         public endPortalCategory endPortal = new endPortalCategory();
+
         public static class endPortalCategory {
             @Configurable
             @Configurable.Comment(value = "Enable End Portal Ambient")
@@ -69,6 +71,7 @@ public class AmbianceConfig {
 
         @Configurable
         public endGatewayCategory endGateway = new endGatewayCategory();
+
         public static class endGatewayCategory {
             @Configurable
             @Configurable.Comment(value = "Enable End Gateway Ambient")
@@ -83,6 +86,7 @@ public class AmbianceConfig {
 
         @Configurable
         public fireCategory fire = new fireCategory();
+
         public static class fireCategory {
             @Configurable
             @Configurable.Comment(value = "Enable Fire Particle")
@@ -95,6 +99,7 @@ public class AmbianceConfig {
 
         @Configurable
         public campfireCategory campfire = new campfireCategory();
+
         public static class campfireCategory {
             @Configurable
             @Configurable.Comment(value = "Enable Campfire Particle")
@@ -110,6 +115,7 @@ public class AmbianceConfig {
 
         @Configurable
         public candleCategory candle = new candleCategory();
+
         public static class candleCategory {
             @Configurable
             @Configurable.Comment(value = "Enable Candle Particle")
@@ -125,6 +131,7 @@ public class AmbianceConfig {
 
         @Configurable
         public torchCategory torch = new torchCategory();
+
         public static class torchCategory {
             @Configurable
             @Configurable.Comment(value = "Enable Torch Particle")
@@ -140,9 +147,11 @@ public class AmbianceConfig {
 
         @Configurable
         public cauldronCategory cauldron = new cauldronCategory();
+
         public static class cauldronCategory {
             @Configurable
             public waterCategory water = new waterCategory();
+
             public static class waterCategory {
                 @Configurable
                 @Configurable.Comment(value = "Enable Water Splash")
@@ -160,6 +169,7 @@ public class AmbianceConfig {
 
             @Configurable
             public lavaCategory lava = new lavaCategory();
+
             public static class lavaCategory {
                 @Configurable
                 @Configurable.Comment(value = "Enable Lava Pop")
@@ -178,6 +188,7 @@ public class AmbianceConfig {
 
         @Configurable
         public soulSandCategory soulSand = new soulSandCategory();
+
         public static class soulSandCategory {
             @Configurable
             @Configurable.Comment(value = "Enable Soul Sand Ambient")
@@ -186,6 +197,7 @@ public class AmbianceConfig {
 
         @Configurable
         public netherPortalCategory netherPortal = new netherPortalCategory();
+
         public static class netherPortalCategory {
             @Configurable
             @Configurable.Gui.Slider
@@ -200,6 +212,7 @@ public class AmbianceConfig {
 
         @Configurable
         public respawnAnchorCategory respawnAnchor = new respawnAnchorCategory();
+
         public static class respawnAnchorCategory {
             @Configurable
             @Configurable.Gui.Slider
@@ -214,6 +227,7 @@ public class AmbianceConfig {
 
         @Configurable
         public sculkSpreadCategory sculkSpread = new sculkSpreadCategory();
+
         public static class sculkSpreadCategory {
             @Configurable
             @Configurable.Comment(value = "Enable Sculk Spreading")
@@ -222,6 +236,7 @@ public class AmbianceConfig {
 
         @Configurable
         public decoratedPotCategory decoratedPot = new decoratedPotCategory();
+
         public static class decoratedPotCategory {
             @Configurable
             @Configurable.Comment(value = "Enable Underwater Bubbles")
@@ -235,27 +250,6 @@ public class AmbianceConfig {
             @Configurable.Gui.Slider
             @Configurable.DecimalRange(min = 0.0, max = 1)
             public float soundVolume = 0.2f;
-        }
-        @Configurable
-        public trialChamberCategory trialChamber = new trialChamberCategory();
-        public static class trialChamberCategory {
-            @Configurable
-            public vaultCategory vault = new vaultCategory();
-            public static class vaultCategory {
-                @Configurable
-                @Configurable.Comment(value = "Enable Vault Ambient")
-                public boolean enableParticle = true;
-            }
-            @Configurable
-            public spawnerCategory spawner = new spawnerCategory();
-            public static class spawnerCategory {
-                @Configurable
-                @Configurable.Comment(value = "Enable Spawner Ambient")
-                public boolean enableParticle = true;
-            }
-            @Configurable
-            @Configurable.Comment(value = "Enable Item reward pop")
-            public boolean enableParticle = true;
         }
     }
 

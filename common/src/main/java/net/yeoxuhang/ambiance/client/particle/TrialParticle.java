@@ -103,4 +103,19 @@ public class TrialParticle extends TextureSheetParticle {
             return trialParticle;
         }
     }
+
+    public static class EndGatewayProvider implements ParticleProvider<TrialOption> {
+        private final SpriteSet sprites;
+
+        public EndGatewayProvider(SpriteSet spriteSet) {
+            this.sprites = spriteSet;
+        }
+
+        public Particle createParticle(TrialOption endOption, ClientLevel clientLevel, double d, double e, double f, double g, double h, double i) {
+            TrialParticle trialParticle = new TrialParticle(clientLevel, d, e, f, g, h, i, this.sprites, endOption.getAge(), endOption.getGravity(), endOption.getSpeed(), endOption.getSize());
+            trialParticle.setColor(endOption.getRed(), endOption.getGreen(), endOption.getBlue());
+            trialParticle.setAlpha(endOption.getAlpha());
+            return trialParticle;
+        }
+    }
 }

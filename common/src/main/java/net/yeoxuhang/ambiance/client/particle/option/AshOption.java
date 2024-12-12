@@ -61,7 +61,9 @@ public class AshOption implements ParticleOptions {
 
     @Override
     public ParticleType<AshOption> getType() {
-        return this.particleType;
+        if (particleType != null) {
+            return ParticleRegistry.ASH.get();
+        } else return this.particleType;
     }
 
     @Override
