@@ -13,9 +13,6 @@ public class AmbianceConfig {
     public blocksCategory blocks = new blocksCategory();
 
     public static class blocksCategory {
-        
-
-        
         @Configurable
         public endPortalFrameCategory endPortalFrame = new endPortalFrameCategory();
         public static class endPortalFrameCategory {
@@ -25,6 +22,7 @@ public class AmbianceConfig {
 
             @Configurable
             @Configurable.Gui.Slider
+            @Configurable.Gui.NumberFormat("0.#")
             @Configurable.DecimalRange(min = 0.5, max = 1.5)
             @Configurable.Comment("Particle Size")
             public float particleSize = 1;
@@ -42,6 +40,7 @@ public class AmbianceConfig {
             @Configurable
             @Configurable.Comment("Sound Volume")
             @Configurable.Gui.Slider
+            @Configurable.Gui.NumberFormat("0.#")
             @Configurable.DecimalRange(min = 0.0, max = 1)
             public float soundVolume = 0.8f;
 
@@ -58,6 +57,7 @@ public class AmbianceConfig {
 
             @Configurable
             @Configurable.Gui.Slider
+            @Configurable.Gui.NumberFormat("0.#")
             @Configurable.DecimalRange(min = 0.5, max = 1.5)
             @Configurable.Comment("Particle Size")
             public float particleSize = 1;
@@ -76,6 +76,7 @@ public class AmbianceConfig {
 
             @Configurable
             @Configurable.Gui.Slider
+            @Configurable.Gui.NumberFormat("0.#")
             @Configurable.DecimalRange(min = 0.5, max = 1.5)
             @Configurable.Comment("Particle Size")
             public float particleSize = 1;
@@ -154,6 +155,7 @@ public class AmbianceConfig {
                 @Configurable
                 @Configurable.Comment("Sound Volume")
                 @Configurable.Gui.Slider
+                @Configurable.Gui.NumberFormat("0.#")
                 @Configurable.DecimalRange(min = 0.0, max = 1)
                 public float soundVolume = 0.2f;
             }
@@ -171,6 +173,7 @@ public class AmbianceConfig {
                 @Configurable
                 @Configurable.Comment("Sound Volume")
                 @Configurable.Gui.Slider
+                @Configurable.Gui.NumberFormat("0.#")
                 @Configurable.DecimalRange(min = 0.0, max = 1)
                 public float soundVolume = 0.2f;
             }
@@ -189,6 +192,7 @@ public class AmbianceConfig {
         public static class netherPortalCategory {
             @Configurable
             @Configurable.Gui.Slider
+            @Configurable.Gui.NumberFormat("0.#")
             @Configurable.DecimalRange(min = 0.5, max = 1.5)
             @Configurable.Comment("Particle Size")
             public float particleSize = 1;
@@ -203,6 +207,7 @@ public class AmbianceConfig {
         public static class respawnAnchorCategory {
             @Configurable
             @Configurable.Gui.Slider
+            @Configurable.Gui.NumberFormat("0.#")
             @Configurable.DecimalRange(min = 0.5, max = 1.5)
             @Configurable.Comment("Particle Size")
             public float particleSize = 1;
@@ -233,6 +238,7 @@ public class AmbianceConfig {
             @Configurable
             @Configurable.Comment("Sound Volume")
             @Configurable.Gui.Slider
+            @Configurable.Gui.NumberFormat("0.#")
             @Configurable.DecimalRange(min = 0.0, max = 1)
             public float soundVolume = 0.2f;
         }

@@ -43,3 +43,13 @@ tasks.named('sourcesJar', Jar) {
     dependsOn(configurations.commonResources)
     from(configurations.commonResources)
 }
+
+tasks.named("jar").configure {
+    // Exclude accesswidener for Forge builds
+    if (project.name == "forge") {
+        exclude("ambiance.accesswidener")
+    }
+    if (project.name == "fabric") {
+        exclude("META-INF/accesstransformer.cfg")
+    }
+}
