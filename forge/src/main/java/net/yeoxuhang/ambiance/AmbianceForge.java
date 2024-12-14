@@ -1,5 +1,4 @@
 package net.yeoxuhang.ambiance;
-import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -26,7 +25,6 @@ public class AmbianceForge {
 
         @SubscribeEvent
         public static void onParticleFactoryRegister(RegisterParticleProvidersEvent event) {
-            event.register(ParticleRegistry.AIR.get(), EmptyParticle.Provider::new);
             event.register(ParticleRegistry.AIR.get(), EmptyParticle.Provider::new);
             event.register(ParticleRegistry.ASH.get(), AshParticle.Provider::new);
             event.register(ParticleRegistry.END_PORTAL_ASH.get(), AshParticle.Provider::new);

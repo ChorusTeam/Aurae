@@ -22,6 +22,7 @@ public class AmbianceConfig {
             public boolean enableParticle = true;
 
             @Configurable
+            @Configurable.Gui.NumberFormat("0.0#")
             @Configurable.DecimalRange(min = 0.5, max = 1.5)
             @Configurable.Comment("Particle Size")
             public float particleSize = 1;
@@ -38,6 +39,7 @@ public class AmbianceConfig {
 
             @Configurable
             @Configurable.Comment("Sound Volume")
+            @Configurable.Gui.NumberFormat("0.0#")
             @Configurable.DecimalRange(min = 0.0, max = 1)
             public float soundVolume = 0.8f;
 
@@ -53,6 +55,7 @@ public class AmbianceConfig {
             public boolean enableParticle = true;
 
             @Configurable
+            @Configurable.Gui.NumberFormat("0.0#")
             @Configurable.DecimalRange(min = 0.5, max = 1.5)
             @Configurable.Comment("Particle Size")
             public float particleSize = 1;
@@ -70,6 +73,7 @@ public class AmbianceConfig {
             public boolean enableParticle = true;
 
             @Configurable
+            @Configurable.Gui.NumberFormat("0.0#")
             @Configurable.DecimalRange(min = 0.5, max = 1.5)
             @Configurable.Comment("Particle Size")
             public float particleSize = 1;
@@ -147,6 +151,7 @@ public class AmbianceConfig {
 
                 @Configurable
                 @Configurable.Comment("Sound Volume")
+                @Configurable.Gui.NumberFormat("0.0#")
                 @Configurable.DecimalRange(min = 0.0, max = 1)
                 public float soundVolume = 0.2f;
             }
@@ -163,6 +168,7 @@ public class AmbianceConfig {
 
                 @Configurable
                 @Configurable.Comment("Sound Volume")
+                @Configurable.Gui.NumberFormat("0.0#")
                 @Configurable.DecimalRange(min = 0.0, max = 1)
                 public float soundVolume = 0.2f;
             }
@@ -180,6 +186,7 @@ public class AmbianceConfig {
         public netherPortalCategory netherPortal = new netherPortalCategory();
         public static class netherPortalCategory {
             @Configurable
+            @Configurable.Gui.NumberFormat("0.0#")
             @Configurable.DecimalRange(min = 0.5, max = 1.5)
             @Configurable.Comment("Particle Size")
             public float particleSize = 1;
@@ -193,6 +200,7 @@ public class AmbianceConfig {
         public respawnAnchorCategory respawnAnchor = new respawnAnchorCategory();
         public static class respawnAnchorCategory {
             @Configurable
+            @Configurable.Gui.NumberFormat("0.0#")
             @Configurable.DecimalRange(min = 0.5, max = 1.5)
             @Configurable.Comment("Particle Size")
             public float particleSize = 1;

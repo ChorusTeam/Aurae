@@ -1,0 +1,62 @@
+{
+  "config.screen.ambiance": "Ambiance Einstellungen",
+  "ambiance.discord": "Discord",
+  "ambiance.patreon": "Patreon",
+  "ambiance.source": "Quelle",
+
+  "config.ambiance.option.blocks": "Blöcke",
+  "config.ambiance.option.items": "Gegenstände",
+  "config.ambiance.option.entities": "Objekte",
+  "config.ambiance.option.otherMods": "Andere Modifikationen",
+
+  "config.ambiance.option.endPortalFrame": "Endportalrahmen",
+  "config.ambiance.option.endPortal": "Endportal",
+  "config.ambiance.option.endGateway": "Endtransitportal",
+  "config.ambiance.option.fire": "Feuer",
+  "config.ambiance.option.campfire": "Lagerfeuer",
+  "config.ambiance.option.torch": "Fackel",
+  "config.ambiance.option.candle": "Kerze",
+
+  "config.ambiance.option.enableParticle": "Partikel aktivieren",
+  "config.ambiance.option.enableSound": "Ton aktivieren",
+  "config.ambiance.option.soundVolume": "Lautstärke",
+  "config.ambiance.option.particleColor": "Partikelfarbe",
+  "config.ambiance.option.particleSize": "Partikelgröße",
+  "config.ambiance.option.soundType": "Tonart",
+  "config.ambiance.option.flameType": "Flammenart",
+  "config.ambiance.option.smokeType": "Rauchart",
+  "config.ambiance.option.ashType": "Ascheart",
+  "config.ambiance.option.portalType": "Portalart",
+
+  "config.ambiance.option.blocks.endPortal.particleSize": "Partikelgröße",
+  "config.ambiance.option.blocks.endPortalFrame.particleSize": "Partikelgröße",
+  "config.ambiance.option.blocks.endGateway.particleSize": "Partikelgröße",
+
+  "config.ambiance.option.endremCompat": "End Remastered Kompatibilität",
+
+
+  "config.ambiance.option.cauldron": "Kessel",
+  "config.ambiance.option.lava": "Lava",
+  "config.ambiance.option.water": "Wasser",
+
+  "config.ambiance.option.netherPortal": "Netherportal",
+  "config.ambiance.option.respawnAnchor": "Seelenanker",
+
+  "config.ambiance.option.decoratedPot": "Verzierter Krug",
+  "config.ambiance.option.soulSand": "Seelensand",
+  "config.ambiance.option.sculkSpread": "Sculk-Ausbreitung",
+  "config.ambiance.option.trialChamber": "Trial Chamber",
+  "config.ambiance.option.vault": "Tresor",
+  "config.ambiance.option.spawner": "Spawner",
+
+  "config.ambiance.option.eyeOfEnder": "Enderauge",
+  "config.ambiance.option.eyeOfEnderType": "Partikelart",
+  "config.ambiance.option.blaze": "Lohe",
+  "config.ambiance.option.enderman": "Enderman",
+  "config.ambiance.option.endermite": "Endermite",
+
+  "config.ambiance.option.blazeParticle": "Rauchart",
+  "config.ambiance.option.enderManParticle": "Partikelart",
+  "config.ambiance.option.enderMiteParticle": "Partikelart",
+  "config.ambiance.option.otherBlocks": "Andere Blöcke"
+}
