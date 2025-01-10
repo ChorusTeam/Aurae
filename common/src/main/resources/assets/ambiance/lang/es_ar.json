@@ -1,0 +1,62 @@
+
+{
+  "config.screen.ambiance": "Opciones de Ambiance",
+  "ambiance.discord": "Discord",
+  "ambiance.patreon": "Patreon",
+  "ambiance.source": "Fuente",
+
+  "config.ambiance.option.blocks": "Bloques",
+  "config.ambiance.option.items": "Ítems",
+  "config.ambiance.option.entities": "Entidades",
+  "config.ambiance.option.otherMods": "Otros Mods",
+
+  "config.ambiance.option.endPortalFrame": "Marco del Portal del End",
+  "config.ambiance.option.endPortal": "Portal del End",
+  "config.ambiance.option.endGateway": "Entrada del End",
+  "config.ambiance.option.fire": "Fuego",
+  "config.ambiance.option.campfire": "Fogata",
+  "config.ambiance.option.torch": "Antorcha",
+  "config.ambiance.option.candle": "Vela",
+
+  "config.ambiance.option.enableParticle": "Habilitar Partícula",
+  "config.ambiance.option.enableSound": "Habilitar Sonido",
+  "config.ambiance.option.soundVolume": "Volumen del Sonido",
+  "config.ambiance.option.particleColor": "Color de Partícula",
+  "config.ambiance.option.particleSize": "Tamaño de Partícula",
+  "config.ambiance.option.soundType": "Tipo de Sonido",
+  "config.ambiance.option.flameType": "Tipo de Llama",
+  "config.ambiance.option.smokeType": "Tipo de Humo",
+  "config.ambiance.option.ashType": "Tipo de Ceniza",
+  "config.ambiance.option.portalType": "Tipo de Portal",
+
+  "config.ambiance.option.blocks.endPortal.particleSize": "Tamaño de Partícula",
+  "config.ambiance.option.blocks.endPortalFrame.particleSize": "Tamaño de Partícula",
+  "config.ambiance.option.blocks.endGateway.particleSize": "Tamaño de Partícula",
+
+  "config.ambiance.option.endremCompat": "Compatibilidad con End Remastered",
+
+  "config.ambiance.option.cauldron": "Caldero",
+  "config.ambiance.option.lava": "Lava",
+  "config.ambiance.option.water": "Agua",
+
+  "config.ambiance.option.netherPortal": "Portal del Nether",
+  "config.ambiance.option.respawnAnchor": "Ancla de Resurrección",
+
+  "config.ambiance.option.decoratedPot": "Olla Decorada",
+  "config.ambiance.option.soulSand": "Arena de Almas",
+  "config.ambiance.option.sculkSpread": "Propagación de Sculk",
+  "config.ambiance.option.trialChamber": "Cámara de Pruebas",
+  "config.ambiance.option.vault": "Bóveda",
+  "config.ambiance.option.spawner": "Generador",
+
+  "config.ambiance.option.eyeOfEnder": "Ojo de Ender",
+  "config.ambiance.option.eyeOfEnderType": "Tipo de Partícula",
+  "config.ambiance.option.blaze": "Blaze",
+  "config.ambiance.option.enderman": "Enderman",
+  "config.ambiance.option.endermite": "Endermita",
+
+  "config.ambiance.option.blazeParticle": "Tipo de Humo",
+  "config.ambiance.option.enderManParticle": "Tipo de Partícula",
+  "config.ambiance.option.enderMiteParticle": "Tipo de Partícula",
+  "config.ambiance.option.otherBlocks": "Otros Bloques"
+}

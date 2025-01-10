@@ -3,6 +3,27 @@ plugins {
     id 'net.neoforged.moddev'
 }
 
+repositories {
+    // Add repositories to retrieve artifacts from in here.
+    // You should only use this when depending on other mods because
+    // Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
+    // See https://docs.gradle.org/current/userguide/declaring_repositories.html
+    // for more information about repositories.
+    maven {
+        name = "Modrinth"
+        url = "https://api.modrinth.com/maven"
+    }
+    maven {
+        name = "Terraformers"
+        url = "https://maven.terraformersmc.com/"
+    }
+
+    maven {
+        name 'Configuration'
+        url 'https://repsy.io/mvn/toma/public/'
+    }
+}
+
 neoForge {
     neoFormVersion = neo_form_version
     // Automatically enable AccessTransformers if the file exists
@@ -19,9 +40,10 @@ neoForge {
 dependencies {
     compileOnly group: 'org.spongepowered', name: 'mixin', version: '0.8.5'
     // fabric and neoforge both bundle mixinextras, so it is safe to use it in common
-    compileOnly group: 'io.github.llamalad7', name: 'mixinextras-common', version: '0.4.1'
-    annotationProcessor group: 'io.github.llamalad7', name: 'mixinextras-common', version: '0.4.1'
-    compileOnly "dev.toma.configuration:configuration-${project.minecraft_version}:${project.configuration_version}-common"
+    compileOnly group: 'io.github.llamalad7', name: 'mixinextras-common', version: '0.3.5'
+    annotationProcessor group: 'io.github.llamalad7', name: 'mixinextras-common', version: '0.3.5'
+
+    compileOnly "maven.modrinth:configuration:${project.configuration_version}"
 }
 
 configurations {

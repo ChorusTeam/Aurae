@@ -2,6 +2,27 @@ plugins {
     id 'multiloader-loader'
     id 'fabric-loom'
 }
+repositories {
+    // Add repositories to retrieve artifacts from in here.
+    // You should only use this when depending on other mods because
+    // Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
+    // See https://docs.gradle.org/current/userguide/declaring_repositories.html
+    // for more information about repositories.
+    maven {
+        name = "Modrinth"
+        url = "https://api.modrinth.com/maven"
+    }
+    maven {
+        name = "Terraformers"
+        url = "https://maven.terraformersmc.com/"
+    }
+
+    maven {
+        name 'Configuration'
+        url 'https://repsy.io/mvn/toma/public/'
+    }
+}
+
 dependencies {
     minecraft "com.mojang:minecraft:${minecraft_version}"
     mappings loom.layered {
@@ -12,10 +33,9 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
 
     modImplementation ("maven.modrinth:endrem:${project.endrem_version}")
+    modImplementation ("maven.modrinth:configuration:${project.configuration_fabric_version}")
     //Mod Menu
     modImplementation("com.terraformersmc:modmenu:${project.mod_menu_version}")
-    modImplementation("dev.toma.configuration:configuration-${project.minecraft_version}:${project.configuration_version}-fabric")
-
 }
 
 loom {

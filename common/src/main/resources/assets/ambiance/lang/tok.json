@@ -1,0 +1,62 @@
+{
+  "config.screen.ambiance": "ante nasin pi ante Ambiance",
+  "ambiance.discord": "ilo Siko",
+  "ambiance.patreon": "ilo Patreon",
+  "ambiance.source": "toki pi nasin ilo",
+  
+  "config.ambiance.option.blocks": "leko",
+  "config.ambiance.option.items": "ijo",
+  "config.ambiance.option.entities": "ijo pi leko ala",
+  "config.ambiance.option.otherMods": "ante musi ante",
+  
+  "config.ambiance.option.endPortalFrame": "selo lupa pi ma End",
+  "config.ambiance.option.endPortal": "lupa pi ma End",
+  "config.ambiance.option.endGateway": "lupa weka pi ma End",
+  "config.ambiance.option.fire": "seli",
+  "config.ambiance.option.campfire": "seli palisa",
+  "config.ambiance.option.torch": "palisa seli",
+  "config.ambiance.option.candle": "palisa seli lili",
+  
+  "config.ambiance.option.enableParticle": "pali ala pali e lili",
+  "config.ambiance.option.enableSound": "pali ala pali e kalama",
+  "config.ambiance.option.soundVolume": "wawa kalama",
+  "config.ambiance.option.particleColor": "kule pi ijo lili",
+  "config.ambiance.option.particleSize": "suli pi ijo lili",
+  "config.ambiance.option.soundType": "nasin kalama",
+  "config.ambiance.option.flameType": "nasin seli",
+  "config.ambiance.option.smokeType": "nasin pi kon seli",
+  "config.ambiance.option.ashType": "nasin pi ko seli",
+  "config.ambiance.option.portalType": "nasin pi lupa nasa",
+  
+  "config.ambiance.option.blocks.endPortal.particleSize": "suli pi ilo lili",
+  "config.ambiance.option.blocks.endPortalFrame.particleSize": "suli pi ilo lili",
+  "config.ambiance.option.blocks.endGateway.particleSize": "suli pi ilo lili",
+  
+  "config.ambiance.option.endremCompat": "ijo pi ante End Remastered",
+  
+  
+  "config.ambiance.option.cauldron": "poki suli",
+  "config.ambiance.option.lava": "telo seli",
+  "config.ambiance.option.water": "telo",
+  
+  "config.ambiance.option.netherPortal": "lupa pi ma Nether",
+  "config.ambiance.option.respawnAnchor": "ilo pi kama sin",
+  
+  "config.ambiance.option.decoratedPot": "poki sitelen",
+  "config.ambiance.option.soulSand": "ko kon",
+  "config.ambiance.option.sculkSpread": "kama suli pi soko Sculk",
+  "config.ambiance.option.trialChamber": "tomo alasa",
+  "config.ambiance.option.vault": "poki mani",
+  "config.ambiance.option.spawner": "ilo pi kama monsuta",
+  
+  "config.ambiance.option.eyeOfEnder": "oko pi ma End",
+  "config.ambiance.option.eyeOfEnderType": "nasin pi ijo lili",
+  "config.ambiance.option.blaze": "monsuta seli",
+  "config.ambiance.option.enderman": "jan pi ma End",
+  "config.ambiance.option.endermite": "pipi pi ma End",
+  
+  "config.ambiance.option.blazeParticle": "nasin pi kon seli",
+  "config.ambiance.option.enderManParticle": "nasin pi ijo lili",
+  "config.ambiance.option.enderMiteParticle": "nasin pi ijo lili",
+  "config.ambiance.option.otherBlocks": "ijo ante",
+}

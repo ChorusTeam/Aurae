@@ -1,0 +1,62 @@
+{
+  "config.screen.ambiance": "Opcje Ambiance",
+  "ambiance.discord": "Discord",
+  "ambiance.patreon": "Patreon",
+  "ambiance.source": "Źródło",
+
+  "config.ambiance.option.blocks": "Bloki",
+  "config.ambiance.option.items": "Przedmioty",
+  "config.ambiance.option.entities": "Byty",
+  "config.ambiance.option.otherMods": "Inne Modyfikacje",
+
+  "config.ambiance.option.endPortalFrame": "Rama Portalu do Endu",
+  "config.ambiance.option.endPortal": "Portal do Endu",
+  "config.ambiance.option.endGateway": "Brama Endu",
+  "config.ambiance.option.fire": "Ogień",
+  "config.ambiance.option.campfire": "Ognisko",
+  "config.ambiance.option.torch": "Pochodnia",
+  "config.ambiance.option.candle": "Świeczka",
+
+  "config.ambiance.option.enableParticle": "Włącz Cząsteczki",
+  "config.ambiance.option.enableSound": "Włącz Dźwięk",
+  "config.ambiance.option.soundVolume": "Głośność Dźwięku",
+  "config.ambiance.option.particleColor": "Kolor Cząsteczek",
+  "config.ambiance.option.particleSize": "Rozmiar Cząsteczek",
+  "config.ambiance.option.soundType": "Typ Dźwięku",
+  "config.ambiance.option.flameType": "Typ Ognia",
+  "config.ambiance.option.smokeType": "Typ Dymu",
+  "config.ambiance.option.ashType": "Typ Popiołu",
+  "config.ambiance.option.portalType": "Typ Portalu",
+
+  "config.ambiance.option.blocks.endPortal.particleSize": "Rozmiar Cząsteczek",
+  "config.ambiance.option.blocks.endPortalFrame.particleSize": "Rozmiar Cząsteczek",
+  "config.ambiance.option.blocks.endGateway.particleSize": "Rozmiar Cząsteczek",
+
+  "config.ambiance.option.endremCompat": "Kompatybilność z End Remastered",
+
+
+  "config.ambiance.option.cauldron": "Kocioł",
+  "config.ambiance.option.lava": "Magma",
+  "config.ambiance.option.water": "Woda",
+
+  "config.ambiance.option.netherPortal": "Portal Netheru",
+  "config.ambiance.option.respawnAnchor": "Kotwica Odrodzenia",
+
+  "config.ambiance.option.decoratedPot": "Dekorowany Garniec",
+  "config.ambiance.option.soulSand": "Piasek Dusz",
+  "config.ambiance.option.sculkSpread": "Rozwój Sculku",
+  "config.ambiance.option.trialChamber": "Komnata Prób",
+  "config.ambiance.option.vault": "Skarbiec",
+  "config.ambiance.option.spawner": "Przyzywacz Potworów",
+
+  "config.ambiance.option.eyeOfEnder": "Oko Endera",
+  "config.ambiance.option.eyeOfEnderType": "Typ Cząsteczek",
+  "config.ambiance.option.blaze": "Płomyk",
+  "config.ambiance.option.enderman": "Enderman",
+  "config.ambiance.option.endermite": "Endermit",
+
+  "config.ambiance.option.blazeParticle": "Typ Dymu",
+  "config.ambiance.option.enderManParticle": "Typ Cząsteczek",
+  "config.ambiance.option.enderMiteParticle": "Typ Cząsteczek",
+  "config.ambiance.option.otherBlocks": "Inne Bloki"
+}
