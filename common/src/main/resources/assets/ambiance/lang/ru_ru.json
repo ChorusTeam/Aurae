@@ -1,0 +1,62 @@
+{
+  "config.screen.ambiance": "Настройки Ambiance",
+  "ambiance.discord": "Discord",
+  "ambiance.patreon": "Patreon",
+  "ambiance.source": "Исходный код",
+
+  "config.ambiance.option.blocks": "Блоки",
+  "config.ambiance.option.items": "Предметы",
+  "config.ambiance.option.entities": "Сущности",
+  "config.ambiance.option.otherMods": "Другие моды",
+
+  "config.ambiance.option.endPortalFrame": "Рамка портала в Энд",
+  "config.ambiance.option.endPortal": "Портал в Энд",
+  "config.ambiance.option.endGateway": "Врата Края",
+  "config.ambiance.option.fire": "Огонь",
+  "config.ambiance.option.campfire": "Костёр",
+  "config.ambiance.option.torch": "Факел",
+  "config.ambiance.option.candle": "Свеча",
+
+  "config.ambiance.option.enableParticle": "Включить частицы",
+  "config.ambiance.option.enableSound": "Включить звуки",
+  "config.ambiance.option.soundVolume": "Громкость звуков",
+  "config.ambiance.option.particleColor": "Цвет частиц",
+  "config.ambiance.option.particleSize": "Размер частиц",
+  "config.ambiance.option.soundType": "Тип звука",
+  "config.ambiance.option.flameType": "Тип огня",
+  "config.ambiance.option.smokeType": "Тип дыма",
+  "config.ambiance.option.ashType": "Тип пепла",
+  "config.ambiance.option.portalType": "Тип портала",
+
+  "config.ambiance.option.blocks.endPortal.particleSize": "Размер частиц",
+  "config.ambiance.option.blocks.endPortalFrame.particleSize": "Размер частиц",
+  "config.ambiance.option.blocks.endGateway.particleSize": "Размер частиц",
+
+  "config.ambiance.option.endremCompat": "Совместимость с End Remastered",
+
+
+  "config.ambiance.option.cauldron": "Котёл",
+  "config.ambiance.option.lava": "Лава",
+  "config.ambiance.option.water": "Вода",
+
+  "config.ambiance.option.netherPortal": "Портал в Незер",
+  "config.ambiance.option.respawnAnchor": "Якорь возрождения",
+
+  "config.ambiance.option.decoratedPot": "Узорчатая ваза",
+  "config.ambiance.option.soulSand": "Песок душ",
+  "config.ambiance.option.sculkSpread": "Распространение скалка",
+  "config.ambiance.option.trialChamber": "Дворец испытаний",
+  "config.ambiance.option.vault": "Хранилище",
+  "config.ambiance.option.spawner": "Рассадник испытаний",
+
+  "config.ambiance.option.eyeOfEnder": "Око Эндера",
+  "config.ambiance.option.eyeOfEnderType": "Тип частиц",
+  "config.ambiance.option.blaze": "Всполох",
+  "config.ambiance.option.enderman": "Эндермен",
+  "config.ambiance.option.endermite": "Эндермит",
+
+  "config.ambiance.option.blazeParticle": "Тип дыма",
+  "config.ambiance.option.enderManParticle": "Тип частиц",
+  "config.ambiance.option.enderMiteParticle": "Тип частиц",
+  "config.ambiance.option.otherBlocks": "Другие блоки"
+}
